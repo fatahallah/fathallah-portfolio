@@ -33,19 +33,41 @@ const PROFILE = {
   email: 'fathallahsaed352@gmail.com',
   phone: '+201037368956',
   phoneDisplay: '+20 103 736 8956',
-  location: { en: 'Menoufia, Egypt (relocatable / remote)', ar: 'المنوفية، مصر (قابل للانتقال / عن بعد)' },
+  location: {
+    en: 'Menoufia, Egypt (relocatable / remote)',
+    ar: 'المنوفية، مصر (قابل للانتقال / عن بعد)',
+  },
   linkedin: 'https://www.linkedin.com/in/fathallah-saied/',
   github: 'https://github.com/fatahallah',
   cv: '/Fathallah_Saied_CV.pdf',
 }
 
-const NAV_IDS = ['home', 'about', 'skills', 'projects', 'experience', 'contact']
+/* Projects are intentionally near the top of the file so the portfolio
+   can be maintained from one place. */
+
+const NAV_IDS = ['home', 'projects', 'skills', 'experience', 'about', 'contact']
 
 const STATS = [
-  { value: 4, suffix: '', label: { en: 'End-to-end analytics projects', ar: 'مشاريع تحليل بيانات متكاملة' } },
-  { value: 99441, suffix: '', label: { en: 'E-commerce orders analyzed', ar: 'طلب تجارة إلكترونية تم تحليله' } },
-  { value: 1562, suffix: '', label: { en: 'Employee records reconciled', ar: 'سجل موظف تمت مطابقته' } },
-  { value: 28.4, suffix: '%', label: { en: 'Verified attrition rate uncovered', ar: 'معدل دوران وظيفي تم رصده' } },
+  {
+    value: 4,
+    suffix: '',
+    label: { en: 'End-to-end analytics projects', ar: 'مشاريع تحليل بيانات متكاملة' },
+  },
+  {
+    value: 99441,
+    suffix: '',
+    label: { en: 'E-commerce orders analyzed', ar: 'طلب تجارة إلكترونية تم تحليله' },
+  },
+  {
+    value: 1562,
+    suffix: '',
+    label: { en: 'Employee records analyzed', ar: 'سجل موظف تم تحليله' },
+  },
+  {
+    value: 28.4,
+    suffix: '%',
+    label: { en: 'Attrition rate identified', ar: 'معدل دوران وظيفي تم رصده' },
+  },
 ]
 
 const SKILL_GROUPS = [
@@ -60,20 +82,20 @@ const SKILL_GROUPS = [
   },
   {
     icon: FileSpreadsheet,
-    title: { en: 'Office & Reporting Tools', ar: 'أدوات المكتب والتقارير' },
+    title: { en: 'Data Preparation & Reporting', ar: 'تجهيز البيانات والتقارير' },
     items: [
       { name: 'Excel — Power Query, PivotTables, XLOOKUP', level: 90 },
-      { name: 'PowerPoint — Reporting & Presentation', level: 80 },
-      { name: 'Dynamic FILTER & Data Validation', level: 85 },
+      { name: 'Power Query — Cleaning & Transformation', level: 90 },
+      { name: 'Data Validation & Dynamic Reporting', level: 85 },
     ],
   },
   {
     icon: Table2,
-    title: { en: 'Database & Systems', ar: 'قواعد البيانات والأنظمة' },
+    title: { en: 'BI & Data Modeling', ar: 'ذكاء الأعمال ونمذجة البيانات' },
     items: [
       { name: 'Star Schema Modeling', level: 75 },
+      { name: 'DAX Measures & KPI Design', level: 80 },
       { name: 'ODBC Live Connections', level: 75 },
-      { name: 'HR & Payroll Data Systems', level: 85 },
     ],
   },
 ]
@@ -85,14 +107,20 @@ const PROJECTS = [
     id: 'ecommerce-sql-geo',
     categories: ['data', 'dashboards'],
     image: '/projects/ecommerce-sql-geo.png',
-    metric: { en: 'Only 7.9% of orders actually delayed', ar: '7.9% فقط من الطلبات تأخرت فعليًا' },
-    title: { en: 'E-Commerce SQL & Geo-Spatial Analytics', ar: 'تحليل جغرافي مكاني للتجارة الإلكترونية بلغة SQL' },
+    metric: {
+      en: 'Only 7.9% of orders actually delayed',
+      ar: '7.9% فقط من الطلبات تأخرت فعليًا',
+    },
+    title: {
+      en: 'E-Commerce SQL & Geo-Spatial Analytics',
+      ar: 'تحليل جغرافي مكاني للتجارة الإلكترونية بلغة SQL',
+    },
     summary: {
       en: 'Rebuilt shipping distance from scratch with a manual Haversine calculation across 99,441 orders and 8 linked tables — found that delay is an estimation problem, not a distance problem.',
       ar: 'أعدت بناء مسافة الشحن من الصفر بمعادلة Haversine يدويًا عبر 99,441 طلب و8 جداول مترابطة — واكتشفت أن التأخير مشكلة تقدير وليست مشكلة مسافة.',
     },
     detail: {
-      en: 'A Brazilian e-commerce marketplace\u2019s delivery-time reputation was based on assumption, not evidence. I queried and joined 8 linked tables covering 99,441 orders, then reduced a 1M-row geolocation table by 98% into a usable dataset. With no built-in distance field, I calculated real shipping distance in SQL using the Haversine formula, then connected the model live to Power BI via ODBC. The result: an inflated delivery estimate — not the actual logistics — was driving the delay narrative.',
+      en: 'A Brazilian e-commerce marketplace’s delivery-time reputation was based on assumption, not evidence. I queried and joined 8 linked tables covering 99,441 orders, then reduced a 1M-row geolocation table by 98% into a usable dataset. With no built-in distance field, I calculated real shipping distance in SQL using the Haversine formula, then connected the model live to Power BI via ODBC. The result: an inflated delivery estimate — not the actual logistics — was driving the delay narrative.',
       ar: 'كانت سمعة أوقات التسليم لمتجر تجارة إلكترونية برازيلي مبنية على افتراض لا دليل. قمت بربط واستعلام 8 جداول تغطي 99,441 طلب، ثم اختصرت جدول مواقع جغرافية مكوّن من مليون صف بنسبة 98% ليصبح بيانات قابلة للاستخدام. ولعدم وجود حقل مسافة جاهز، حسبت مسافة الشحن الحقيقية بلغة SQL باستخدام معادلة Haversine، ثم ربطت النموذج مباشرة بـ Power BI عبر ODBC. والنتيجة: أن تقدير التسليم المبالغ فيه — وليس اللوجستيات فعليًا — هو ما كان يقود قصة التأخير.',
     },
     tools: ['SQL', 'Power BI', 'Window Functions', 'ODBC Live Connection'],
@@ -102,15 +130,21 @@ const PROJECTS = [
     id: 'hr-workforce',
     categories: ['hr', 'dashboards'],
     image: '/projects/hr-workforce.png',
-    metric: { en: '28.4% verified attrition rate', ar: '28.4% معدل دوران وظيفي موثق' },
-    title: { en: 'HR Workforce Analytics (SQL & Power BI)', ar: 'تحليل القوى العاملة بلغة SQL و Power BI' },
+    metric: {
+      en: '28.4% attrition rate identified',
+      ar: '28.4% معدل دوران وظيفي تم رصده',
+    },
+    title: {
+      en: 'HR Workforce Analytics (SQL & Power BI)',
+      ar: 'تحليل القوى العاملة بلغة SQL و Power BI',
+    },
     summary: {
-      en: 'Decoded undocumented HR action codes across 1,562 employees with CTEs and self-joins to build an attrition signal HR could finally trust.',
-      ar: 'فك تشفير أكواد إجراءات موارد بشرية غير موثقة لدى 1,562 موظف باستخدام CTEs وself-joins لبناء مؤشر دوران وظيفي يمكن للموارد البشرية الوثوق به.',
+      en: 'Decoded undocumented HR action codes across 1,562 employees with CTEs and self-joins to build an attrition signal HR could finally track.',
+      ar: 'فك تشفير أكواد إجراءات موارد بشرية غير موثقة لدى 1,562 موظف باستخدام CTEs وself-joins لبناء مؤشر دوران وظيفي يمكن للموارد البشرية تتبعه.',
     },
     detail: {
-      en: 'HR held years of employee action history in codes nobody had documented. Using CTEs and self-joins in SQL, I statistically decoded the undocumented codes, reconstructed each employee\u2019s status timeline across 1,562 records, and built a live Power BI dashboard connected via ODBC with DAX-driven KPIs — surfacing a verified 28.4% attrition rate the business could finally track.',
-      ar: 'كانت الموارد البشرية تحتفظ بسنوات من تاريخ إجراءات الموظفين في أكواد لم يوثقها أحد. باستخدام CTEs وself-joins في SQL، فككت تشفير هذه الأكواد إحصائيًا، وأعدت بناء الجدول الزمني لحالة كل موظف عبر 1,562 سجل، وبنيت داشبورد Power BI حي متصل عبر ODBC بمؤشرات أداء مبنية على DAX — كاشفًا معدل دوران وظيفي موثق بنسبة 28.4% استطاعت الشركة تتبعه أخيرًا.',
+      en: 'HR held years of employee action history in codes nobody had documented. Using CTEs and self-joins in SQL, I statistically decoded the undocumented codes, reconstructed each employee’s status timeline across 1,562 records, and built a live Power BI dashboard connected via ODBC with DAX-driven KPIs — surfacing a 28.4% attrition rate that the business could finally track.',
+      ar: 'كانت الموارد البشرية تحتفظ بسنوات من تاريخ إجراءات الموظفين في أكواد لم يوثقها أحد. باستخدام CTEs وself-joins في SQL، فككت تشفير هذه الأكواد إحصائيًا، وأعدت بناء الجدول الزمني لحالة كل موظف عبر 1,562 سجل، وبنيت داشبورد Power BI حي متصل عبر ODBC بمؤشرات أداء مبنية على DAX — كاشفًا معدل دوران وظيفي بنسبة 28.4% استطاعت الشركة تتبعه أخيرًا.',
     },
     tools: ['SQL', 'Power BI', 'CTEs & Self-Joins', 'ODBC'],
     github: 'https://github.com/fatahallah/HR-Workforce-Analytics-SQL',
@@ -119,8 +153,14 @@ const PROJECTS = [
     id: 'sales-power-bi',
     categories: ['dashboards'],
     image: '/projects/sales-power-bi.png',
-    metric: { en: '$829K sales · 32.87% margin', ar: '829 ألف دولار مبيعات · هامش 32.87%' },
-    title: { en: 'Sales Performance & Profitability Analytics', ar: 'تحليل أداء المبيعات والربحية' },
+    metric: {
+      en: '$829K sales · 32.87% margin',
+      ar: '829 ألف دولار مبيعات · هامش 32.87%',
+    },
+    title: {
+      en: 'Sales Performance & Profitability Analytics',
+      ar: 'تحليل أداء المبيعات والربحية',
+    },
     summary: {
       en: 'Turned raw ERP exports into a two-page executive Power BI dashboard tracking sales, margin, and regional target achievement.',
       ar: 'حولت بيانات خام من نظام ERP إلى داشبورد تنفيذي من صفحتين في Power BI يتتبع المبيعات والهامش وتحقيق الأهداف الإقليمية.',
@@ -136,8 +176,14 @@ const PROJECTS = [
     id: 'sales-excel',
     categories: ['data'],
     image: null,
-    metric: { en: 'Star Schema · Excel-native dashboard', ar: 'نموذج نجمي · داشبورد إكسل بالكامل' },
-    title: { en: 'Advanced Sales Performance Dashboard (Excel)', ar: 'داشبورد متقدم لأداء المبيعات (إكسل)' },
+    metric: {
+      en: 'Star Schema · Excel-native dashboard',
+      ar: 'نموذج نجمي · داشبورد إكسل بالكامل',
+    },
+    title: {
+      en: 'Advanced Sales Performance Dashboard (Excel)',
+      ar: 'داشبورد متقدم لأداء المبيعات (إكسل)',
+    },
     summary: {
       en: 'Cleaned multi-source raw sales data with Power Query and modeled it into a Star Schema, tracked through a dynamic Excel dashboard.',
       ar: 'نظفت بيانات مبيعات خام من مصادر متعددة باستخدام Power Query ونمذجتها في مخطط نجمي، وتتبعتها عبر داشبورد إكسل ديناميكي.',
@@ -153,15 +199,21 @@ const PROJECTS = [
     id: 'hr-payroll-excel',
     categories: ['hr'],
     image: '/projects/hr-payroll-excel.png',
-    metric: { en: '35 employees · $219,558 net salary tracked', ar: '35 موظف · 219,558 دولار صافي رواتب' },
-    title: { en: 'HR Operations & Payroll Analytics System (Excel)', ar: 'نظام تحليل عمليات الموارد البشرية والرواتب (إكسل)' },
+    metric: {
+      en: '35 employees · $219,558 net salary tracked',
+      ar: '35 موظف · 219,558 دولار صافي رواتب',
+    },
+    title: {
+      en: 'HR Operations & Payroll Analytics System (Excel)',
+      ar: 'نظام تحليل عمليات الموارد البشرية والرواتب (إكسل)',
+    },
     summary: {
       en: 'A multi-sheet automated Excel workbook for employee master data, attendance, leave and payroll — with error logging built in.',
       ar: 'ملف إكسل متعدد الشيتات ومؤتمت للبيانات الرئيسية للموظفين والحضور والإجازات والرواتب — مع تسجيل أخطاء مدمج.',
     },
     detail: {
-      en: 'A multi-sheet automated workbook linking employee master data, attendance, leave, and payroll with XLOOKUP and dynamic FILTER formulas, plus data-validation rules that log errors and track overtime automatically. The live dashboard tracks 35 employees, $219,558.07 in net salary paid, and 80.78 overtime hours.',
-      ar: 'ملف متعدد الشيتات ومؤتمت يربط البيانات الرئيسية للموظفين والحضور والإجازات والرواتب بمعادلات XLOOKUP وFILTER الديناميكية، بالإضافة إلى قواعد تحقق من صحة البيانات تسجل الأخطاء وتتبع ساعات العمل الإضافي تلقائيًا. يتتبع الداشبورد الحي 35 موظفًا، و219,558.07 دولار صافي رواتب مدفوعة، و80.78 ساعة عمل إضافي.',
+      en: 'A multi-sheet automated workbook linking employee master data, attendance, leave, and payroll with XLOOKUP and dynamic FILTER formulas, plus data-validation rules that log errors and track overtime automatically. The dashboard tracks 35 employees, $219,558.07 in net salary, and 80.78 overtime hours.',
+      ar: 'ملف متعدد الشيتات ومؤتمت يربط البيانات الرئيسية للموظفين والرواتب والحضور والإجازات بمعادلات XLOOKUP وFILTER الديناميكية، بالإضافة إلى قواعد تحقق من صحة البيانات تسجل الأخطاء وتتتبع ساعات العمل الإضافي تلقائيًا. يتتبع الداشبورد 35 موظفًا، و219,558.07 دولار صافي رواتب، و80.78 ساعة عمل إضافي.',
     },
     tools: ['Excel', 'XLOOKUP', 'Dynamic FILTER', 'Data Validation'],
     github: null,
@@ -172,10 +224,10 @@ const TIMELINE = [
   {
     icon: Briefcase,
     date: { en: 'Before 2025', ar: 'قبل 2025' },
-    title: { en: 'HR & Recruitment Operations', ar: 'عمليات الموارد البشرية والتوظيف' },
+    title: { en: 'HR Data & Operations Context', ar: 'سياق بيانات وعمليات الموارد البشرية' },
     text: {
-      en: 'Worked hands-on with employee, payroll, and attendance data in an HR operations context — the starting point that showed most business problems are really data problems.',
-      ar: 'عملت بشكل عملي مع بيانات الموظفين والرواتب والحضور في سياق عمليات الموارد البشرية — وهي نقطة الانطلاق التي أظهرت أن معظم مشاكل الأعمال هي في جوهرها مشاكل بيانات.',
+      en: 'Built practical familiarity with employee, payroll, attendance, and leave data through HR-focused portfolio work — the starting point that led me deeper into data analysis.',
+      ar: 'بنيت خبرة عملية في التعامل مع بيانات الموظفين والرواتب والحضور والإجازات من خلال مشاريع موجهة للموارد البشرية — وهي نقطة الانطلاق التي قادتني للتعمق في تحليل البيانات.',
     },
   },
   {
@@ -183,17 +235,17 @@ const TIMELINE = [
     date: { en: 'May 2025', ar: 'مايو 2025' },
     title: { en: "Bachelor's Degree, Educational Technology", ar: 'بكالوريوس تكنولوجيا التعليم' },
     text: {
-      en: 'Faculty of Specific Education, Technology Department — Menoufia University. Graduated with a "Very Good" grade; coursework in computer systems, databases, and IT.',
-      ar: 'كلية التربية النوعية، قسم التكنولوجيا — جامعة المنوفية. تخرجت بتقدير "جيد جدًا"؛ بمقررات في نظم الحاسب وقواعد البيانات وتقنية المعلومات.',
+      en: 'Faculty of Specific Education, Technology Department — Menoufia University. Graduated with a "Very Good" grade; coursework included computer systems, databases, and IT.',
+      ar: 'كلية التربية النوعية، قسم التكنولوجيا — جامعة المنوفية. تخرجت بتقدير "جيد جدًا"؛ وشملت الدراسة نظم الحاسب وقواعد البيانات وتقنية المعلومات.',
     },
   },
   {
     icon: BarChart3,
     date: { en: '2025', ar: '2025' },
-    title: { en: 'Excel → Power Query → Power BI → SQL', ar: 'إكسل ← Power Query ← Power BI ← SQL' },
+    title: { en: 'Excel → Power Query → Power BI → SQL', ar: 'Excel ← Power Query ← Power BI ← SQL' },
     text: {
-      en: 'Moved deliberately, one layer at a time: advanced Excel and PivotTables, then Power Query for repeatable cleaning, then Power BI, then SQL for multi-table analysis — building four end-to-end case studies along the way.',
-      ar: 'تدرجت بشكل مقصود طبقة تلو الأخرى: إكسل متقدم وPivotTables، ثم Power Query للتنظيف المتكرر، ثم Power BI، ثم SQL للتحليل متعدد الجداول — وبنيت في هذه الرحلة أربعة مشاريع تحليل متكاملة.',
+      en: 'Moved deliberately from advanced Excel and PivotTables to Power Query, Power BI, and SQL — building end-to-end case studies around sales, e-commerce, and HR data.',
+      ar: 'تدرجت بشكل مقصود من Excel المتقدم وPivotTables إلى Power Query ثم Power BI وSQL — مع بناء دراسات حالة متكاملة حول بيانات المبيعات والتجارة الإلكترونية والموارد البشرية.',
     },
   },
   {
@@ -201,8 +253,8 @@ const TIMELINE = [
     date: { en: 'In progress', ar: 'قيد التنفيذ' },
     title: { en: 'A/B Testing Analysis with Python', ar: 'تحليل اختبار A/B بلغة Python' },
     text: {
-      en: 'Applying Python (pandas, scipy) hands-on to a new project analyzing two advertising campaigns (test vs. control), to add statistical testing to the current toolset.',
-      ar: 'تطبيق Python (pandas, scipy) بشكل عملي في مشروع جديد لتحليل حملتين إعلانيتين (تجريبية مقابل ضابطة)، لإضافة الاختبار الإحصائي إلى مجموعة الأدوات الحالية.',
+      en: 'Applying Python (pandas, scipy) hands-on to a project analyzing two advertising campaigns (test vs. control), adding statistical testing to the current analytics toolkit.',
+      ar: 'تطبيق Python (pandas, scipy) بشكل عملي في مشروع لتحليل حملتين إعلانيتين (تجريبية مقابل ضابطة)، لإضافة الاختبار الإحصائي إلى مجموعة أدوات تحليل البيانات.',
     },
   },
 ]
@@ -210,7 +262,7 @@ const TIMELINE = [
 const SERVICES = [
   { value: 'powerbi', en: 'Power BI Dashboard', ar: 'داشبورد Power BI' },
   { value: 'sql', en: 'SQL Analysis', ar: 'تحليل SQL' },
-  { value: 'excel', en: 'Excel System', ar: 'نظام إكسل' },
+  { value: 'excel', en: 'Excel System', ar: 'نظام Excel' },
   { value: 'other', en: 'Something else', ar: 'شيء آخر' },
 ]
 
@@ -220,26 +272,38 @@ const SERVICES = [
 
 const T = {
   en: {
-    nav: { home: 'Home', about: 'About', skills: 'Skills', projects: 'Projects', experience: 'Experience', contact: 'Contact' },
-    hireMe: 'Hire me',
+    nav: {
+      home: 'Home',
+      about: 'About',
+      skills: 'Skills',
+      projects: 'Projects',
+      experience: 'Experience',
+      contact: 'Contact',
+    },
+    hireMe: 'Start a project',
     heroEyebrow: 'Data Analyst — Power BI · SQL · Excel',
     heroTitle: 'I turn raw, messy business data into decisions people can act on.',
     heroLede:
-      'I build end-to-end analytics — from cleaning undocumented, inconsistent source data to interactive dashboards — for sales, e-commerce, and HR operations. Every project starts with a business question, not a chart.',
+      'I build end-to-end analytics — from cleaning inconsistent source data to interactive dashboards — for sales, e-commerce, and HR operations. Every project starts with a business question, not a chart.',
     viewProjects: 'View case studies',
     downloadCV: 'Download CV',
+    proofEyebrow: 'Selected work',
+    proofTitle: 'Built to answer business questions, not just display charts.',
+    proofLede:
+      'A few examples of how I clean, model, analyze, and communicate data across Power BI, SQL, and Excel.',
+    proofCta: 'Explore all projects',
     aboutEyebrow: 'About',
-    aboutTitle: 'From HR operations into data analysis',
+    aboutTitle: 'From HR data operations into data analysis',
     aboutP1:
-      'I\u2019m a 2025 graduate who chose to build a career around working with data — a direction that grew naturally out of my comfort with Microsoft\u2019s tools. I started hands-on with Excel: employee databases, payroll, attendance, and leave data, in an HR operations context.',
+      'I’m a 2025 graduate who chose to build a career around working with data — a direction that grew naturally out of my comfort with Microsoft’s tools. I started hands-on with Excel: employee databases, payroll, attendance, and leave data in HR-focused work.',
     aboutP2:
-      'Cleaning that data, validating it, and reporting from it is what showed me that data analysis — not just HR — was the part I wanted to go deeper into. I don\u2019t add a tool to my profile until I\u2019ve used it on a real, finished project.',
+      'Cleaning that data, validating it, and reporting from it showed me that data analysis was the part I wanted to go deeper into. I don’t add a tool to my profile until I’ve used it in a finished project.',
     aboutEducationLabel: 'Education',
     aboutEducationDegree: "Bachelor's Degree in Educational Technology",
     aboutEducationSchool: 'Faculty of Specific Education, Technology Department — Menoufia University',
     aboutEducationGrade: 'Graduated May 2025, with a "Very Good" grade',
     skillsEyebrow: 'Skills & Tools',
-    skillsTitle: 'What I\u2019ve actually built with',
+    skillsTitle: 'What I’ve actually built with',
     projectsEyebrow: 'Portfolio',
     projectsTitle: 'Case studies you can open and check',
     filterAll: 'All',
@@ -254,36 +318,52 @@ const T = {
     experienceTitle: 'Experience & milestones',
     contactEyebrow: 'Contact',
     contactTitle: 'Have a dataset that needs a real answer?',
-    contactLede: 'Whether it\u2019s a one-off analysis or a live dashboard your team checks every week, I\u2019d like to hear about it.',
+    contactLede:
+      'Whether it’s a one-off analysis or a dashboard your team checks every week, I’d like to hear about it.',
     formName: 'Full name',
     formEmail: 'Email address',
     formCompany: 'Company (optional)',
     formService: 'Type of service needed',
     formServicePlaceholder: 'Select a service',
     formMessage: 'Message',
-    formMessagePlaceholder: 'Tell me a little about your data and what decision you\u2019re trying to make.',
+    formMessagePlaceholder:
+      'Tell me a little about your data and what decision you’re trying to make.',
     formSubmit: 'Send message',
-    formSuccess: 'Your email app should now be open with this message ready to send. You can also reach me directly below.',
+    formSuccess:
+      'Your email app should now be open with this message ready to send. You can also reach me directly below.',
     directContact: 'Or reach me directly',
-    footerTagline: 'Data Analyst — Power BI, SQL & Excel case studies for sales, e-commerce, and HR operations.',
-    footerRights: 'Built with real, verifiable project data.',
+    footerTagline:
+      'Data Analyst — Power BI, SQL & Excel case studies for sales, e-commerce, and HR operations.',
+    footerRights: 'Portfolio projects are based on real datasets and documented analysis.',
     statCount: 'Quick numbers',
   },
   ar: {
-    nav: { home: 'الرئيسية', about: 'نبذة عني', skills: 'المهارات', projects: 'المشاريع', experience: 'المسيرة', contact: 'تواصل معي' },
-    hireMe: 'وظّفني',
+    nav: {
+      home: 'الرئيسية',
+      about: 'نبذة عني',
+      skills: 'المهارات',
+      projects: 'المشاريع',
+      experience: 'المسيرة',
+      contact: 'تواصل معي',
+    },
+    hireMe: 'ابدأ مشروعًا',
     heroEyebrow: 'محلل بيانات — Power BI · SQL · Excel',
     heroTitle: 'أحوّل بيانات الأعمال الفوضوية إلى قرارات يمكن للناس التصرف بناءً عليها.',
     heroLede:
-      'أبني حلول تحليل بيانات متكاملة — من تنظيف بيانات مصدرية غير موثقة وغير متسقة إلى داشبوردات تفاعلية — للمبيعات والتجارة الإلكترونية وعمليات الموارد البشرية. كل مشروع يبدأ بسؤال عمل حقيقي، وليس برسم بياني.',
+      'أبني حلول تحليل بيانات متكاملة — من تنظيف البيانات المصدرية غير المتسقة إلى داشبوردات تفاعلية — للمبيعات والتجارة الإلكترونية وعمليات الموارد البشرية. كل مشروع يبدأ بسؤال عمل حقيقي، وليس برسم بياني.',
     viewProjects: 'استعرض دراسات الحالة',
     downloadCV: 'تحميل السيرة الذاتية',
+    proofEyebrow: 'نماذج من أعمالي',
+    proofTitle: 'أبني التحليل للإجابة عن أسئلة العمل، وليس لعرض الرسوم فقط.',
+    proofLede:
+      'نماذج توضح كيف أنظف البيانات وأنمذجها وأحللها وأعرض نتائجها باستخدام Power BI وSQL وExcel.',
+    proofCta: 'استعرض كل المشاريع',
     aboutEyebrow: 'نبذة عني',
-    aboutTitle: 'من عمليات الموارد البشرية إلى تحليل البيانات',
+    aboutTitle: 'من التعامل مع بيانات الموارد البشرية إلى تحليل البيانات',
     aboutP1:
-      'أنا خريج دفعة 2025 اخترت بناء مسيرتي المهنية حول العمل مع البيانات — اتجاه نما بشكل طبيعي من إتقاني لأدوات مايكروسوفت. بدأت عمليًا مع إكسل: قواعد بيانات الموظفين والرواتب والحضور والإجازات، في سياق عمليات الموارد البشرية.',
+      'أنا خريج دفعة 2025 اخترت بناء مسيرتي المهنية حول العمل مع البيانات — اتجاه نما بشكل طبيعي من إتقاني لأدوات Microsoft. بدأت عمليًا مع Excel: قواعد بيانات الموظفين والرواتب والحضور والإجازات ضمن أعمال موجهة للموارد البشرية.',
     aboutP2:
-      'تنظيف تلك البيانات والتحقق منها وإعداد التقارير منها هو ما أظهر لي أن تحليل البيانات — وليس الموارد البشرية فقط — هو الجزء الذي أردت التعمق فيه. لا أضيف أداة إلى ملفي الشخصي حتى أكون قد استخدمتها في مشروع حقيقي ومكتمل.',
+      'تنظيف تلك البيانات والتحقق منها وإعداد التقارير منها أظهر لي أن تحليل البيانات هو المجال الذي أردت التعمق فيه. لا أضيف أداة إلى ملفي الشخصي حتى أكون قد استخدمتها في مشروع مكتمل.',
     aboutEducationLabel: 'المؤهل الدراسي',
     aboutEducationDegree: 'بكالوريوس تكنولوجيا التعليم',
     aboutEducationSchool: 'كلية التربية النوعية، قسم التكنولوجيا — جامعة المنوفية',
@@ -299,12 +379,13 @@ const T = {
     viewDetails: 'عرض التفاصيل',
     viewCode: 'عرض على GitHub',
     close: 'إغلاق',
-    noRepo: 'ملف إكسل — متاح عند الطلب',
+    noRepo: 'ملف Excel — متاح عند الطلب',
     experienceEyebrow: 'المسيرة الزمنية',
     experienceTitle: 'الخبرات والمحطات المهنية',
     contactEyebrow: 'تواصل معي',
     contactTitle: 'عندك بيانات تحتاج إجابة حقيقية؟',
-    contactLede: 'سواء كان تحليلًا لمرة واحدة أو داشبورد حي يراجعه فريقك أسبوعيًا، يسعدني أن أسمع عنه.',
+    contactLede:
+      'سواء كان تحليلًا لمرة واحدة أو داشبورد يراجعه فريقك أسبوعيًا، يسعدني أن أسمع عنه.',
     formName: 'الاسم الكامل',
     formEmail: 'البريد الإلكتروني',
     formCompany: 'اسم الشركة (اختياري)',
@@ -313,15 +394,22 @@ const T = {
     formMessage: 'الرسالة',
     formMessagePlaceholder: 'حدثني قليلًا عن بياناتك والقرار الذي تحاول اتخاذه.',
     formSubmit: 'إرسال الرسالة',
-    formSuccess: 'من المفترض أن يفتح تطبيق البريد لديك الآن ومعه هذه الرسالة جاهزة للإرسال. يمكنك أيضًا التواصل معي مباشرة أدناه.',
+    formSuccess:
+      'من المفترض أن يفتح تطبيق البريد لديك الآن ومعه هذه الرسالة جاهزة للإرسال. يمكنك أيضًا التواصل معي مباشرة أدناه.',
     directContact: 'أو تواصل معي مباشرة',
-    footerTagline: 'محلل بيانات — دراسات حالة بـ Power BI وSQL وإكسل للمبيعات والتجارة الإلكترونية وعمليات الموارد البشرية.',
-    footerRights: 'مبني على بيانات مشاريع حقيقية وقابلة للتحقق.',
+    footerTagline:
+      'محلل بيانات — دراسات حالة بـ Power BI وSQL وExcel للمبيعات والتجارة الإلكترونية وعمليات الموارد البشرية.',
+    footerRights: 'مشاريع Portfolio مبنية على بيانات حقيقية وتحليل موثق.',
     statCount: 'أرقام سريعة',
   },
 }
 
-const CAT_LABEL_KEY = { all: 'filterAll', data: 'filterData', hr: 'filterHr', dashboards: 'filterDashboards' }
+const CAT_LABEL_KEY = {
+  all: 'filterAll',
+  data: 'filterData',
+  hr: 'filterHr',
+  dashboards: 'filterDashboards',
+}
 
 /* ------------------------------------------------------------------ */
 /*  SMALL UI PRIMITIVES                                                */
@@ -334,6 +422,7 @@ function useCountUp(target, active, duration = 1400) {
   useEffect(() => {
     if (!active || startedRef.current) return
     startedRef.current = true
+
     const start = performance.now()
     const isFloat = target % 1 !== 0
 
@@ -341,9 +430,12 @@ function useCountUp(target, active, duration = 1400) {
       const progress = Math.min((now - start) / duration, 1)
       const eased = 1 - Math.pow(1 - progress, 3)
       const current = target * eased
+
       setValue(isFloat ? Math.round(current * 10) / 10 : Math.round(current))
+
       if (progress < 1) requestAnimationFrame(tick)
     }
+
     requestAnimationFrame(tick)
   }, [active, target, duration])
 
@@ -352,8 +444,10 @@ function useCountUp(target, active, duration = 1400) {
 
 function useInView(ref) {
   const [inView, setInView] = useState(false)
+
   useEffect(() => {
     if (!ref.current) return
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -363,22 +457,28 @@ function useInView(ref) {
       },
       { threshold: 0.3 },
     )
+
     observer.observe(ref.current)
     return () => observer.disconnect()
   }, [ref])
+
   return inView
 }
 
 function StatCard({ stat, lang, active }) {
   const value = useCountUp(stat.value, active)
-  const formatted = stat.value % 1 !== 0 ? value.toFixed(1) : value.toLocaleString('en-US')
+  const formatted =
+    stat.value % 1 !== 0 ? value.toFixed(1) : value.toLocaleString('en-US')
+
   return (
     <div className="border border-line dark:border-line-dark bg-surface/70 dark:bg-surface-dark/70 rounded-sm px-5 py-4">
       <span className="block font-mono text-2xl sm:text-3xl text-ink dark:text-paper-dark tabular-nums">
         {formatted}
         {stat.suffix}
       </span>
-      <span className="block mt-1.5 text-sm text-ink/60 dark:text-paper-dark/60 leading-snug">{stat.label[lang]}</span>
+      <span className="block mt-1.5 text-sm text-ink/60 dark:text-paper-dark/60 leading-snug">
+        {stat.label[lang]}
+      </span>
     </div>
   )
 }
@@ -393,11 +493,18 @@ export default function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [filter, setFilter] = useState('all')
   const [activeProject, setActiveProject] = useState(null)
-  const [formState, setFormState] = useState({ name: '', email: '', company: '', service: '', message: '' })
+  const [formState, setFormState] = useState({
+    name: '',
+    email: '',
+    company: '',
+    service: '',
+    message: '',
+  })
   const [submitted, setSubmitted] = useState(false)
 
   const dir = lang === 'ar' ? 'rtl' : 'ltr'
   const t = T[lang]
+
   const heroRef = useRef(null)
   const statsInView = useInView(heroRef)
 
@@ -411,20 +518,33 @@ export default function App() {
   }, [dir, lang])
 
   const filteredProjects = useMemo(
-    () => (filter === 'all' ? PROJECTS : PROJECTS.filter((p) => p.categories.includes(filter))),
+    () =>
+      filter === 'all'
+        ? PROJECTS
+        : PROJECTS.filter((project) => project.categories.includes(filter)),
     [filter],
   )
 
   function handleNavClick(id) {
     setMenuOpen(false)
+
     const el = document.getElementById(id)
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
   }
 
   function handleFormSubmit(e) {
     e.preventDefault()
-    const serviceLabel = SERVICES.find((s) => s.value === formState.service)?.[lang] || formState.service
-    const subject = encodeURIComponent(`Portfolio inquiry from ${formState.name || ''}`.trim())
+
+    const serviceLabel =
+      SERVICES.find((service) => service.value === formState.service)?.[lang] ||
+      formState.service
+
+    const subject = encodeURIComponent(
+      `Portfolio inquiry from ${formState.name || ''}`.trim(),
+    )
+
     const bodyLines = [
       `Name: ${formState.name}`,
       `Email: ${formState.email}`,
@@ -433,13 +553,18 @@ export default function App() {
       '',
       formState.message,
     ]
+
     const body = encodeURIComponent(bodyLines.join('\n'))
+
     window.location.href = `mailto:${PROFILE.email}?subject=${subject}&body=${body}`
     setSubmitted(true)
   }
 
   return (
-    <div dir={dir} className="min-h-screen bg-paper dark:bg-ink-dark text-ink dark:text-paper-dark font-body transition-colors duration-300">
+    <div
+      dir={dir}
+      className="min-h-screen bg-paper dark:bg-ink-dark text-ink dark:text-paper-dark font-body transition-colors duration-300"
+    >
       <TopNav
         t={t}
         lang={lang}
@@ -451,11 +576,15 @@ export default function App() {
         onNavClick={handleNavClick}
       />
 
-      <Hero t={t} lang={lang} heroRef={heroRef} statsInView={statsInView} onNavClick={handleNavClick} />
+      <Hero
+        t={t}
+        lang={lang}
+        heroRef={heroRef}
+        statsInView={statsInView}
+        onNavClick={handleNavClick}
+      />
 
-      <About t={t} lang={lang} />
-
-      <Skills t={t} lang={lang} />
+      <SelectedWork t={t} lang={lang} onNavClick={handleNavClick} />
 
       <Projects
         t={t}
@@ -466,7 +595,11 @@ export default function App() {
         setActiveProject={setActiveProject}
       />
 
+      <Skills t={t} lang={lang} />
+
       <Experience t={t} lang={lang} />
+
+      <About t={t} lang={lang} />
 
       <Contact
         t={t}
@@ -480,7 +613,12 @@ export default function App() {
       <Footer t={t} lang={lang} />
 
       {activeProject && (
-        <ProjectModal project={activeProject} lang={lang} t={t} onClose={() => setActiveProject(null)} />
+        <ProjectModal
+          project={activeProject}
+          lang={lang}
+          t={t}
+          onClose={() => setActiveProject(null)}
+        />
       )}
     </div>
   )
@@ -490,7 +628,16 @@ export default function App() {
 /*  NAV                                                                 */
 /* ------------------------------------------------------------------ */
 
-function TopNav({ t, lang, setLang, theme, setTheme, menuOpen, setMenuOpen, onNavClick }) {
+function TopNav({
+  t,
+  lang,
+  setLang,
+  theme,
+  setTheme,
+  menuOpen,
+  setMenuOpen,
+  onNavClick,
+}) {
   return (
     <header className="sticky top-0 z-40 border-b border-line dark:border-line-dark bg-paper/90 dark:bg-ink-dark/90 backdrop-blur">
       <div className="max-w-6xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
@@ -522,6 +669,7 @@ function TopNav({ t, lang, setLang, theme, setTheme, menuOpen, setMenuOpen, onNa
           >
             {lang === 'en' ? 'AR' : 'EN'}
           </button>
+
           <button
             onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
             aria-label="Toggle theme"
@@ -529,16 +677,19 @@ function TopNav({ t, lang, setLang, theme, setTheme, menuOpen, setMenuOpen, onNa
           >
             {theme === 'light' ? <Moon size={16} /> : <Sun size={16} />}
           </button>
+
           <button
             onClick={() => onNavClick('contact')}
             className="hidden sm:inline-flex items-center gap-1.5 bg-ink dark:bg-gold text-paper dark:text-ink-dark text-sm px-4 py-2 rounded-sm hover:opacity-90 transition-opacity"
           >
             {t.hireMe}
           </button>
+
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="lg:hidden w-9 h-9 grid place-items-center rounded-full border border-line dark:border-line-dark"
             aria-label="Menu"
+            aria-expanded={menuOpen}
           >
             {menuOpen ? <X size={16} /> : <Menu size={16} />}
           </button>
@@ -568,26 +719,37 @@ function TopNav({ t, lang, setLang, theme, setTheme, menuOpen, setMenuOpen, onNa
 
 function Hero({ t, lang, heroRef, statsInView, onNavClick }) {
   return (
-    <section id="home" ref={heroRef} className="max-w-6xl mx-auto px-5 sm:px-8 pt-14 sm:pt-20 pb-16">
+    <section
+      id="home"
+      ref={heroRef}
+      className="max-w-6xl mx-auto px-5 sm:px-8 pt-14 sm:pt-20 pb-16"
+    >
       <div className="grid lg:grid-cols-[1.15fr_0.85fr] gap-12 items-start">
         <div>
           <span className="inline-block font-mono text-xs tracking-wide text-steel dark:text-steel-dark border border-steel/30 dark:border-steel-dark/30 rounded-sm px-2.5 py-1 mb-6">
             {t.heroEyebrow}
           </span>
+
           <h1 className="font-display text-[2.1rem] sm:text-5xl leading-[1.12] text-ink dark:text-paper-dark max-w-xl">
             {t.heroTitle}
           </h1>
+
           <p className="mt-6 text-[1.05rem] leading-relaxed text-ink/70 dark:text-paper-dark/70 max-w-lg">
             {t.heroLede}
           </p>
+
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <button
               onClick={() => onNavClick('projects')}
               className="inline-flex items-center gap-2 bg-ink dark:bg-gold text-paper dark:text-ink-dark px-5 py-3 rounded-sm text-sm hover:opacity-90 transition-opacity"
             >
               {t.viewProjects}
-              <ChevronRight size={15} className={lang === 'ar' ? 'rotate-180' : ''} />
+              <ChevronRight
+                size={15}
+                className={lang === 'ar' ? 'rotate-180' : ''}
+              />
             </button>
+
             <a
               href={PROFILE.cv}
               download
@@ -610,75 +772,81 @@ function Hero({ t, lang, heroRef, statsInView, onNavClick }) {
 }
 
 /* ------------------------------------------------------------------ */
-/*  ABOUT                                                               */
+/*  SELECTED WORK — new home-page proof section                        */
 /* ------------------------------------------------------------------ */
 
-function About({ t, lang }) {
+function SelectedWork({ t, lang, onNavClick }) {
+  const featured = PROJECTS.slice(0, 3)
+
   return (
-    <section id="about" className="border-t border-line dark:border-line-dark">
-      <div className="max-w-6xl mx-auto px-5 sm:px-8 py-16 grid lg:grid-cols-[1.3fr_1fr] gap-12">
-        <div>
-          <span className="font-mono text-xs text-steel dark:text-steel-dark">{t.aboutEyebrow}</span>
-          <h2 className="font-display text-2xl sm:text-3xl mt-2 mb-5 text-ink dark:text-paper-dark">{t.aboutTitle}</h2>
-          <p className="text-ink/75 dark:text-paper-dark/75 leading-relaxed mb-4">{t.aboutP1}</p>
-          <p className="text-ink/75 dark:text-paper-dark/75 leading-relaxed">{t.aboutP2}</p>
-        </div>
-        <div className="border-s-2 border-gold/50 ps-6">
-          <span className="font-mono text-xs text-steel dark:text-steel-dark flex items-center gap-1.5">
-            <GraduationCap size={14} />
-            {t.aboutEducationLabel}
-          </span>
-          <h3 className="font-display text-lg mt-2 text-ink dark:text-paper-dark">{t.aboutEducationDegree}</h3>
-          <p className="text-sm mt-2 text-ink/65 dark:text-paper-dark/65 leading-relaxed">{t.aboutEducationSchool}</p>
-          <p className="text-sm mt-1 text-ink/65 dark:text-paper-dark/65">{t.aboutEducationGrade}</p>
-          <div className="flex items-center gap-2 mt-5 text-sm text-ink/60 dark:text-paper-dark/60">
-            <MapPin size={14} />
-            {PROFILE.location[lang]}
-          </div>
-        </div>
-      </div>
-    </section>
-  )
-}
-
-/* ------------------------------------------------------------------ */
-/*  SKILLS                                                              */
-/* ------------------------------------------------------------------ */
-
-function Skills({ t, lang }) {
-  return (
-    <section id="skills" className="border-t border-line dark:border-line-dark">
+    <section className="border-t border-line dark:border-line-dark">
       <div className="max-w-6xl mx-auto px-5 sm:px-8 py-16">
-        <span className="font-mono text-xs text-steel dark:text-steel-dark">{t.skillsEyebrow}</span>
-        <h2 className="font-display text-2xl sm:text-3xl mt-2 mb-10 text-ink dark:text-paper-dark">{t.skillsTitle}</h2>
+        <div className="flex flex-wrap items-end justify-between gap-6 mb-8">
+          <div>
+            <span className="font-mono text-xs text-steel dark:text-steel-dark">
+              {t.proofEyebrow}
+            </span>
+            <h2 className="font-display text-2xl sm:text-3xl mt-2 text-ink dark:text-paper-dark max-w-2xl">
+              {t.proofTitle}
+            </h2>
+            <p className="mt-3 text-sm text-ink/65 dark:text-paper-dark/65 max-w-2xl leading-relaxed">
+              {t.proofLede}
+            </p>
+          </div>
 
-        <div className="grid md:grid-cols-3 gap-6">
-          {SKILL_GROUPS.map((group, i) => {
-            const Icon = group.icon
-            return (
-              <div key={i} className="border border-line dark:border-line-dark rounded-sm p-6 bg-surface/50 dark:bg-surface-dark/50">
-                <div className="w-9 h-9 grid place-items-center rounded-sm bg-gold/10 text-gold dark:text-gold-soft mb-4">
-                  <Icon size={18} />
-                </div>
-                <h3 className="font-display text-lg mb-4 text-ink dark:text-paper-dark">{group.title[lang]}</h3>
-                <ul className="space-y-3.5">
-                  {group.items.map((item, j) => (
-                    <li key={j}>
-                      <div className="flex justify-between text-sm mb-1.5">
-                        <span className="text-ink/75 dark:text-paper-dark/75">{item.name}</span>
-                      </div>
-                      <div className="h-1 rounded-full bg-line dark:bg-line-dark overflow-hidden">
-                        <div
-                          className="h-full bg-steel dark:bg-steel-dark rounded-full"
-                          style={{ width: `${item.level}%` }}
-                        />
-                      </div>
-                    </li>
-                  ))}
-                </ul>
+          <button
+            onClick={() => onNavClick('projects')}
+            className="inline-flex items-center gap-1.5 text-sm text-ink dark:text-paper-dark hover:text-gold dark:hover:text-gold-soft transition-colors"
+          >
+            {t.proofCta}
+            <ChevronRight
+              size={14}
+              className={lang === 'ar' ? 'rotate-180' : ''}
+            />
+          </button>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-5">
+          {featured.map((project) => (
+            <div
+              key={project.id}
+              className="border border-line dark:border-line-dark rounded-sm overflow-hidden bg-surface/50 dark:bg-surface-dark/50"
+            >
+              <div className="h-32 bg-line/40 dark:bg-line-dark/40 overflow-hidden border-b border-line dark:border-line-dark">
+                {project.image ? (
+                  <img
+                    src={project.image}
+                    alt={project.title[lang]}
+                    className="w-full h-full object-cover object-top"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div className="w-full h-full grid place-items-center text-ink/30 dark:text-paper-dark/30">
+                    <FileSpreadsheet size={28} />
+                  </div>
+                )}
               </div>
-            )
-          })}
+
+              <div className="p-4">
+                <span className="font-mono text-[0.68rem] text-gold dark:text-gold-soft">
+                  {project.metric[lang]}
+                </span>
+                <h3 className="font-display text-base mt-1.5 text-ink dark:text-paper-dark leading-snug">
+                  {project.title[lang]}
+                </h3>
+                <div className="flex flex-wrap gap-1.5 mt-3">
+                  {project.tools.slice(0, 2).map((tool) => (
+                    <span
+                      key={tool}
+                      className="font-mono text-[0.65rem] px-2 py-1 rounded-sm bg-steel/10 text-steel dark:text-steel-dark"
+                    >
+                      {tool}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
@@ -689,15 +857,27 @@ function Skills({ t, lang }) {
 /*  PROJECTS                                                            */
 /* ------------------------------------------------------------------ */
 
-function Projects({ t, lang, filter, setFilter, filteredProjects, setActiveProject }) {
+function Projects({
+  t,
+  lang,
+  filter,
+  setFilter,
+  filteredProjects,
+  setActiveProject,
+}) {
   return (
     <section id="projects" className="border-t border-line dark:border-line-dark">
       <div className="max-w-6xl mx-auto px-5 sm:px-8 py-16">
         <div className="flex flex-wrap items-end justify-between gap-6 mb-10">
           <div>
-            <span className="font-mono text-xs text-steel dark:text-steel-dark">{t.projectsEyebrow}</span>
-            <h2 className="font-display text-2xl sm:text-3xl mt-2 text-ink dark:text-paper-dark">{t.projectsTitle}</h2>
+            <span className="font-mono text-xs text-steel dark:text-steel-dark">
+              {t.projectsEyebrow}
+            </span>
+            <h2 className="font-display text-2xl sm:text-3xl mt-2 text-ink dark:text-paper-dark">
+              {t.projectsTitle}
+            </h2>
           </div>
+
           <div className="flex flex-wrap gap-2">
             {CATEGORIES.map((cat) => (
               <button
@@ -728,6 +908,7 @@ function Projects({ t, lang, filter, setFilter, filteredProjects, setActiveProje
                     src={project.image}
                     alt={project.title[lang]}
                     className="w-full h-full object-cover object-top group-hover:scale-[1.03] transition-transform duration-500"
+                    loading="lazy"
                   />
                 ) : (
                   <div className="w-full h-full grid place-items-center text-ink/30 dark:text-paper-dark/30">
@@ -735,14 +916,20 @@ function Projects({ t, lang, filter, setFilter, filteredProjects, setActiveProje
                   </div>
                 )}
               </div>
+
               <div className="p-5">
-                <span className="font-mono text-[0.7rem] text-gold dark:text-gold-soft">{project.metric[lang]}</span>
+                <span className="font-mono text-[0.7rem] text-gold dark:text-gold-soft">
+                  {project.metric[lang]}
+                </span>
+
                 <h3 className="font-display text-lg mt-2 mb-2 text-ink dark:text-paper-dark leading-snug">
                   {project.title[lang]}
                 </h3>
+
                 <p className="text-sm text-ink/65 dark:text-paper-dark/65 leading-relaxed line-clamp-3">
                   {project.summary[lang]}
                 </p>
+
                 <div className="flex flex-wrap gap-1.5 mt-4">
                   {project.tools.slice(0, 3).map((tool) => (
                     <span
@@ -753,9 +940,13 @@ function Projects({ t, lang, filter, setFilter, filteredProjects, setActiveProje
                     </span>
                   ))}
                 </div>
+
                 <span className="inline-flex items-center gap-1 text-sm mt-4 text-ink dark:text-paper-dark group-hover:text-gold dark:group-hover:text-gold-soft transition-colors">
                   {t.viewDetails}
-                  <ChevronRight size={14} className={lang === 'ar' ? 'rotate-180' : ''} />
+                  <ChevronRight
+                    size={14}
+                    className={lang === 'ar' ? 'rotate-180' : ''}
+                  />
                 </span>
               </div>
             </button>
@@ -766,13 +957,19 @@ function Projects({ t, lang, filter, setFilter, filteredProjects, setActiveProje
   )
 }
 
+/* ------------------------------------------------------------------ */
+/*  PROJECT MODAL                                                       */
+/* ------------------------------------------------------------------ */
+
 function ProjectModal({ project, lang, t, onClose }) {
   useEffect(() => {
     function onKey(e) {
       if (e.key === 'Escape') onClose()
     }
+
     window.addEventListener('keydown', onKey)
     document.body.style.overflow = 'hidden'
+
     return () => {
       window.removeEventListener('keydown', onKey)
       document.body.style.overflow = ''
@@ -783,31 +980,47 @@ function ProjectModal({ project, lang, t, onClose }) {
     <div
       className="fixed inset-0 z-50 bg-ink/60 backdrop-blur-sm flex items-center justify-center p-4"
       onClick={onClose}
+      role="presentation"
     >
       <div
         className="bg-paper dark:bg-ink-dark border border-line dark:border-line-dark rounded-sm max-w-2xl w-full max-h-[85vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
+        role="dialog"
+        aria-modal="true"
+        aria-label={project.title[lang]}
       >
         {project.image && (
-          <img src={project.image} alt={project.title[lang]} className="w-full h-52 object-cover object-top" />
+          <img
+            src={project.image}
+            alt={project.title[lang]}
+            className="w-full h-52 object-cover object-top"
+          />
         )}
+
         <div className="p-6 sm:p-8">
           <div className="flex items-start justify-between gap-4 mb-4">
             <div>
-              <span className="font-mono text-xs text-gold dark:text-gold-soft">{project.metric[lang]}</span>
+              <span className="font-mono text-xs text-gold dark:text-gold-soft">
+                {project.metric[lang]}
+              </span>
               <h3 className="font-display text-xl sm:text-2xl mt-1.5 text-ink dark:text-paper-dark">
                 {project.title[lang]}
               </h3>
             </div>
+
             <button
               onClick={onClose}
-              className="w-8 h-8 shrink-0 grid place-items-center rounded-full border border-line dark:border-line-dark"
+              className="w-8 h-8 shrink-0 grid place-items-center rounded-full border border-line dark:border-line-dark hover:border-gold transition-colors"
               aria-label={t.close}
             >
               <X size={14} />
             </button>
           </div>
-          <p className="text-ink/75 dark:text-paper-dark/75 leading-relaxed">{project.detail[lang]}</p>
+
+          <p className="text-ink/75 dark:text-paper-dark/75 leading-relaxed">
+            {project.detail[lang]}
+          </p>
+
           <div className="flex flex-wrap gap-1.5 mt-5">
             {project.tools.map((tool) => (
               <span
@@ -818,6 +1031,7 @@ function ProjectModal({ project, lang, t, onClose }) {
               </span>
             ))}
           </div>
+
           <div className="mt-7">
             {project.github ? (
               <a
@@ -843,27 +1057,111 @@ function ProjectModal({ project, lang, t, onClose }) {
 }
 
 /* ------------------------------------------------------------------ */
+/*  SKILLS                                                              */
+/* ------------------------------------------------------------------ */
+
+function Skills({ t, lang }) {
+  return (
+    <section id="skills" className="border-t border-line dark:border-line-dark">
+      <div className="max-w-6xl mx-auto px-5 sm:px-8 py-16">
+        <span className="font-mono text-xs text-steel dark:text-steel-dark">
+          {t.skillsEyebrow}
+        </span>
+
+        <h2 className="font-display text-2xl sm:text-3xl mt-2 mb-10 text-ink dark:text-paper-dark">
+          {t.skillsTitle}
+        </h2>
+
+        <div className="grid md:grid-cols-3 gap-6">
+          {SKILL_GROUPS.map((group, i) => {
+            const Icon = group.icon
+
+            return (
+              <div
+                key={i}
+                className="border border-line dark:border-line-dark rounded-sm p-6 bg-surface/50 dark:bg-surface-dark/50"
+              >
+                <div className="w-9 h-9 grid place-items-center rounded-sm bg-gold/10 text-gold dark:text-gold-soft mb-4">
+                  <Icon size={18} />
+                </div>
+
+                <h3 className="font-display text-lg mb-4 text-ink dark:text-paper-dark">
+                  {group.title[lang]}
+                </h3>
+
+                <ul className="space-y-3.5">
+                  {group.items.map((item, j) => (
+                    <li key={j}>
+                      <div className="flex justify-between text-sm mb-1.5">
+                        <span className="text-ink/75 dark:text-paper-dark/75">
+                          {item.name}
+                        </span>
+                      </div>
+
+                      <div className="h-1 rounded-full bg-line dark:bg-line-dark overflow-hidden">
+                        <div
+                          className="h-full bg-steel dark:bg-steel-dark rounded-full"
+                          style={{ width: `${item.level}%` }}
+                        />
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )
+          })}
+        </div>
+
+        <p className="mt-6 text-xs text-ink/45 dark:text-paper-dark/45 font-mono">
+          {lang === 'en'
+            ? 'Skill levels are indicative of hands-on project depth, not formal certifications.'
+            : 'مستويات المهارات تعكس عمق الاستخدام العملي في المشاريع، وليست شهادات رسمية.'}
+        </p>
+      </div>
+    </section>
+  )
+}
+
+/* ------------------------------------------------------------------ */
 /*  EXPERIENCE TIMELINE                                                 */
 /* ------------------------------------------------------------------ */
 
 function Experience({ t, lang }) {
   return (
-    <section id="experience" className="border-t border-line dark:border-line-dark">
+    <section
+      id="experience"
+      className="border-t border-line dark:border-line-dark"
+    >
       <div className="max-w-6xl mx-auto px-5 sm:px-8 py-16">
-        <span className="font-mono text-xs text-steel dark:text-steel-dark">{t.experienceEyebrow}</span>
-        <h2 className="font-display text-2xl sm:text-3xl mt-2 mb-12 text-ink dark:text-paper-dark">{t.experienceTitle}</h2>
+        <span className="font-mono text-xs text-steel dark:text-steel-dark">
+          {t.experienceEyebrow}
+        </span>
+
+        <h2 className="font-display text-2xl sm:text-3xl mt-2 mb-12 text-ink dark:text-paper-dark">
+          {t.experienceTitle}
+        </h2>
 
         <div className="relative ps-8 border-s border-line dark:border-line-dark space-y-10">
           {TIMELINE.map((item, i) => {
             const Icon = item.icon
+
             return (
               <div key={i} className="relative">
                 <span className="absolute -start-[2.55rem] top-0 w-8 h-8 grid place-items-center rounded-full bg-paper dark:bg-ink-dark border border-gold text-gold dark:text-gold-soft">
                   <Icon size={14} />
                 </span>
-                <span className="font-mono text-xs text-ink/50 dark:text-paper-dark/50">{item.date[lang]}</span>
-                <h3 className="font-display text-lg mt-1 mb-1.5 text-ink dark:text-paper-dark">{item.title[lang]}</h3>
-                <p className="text-sm text-ink/70 dark:text-paper-dark/70 leading-relaxed max-w-2xl">{item.text[lang]}</p>
+
+                <span className="font-mono text-xs text-ink/50 dark:text-paper-dark/50">
+                  {item.date[lang]}
+                </span>
+
+                <h3 className="font-display text-lg mt-1 mb-1.5 text-ink dark:text-paper-dark">
+                  {item.title[lang]}
+                </h3>
+
+                <p className="text-sm text-ink/70 dark:text-paper-dark/70 leading-relaxed max-w-2xl">
+                  {item.text[lang]}
+                </p>
               </div>
             )
           })}
@@ -874,47 +1172,152 @@ function Experience({ t, lang }) {
 }
 
 /* ------------------------------------------------------------------ */
+/*  ABOUT                                                               */
+/* ------------------------------------------------------------------ */
+
+function About({ t, lang }) {
+  return (
+    <section id="about" className="border-t border-line dark:border-line-dark">
+      <div className="max-w-6xl mx-auto px-5 sm:px-8 py-16 grid lg:grid-cols-[1.3fr_1fr] gap-12">
+        <div>
+          <span className="font-mono text-xs text-steel dark:text-steel-dark">
+            {t.aboutEyebrow}
+          </span>
+
+          <h2 className="font-display text-2xl sm:text-3xl mt-2 mb-5 text-ink dark:text-paper-dark">
+            {t.aboutTitle}
+          </h2>
+
+          <p className="text-ink/75 dark:text-paper-dark/75 leading-relaxed mb-4">
+            {t.aboutP1}
+          </p>
+
+          <p className="text-ink/75 dark:text-paper-dark/75 leading-relaxed">
+            {t.aboutP2}
+          </p>
+        </div>
+
+        <div className="border-s-2 border-gold/50 ps-6">
+          <span className="font-mono text-xs text-steel dark:text-steel-dark flex items-center gap-1.5">
+            <GraduationCap size={14} />
+            {t.aboutEducationLabel}
+          </span>
+
+          <h3 className="font-display text-lg mt-2 text-ink dark:text-paper-dark">
+            {t.aboutEducationDegree}
+          </h3>
+
+          <p className="text-sm mt-2 text-ink/65 dark:text-paper-dark/65 leading-relaxed">
+            {t.aboutEducationSchool}
+          </p>
+
+          <p className="text-sm mt-1 text-ink/65 dark:text-paper-dark/65">
+            {t.aboutEducationGrade}
+          </p>
+
+          <div className="flex items-center gap-2 mt-5 text-sm text-ink/60 dark:text-paper-dark/60">
+            <MapPin size={14} />
+            {PROFILE.location[lang]}
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ------------------------------------------------------------------ */
 /*  CONTACT                                                             */
 /* ------------------------------------------------------------------ */
 
-function Contact({ t, lang, formState, setFormState, onSubmit, submitted }) {
+function Contact({
+  t,
+  lang,
+  formState,
+  setFormState,
+  onSubmit,
+  submitted,
+}) {
   function update(field) {
-    return (e) => setFormState((s) => ({ ...s, [field]: e.target.value }))
+    return (e) =>
+      setFormState((state) => ({
+        ...state,
+        [field]: e.target.value,
+      }))
   }
 
   const directLinks = [
-    { icon: Mail, label: 'Email', href: `mailto:${PROFILE.email}` },
-    { icon: Github, label: 'GitHub', href: PROFILE.github },
-    { icon: Linkedin, label: 'LinkedIn', href: PROFILE.linkedin },
-    { icon: MessageCircle, label: 'WhatsApp', href: `https://wa.me/${PROFILE.phone.replace('+', '')}` },
+    {
+      icon: Mail,
+      label: 'Email',
+      href: `mailto:${PROFILE.email}`,
+    },
+    {
+      icon: Github,
+      label: 'GitHub',
+      href: PROFILE.github,
+    },
+    {
+      icon: Linkedin,
+      label: 'LinkedIn',
+      href: PROFILE.linkedin,
+    },
+    {
+      icon: MessageCircle,
+      label: 'WhatsApp',
+      href: `https://wa.me/${PROFILE.phone.replace('+', '')}`,
+    },
   ]
 
   return (
-    <section id="contact" className="border-t border-line dark:border-line-dark">
+    <section
+      id="contact"
+      className="border-t border-line dark:border-line-dark"
+    >
       <div className="max-w-6xl mx-auto px-5 sm:px-8 py-16 grid lg:grid-cols-[1fr_1.2fr] gap-12">
         <div>
-          <span className="font-mono text-xs text-steel dark:text-steel-dark">{t.contactEyebrow}</span>
+          <span className="font-mono text-xs text-steel dark:text-steel-dark">
+            {t.contactEyebrow}
+          </span>
+
           <h2 className="font-display text-2xl sm:text-3xl mt-2 mb-4 text-ink dark:text-paper-dark leading-snug">
             {t.contactTitle}
           </h2>
-          <p className="text-ink/70 dark:text-paper-dark/70 leading-relaxed mb-8">{t.contactLede}</p>
+
+          <p className="text-ink/70 dark:text-paper-dark/70 leading-relaxed mb-8">
+            {t.contactLede}
+          </p>
 
           <div className="space-y-3 text-sm text-ink/70 dark:text-paper-dark/70 mb-8">
             <div className="flex items-center gap-2">
               <Mail size={14} />
-              {PROFILE.email}
+              <a
+                href={`mailto:${PROFILE.email}`}
+                className="hover:text-gold transition-colors"
+              >
+                {PROFILE.email}
+              </a>
             </div>
+
             <div className="flex items-center gap-2">
               <Phone size={14} />
-              {PROFILE.phoneDisplay}
+              <a
+                href={`tel:${PROFILE.phone}`}
+                className="hover:text-gold transition-colors"
+              >
+                {PROFILE.phoneDisplay}
+              </a>
             </div>
+
             <div className="flex items-center gap-2">
               <MapPin size={14} />
               {PROFILE.location[lang]}
             </div>
           </div>
 
-          <span className="font-mono text-xs text-ink/50 dark:text-paper-dark/50 block mb-3">{t.directContact}</span>
+          <span className="font-mono text-xs text-ink/50 dark:text-paper-dark/50 block mb-3">
+            {t.directContact}
+          </span>
+
           <div className="flex flex-wrap gap-2">
             {directLinks.map(({ icon: Icon, label, href }) => (
               <a
@@ -931,7 +1334,10 @@ function Contact({ t, lang, formState, setFormState, onSubmit, submitted }) {
           </div>
         </div>
 
-        <form onSubmit={onSubmit} className="border border-line dark:border-line-dark rounded-sm p-6 sm:p-8 bg-surface/50 dark:bg-surface-dark/50 space-y-5">
+        <form
+          onSubmit={onSubmit}
+          className="border border-line dark:border-line-dark rounded-sm p-6 sm:p-8 bg-surface/50 dark:bg-surface-dark/50 space-y-5"
+        >
           <div className="grid sm:grid-cols-2 gap-5">
             <Field label={t.formName}>
               <input
@@ -940,8 +1346,10 @@ function Contact({ t, lang, formState, setFormState, onSubmit, submitted }) {
                 value={formState.name}
                 onChange={update('name')}
                 className="form-input"
+                autoComplete="name"
               />
             </Field>
+
             <Field label={t.formEmail}>
               <input
                 required
@@ -949,26 +1357,42 @@ function Contact({ t, lang, formState, setFormState, onSubmit, submitted }) {
                 value={formState.email}
                 onChange={update('email')}
                 className="form-input"
+                autoComplete="email"
               />
             </Field>
           </div>
+
           <div className="grid sm:grid-cols-2 gap-5">
             <Field label={t.formCompany}>
-              <input type="text" value={formState.company} onChange={update('company')} className="form-input" />
+              <input
+                type="text"
+                value={formState.company}
+                onChange={update('company')}
+                className="form-input"
+                autoComplete="organization"
+              />
             </Field>
+
             <Field label={t.formService}>
-              <select value={formState.service} onChange={update('service')} className="form-input" required>
+              <select
+                value={formState.service}
+                onChange={update('service')}
+                className="form-input"
+                required
+              >
                 <option value="" disabled>
                   {t.formServicePlaceholder}
                 </option>
-                {SERVICES.map((s) => (
-                  <option key={s.value} value={s.value}>
-                    {s[lang]}
+
+                {SERVICES.map((service) => (
+                  <option key={service.value} value={service.value}>
+                    {service[lang]}
                   </option>
                 ))}
               </select>
             </Field>
           </div>
+
           <Field label={t.formMessage}>
             <textarea
               required
@@ -1003,7 +1427,9 @@ function Contact({ t, lang, formState, setFormState, onSubmit, submitted }) {
 function Field({ label, children }) {
   return (
     <label className="block">
-      <span className="block text-xs font-mono text-ink/55 dark:text-paper-dark/55 mb-1.5">{label}</span>
+      <span className="block text-xs font-mono text-ink/55 dark:text-paper-dark/55 mb-1.5">
+        {label}
+      </span>
       {children}
     </label>
   )
@@ -1023,16 +1449,41 @@ function Footer({ t, lang }) {
               {PROFILE.name[lang]}
               <span className="text-gold">.</span>
             </span>
-            <p className="text-sm text-paper/55 mt-1.5 max-w-xs leading-relaxed">{t.footerTagline}</p>
+
+            <p className="text-sm text-paper/55 mt-1.5 max-w-xs leading-relaxed">
+              {t.footerTagline}
+            </p>
           </div>
+
           <div className="flex items-center gap-4 text-paper/70">
-            <a href={`mailto:${PROFILE.email}`} aria-label="Email"><Mail size={16} /></a>
-            <a href={PROFILE.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub"><Github size={16} /></a>
-            <a href={PROFILE.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><Linkedin size={16} /></a>
+            <a href={`mailto:${PROFILE.email}`} aria-label="Email">
+              <Mail size={16} />
+            </a>
+
+            <a
+              href={PROFILE.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+            >
+              <Github size={16} />
+            </a>
+
+            <a
+              href={PROFILE.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+            >
+              <Linkedin size={16} />
+            </a>
           </div>
         </div>
+
         <div className="mt-8 pt-6 border-t border-paper/10 flex flex-wrap justify-between gap-2 text-xs text-paper/45">
-          <span>© {new Date().getFullYear()} {PROFILE.fullName[lang]}</span>
+          <span>
+            © {new Date().getFullYear()} {PROFILE.fullName[lang]}
+          </span>
           <span>{t.footerRights}</span>
         </div>
       </div>
