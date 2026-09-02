@@ -177,7 +177,7 @@ const PROJECTS = [
   {
     id: 'sales-excel',
     categories: ['data'],
-    image: null,
+    image: '/projects/24.png',
     metric: {
       en: 'Star Schema · Excel-native dashboard',
       ar: 'نموذج نجمي · داشبورد إكسل بالكامل',
