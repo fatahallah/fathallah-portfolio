@@ -51,7 +51,7 @@ const NAV_IDS = ['home', 'projects', 'skills', 'experience', 'about', 'contact']
 
 const STATS = [
   {
-    value: 4,
+    value: 5,
     suffix: '',
     label: { en: 'End-to-end analytics projects', ar: 'مشاريع تحليل بيانات متكاملة' },
   },
@@ -127,6 +127,29 @@ const PROJECTS = [
     },
     tools: ['SQL', 'Power BI', 'Window Functions', 'ODBC Live Connection'],
     github: 'https://github.com/fatahallah/Ecommerce-SQL-Analytics',
+  },
+    {
+    id: 'ecommerce-pipeline-python-sql-powerbi',
+    categories: ['data', 'dashboards'],
+    image: '/projects/ecommerce-pipeline.png',
+    metric: {
+      en: '14.7x spending gap between top and at-risk customers',
+      ar: 'فجوة إنفاق 14.7 ضعف بين أفضل العملاء والمعرضين للتسرب',
+    },
+    title: {
+      en: 'End-to-End E-Commerce Data Pipeline (Python, SQL & Power BI)',
+      ar: 'خط بيانات متكامل للتجارة الإلكترونية (Python وSQL وPower BI)',
+    },
+    summary: {
+      en: 'Cleaned 541,909 raw transactions with Python, built an RFM customer segmentation model, and validated it in SQL before surfacing it in a live Power BI dashboard.',
+      ar: 'نظفت 541,909 معاملة خام باستخدام Python، وبنيت نموذج تصنيف عملاء RFM، وتحققت منه في SQL قبل عرضه في داشبورد Power BI حي.',
+    },
+    detail: {
+      en: 'A raw UCI retail export of 541,909 transactions carried duplicates, missing customer IDs, and invalid returns. I built a Python pipeline (pandas) to profile and clean it down to 392,692 valid transactions, then engineered an RFM (Recency, Frequency, Monetary) segmentation model to classify all 4,338 customers into behavioral segments. I uploaded the segmented dataset to SQL and cross-validated the Python-side counts against a direct SQL query — an exact match. The result surfaced a 14.7x spending gap between "Champions" ($7,501.84 average) and "At Risk" customers ($508.82 average), a concrete, quantified target for retention efforts. The cleaned model powers a live Power BI dashboard tracking $8.89M in revenue across 18.53K orders.',
+      ar: 'كانت بيانات خام من UCI لمتجر تجزئة (541,909 معاملة) تحتوي على تكرارات ومعرّفات عملاء مفقودة ومرتجعات غير صالحة. بنيت خط معالجة بلغة Python (pandas) لفحص البيانات وتنظيفها لتصل إلى 392,692 معاملة صالحة، ثم صممت نموذج تصنيف RFM (الحداثة والتكرار والقيمة المالية) لتصنيف جميع الـ4,338 عميل إلى فئات سلوكية. رفعت البيانات المصنفة إلى SQL وتحققت من تطابق النتائج بين Python واستعلام SQL مباشر — وتطابقت تمامًا. كشفت النتيجة عن فجوة إنفاق تصل إلى 14.7 ضعف بين عملاء "Champions" (بمتوسط 7,501.84 دولار) وعملاء "At Risk" (بمتوسط 508.82 دولار)، وهو هدف محدد وقابل للقياس لجهود الاستبقاء. يغذي هذا النموذج المنظف داشبورد Power BI حي يتتبع 8.89 مليون دولار من الإيرادات عبر 18.53 ألف طلب.',
+    },
+    tools: ['Python', 'Pandas', 'SQL', 'Power BI', 'RFM Segmentation'],
+    github: 'https://github.com/fatahallah/Ecommerce-Data-Pipeline-Python-SQL-PowerBI/tree/main',
   },
   {
     id: 'hr-workforce',
