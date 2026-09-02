@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-feature-settings: 'tnum' 1;
+}
+
+::selection {
+  background-color: #c98a2c;
+  color: #fff;
+}
+
+.form-input {
+  @apply w-full bg-transparent border border-line dark:border-line-dark rounded-sm px-3.5 py-2.5 text-sm text-ink dark:text-paper-dark outline-none focus:border-gold dark:focus:border-gold-soft transition-colors;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
