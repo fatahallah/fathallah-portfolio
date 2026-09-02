@@ -30,7 +30,7 @@ import {
 /* ------------------------------------------------------------------ */
 
 // استبدل هذا الرابط بـ Endpoint الخاص بك من Formspree
-const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xabcdefg'
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/myeyjyrp'
 
 const PROFILE = {
   name: { en: 'Mr. Fathallah Saied', ar: 'أ. فتح الله سعيد' },
