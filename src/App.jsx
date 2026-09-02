@@ -21,15 +21,20 @@ import {
   Phone,
   CheckCircle2,
   Table2,
+  Loader2,
+  ImageOff,
 } from 'lucide-react'
 
 /* ------------------------------------------------------------------ */
-/*  CONTENT — real profile data, edit here to update the whole site   */
+/*  CONFIG & CONSTANTS                                                */
 /* ------------------------------------------------------------------ */
 
+// استبدل هذا الرابط بـ Endpoint الخاص بك من Formspree
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xabcdefg'
+
 const PROFILE = {
-  name: { en: 'Fathallah Saied', ar: 'فتح الله سيد' },
-  fullName: { en: 'Fathallah Saied Abou Eid', ar: 'فتح الله سيد أبو عيد' },
+  name: { en: 'Mr. Fathallah Saied', ar: 'أ. فتح الله سعيد' },
+  fullName: { en: 'Fathallah Saied Abou Eid', ar: 'فتح الله سعيد أبو عيد' },
   email: 'fathallahsaed352@gmail.com',
   phone: '+201037368956',
   phoneDisplay: '+20 103 736 8956',
@@ -41,9 +46,6 @@ const PROFILE = {
   github: 'https://github.com/fatahallah',
   cv: '/Fathallah_Saied_CV.pdf',
 }
-
-/* Projects are intentionally near the top of the file so the portfolio
-   can be maintained from one place. */
 
 const NAV_IDS = ['home', 'projects', 'skills', 'experience', 'about', 'contact']
 
@@ -329,8 +331,9 @@ const T = {
     formMessagePlaceholder:
       'Tell me a little about your data and what decision you’re trying to make.',
     formSubmit: 'Send message',
+    formSending: 'Sending message...',
     formSuccess:
-      'Your email app should now be open with this message ready to send. You can also reach me directly below.',
+      'Thank you! Your message has been sent successfully. I will get back to you shortly.',
     directContact: 'Or reach me directly',
     footerTagline:
       'Data Analyst — Power BI, SQL & Excel case studies for sales, e-commerce, and HR operations.',
@@ -394,8 +397,9 @@ const T = {
     formMessage: 'الرسالة',
     formMessagePlaceholder: 'حدثني قليلًا عن بياناتك والقرار الذي تحاول اتخاذه.',
     formSubmit: 'إرسال الرسالة',
+    formSending: 'جاري الإرسال...',
     formSuccess:
-      'من المفترض أن يفتح تطبيق البريد لديك الآن ومعه هذه الرسالة جاهزة للإرسال. يمكنك أيضًا التواصل معي مباشرة أدناه.',
+      'شكراً لك! تم إرسال رسالتك بنجاح. سأتواصل معك في أقرب وقت ممكن.',
     directContact: 'أو تواصل معي مباشرة',
     footerTagline:
       'محلل بيانات — دراسات حالة بـ Power BI وSQL وExcel للمبيعات والتجارة الإلكترونية وعمليات الموارد البشرية.',
@@ -412,8 +416,30 @@ const CAT_LABEL_KEY = {
 }
 
 /* ------------------------------------------------------------------ */
-/*  SMALL UI PRIMITIVES                                                */
+/*  HELPER COMPONENTS                                                 */
 /* ------------------------------------------------------------------ */
+
+function SafeImage({ src, alt, className }) {
+  const [error, setError] = useState(false)
+
+  if (error || !src) {
+    return (
+      <div className="w-full h-full grid place-items-center bg-line/20 dark:bg-line-dark/20 text-ink/30 dark:text-paper-dark/30">
+        <ImageOff size={28} />
+      </div>
+    )
+  }
+
+  return (
+    <img
+      src={src}
+      alt={alt}
+      className={className}
+      loading="lazy"
+      onError={() => setError(true)}
+    />
+  )
+}
 
 function useCountUp(target, active, duration = 1400) {
   const [value, setValue] = useState(0)
@@ -501,6 +527,7 @@ export default function App() {
     message: '',
   })
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const dir = lang === 'ar' ? 'rtl' : 'ltr'
   const t = T[lang]
@@ -534,30 +561,49 @@ export default function App() {
     }
   }
 
-  function handleFormSubmit(e) {
+  async function handleFormSubmit(e) {
     e.preventDefault()
+    setSubmitted(false)
+    setLoading(true)
 
-    const serviceLabel =
-      SERVICES.find((service) => service.value === formState.service)?.[lang] ||
-      formState.service
+    try {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          name: formState.name,
+          email: formState.email,
+          company: formState.company,
+          service: formState.service,
+          message: formState.message,
+        }),
+      })
 
-    const subject = encodeURIComponent(
-      `Portfolio inquiry from ${formState.name || ''}`.trim(),
-    )
+      if (!response.ok) {
+        throw new Error('Submission failed')
+      }
 
-    const bodyLines = [
-      `Name: ${formState.name}`,
-      `Email: ${formState.email}`,
-      `Company: ${formState.company || '-'}`,
-      `Service: ${serviceLabel || '-'}`,
-      '',
-      formState.message,
-    ]
-
-    const body = encodeURIComponent(bodyLines.join('\n'))
-
-    window.location.href = `mailto:${PROFILE.email}?subject=${subject}&body=${body}`
-    setSubmitted(true)
+      setSubmitted(true)
+      setFormState({
+        name: '',
+        email: '',
+        company: '',
+        service: '',
+        message: '',
+      })
+    } catch (error) {
+      console.error(error)
+      alert(
+        lang === 'ar'
+          ? 'تعذر إرسال الرسالة. يرجى المحاولة مرة أخرى.'
+          : 'Unable to send your message. Please try again.',
+      )
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -608,6 +654,7 @@ export default function App() {
         setFormState={setFormState}
         onSubmit={handleFormSubmit}
         submitted={submitted}
+        loading={loading}
       />
 
       <Footer t={t} lang={lang} />
@@ -772,7 +819,7 @@ function Hero({ t, lang, heroRef, statsInView, onNavClick }) {
 }
 
 /* ------------------------------------------------------------------ */
-/*  SELECTED WORK — new home-page proof section                        */
+/*  SELECTED WORK                                                     */
 /* ------------------------------------------------------------------ */
 
 function SelectedWork({ t, lang, onNavClick }) {
@@ -813,18 +860,11 @@ function SelectedWork({ t, lang, onNavClick }) {
               className="border border-line dark:border-line-dark rounded-sm overflow-hidden bg-surface/50 dark:bg-surface-dark/50"
             >
               <div className="h-32 bg-line/40 dark:bg-line-dark/40 overflow-hidden border-b border-line dark:border-line-dark">
-                {project.image ? (
-                  <img
-                    src={project.image}
-                    alt={project.title[lang]}
-                    className="w-full h-full object-cover object-top"
-                    loading="lazy"
-                  />
-                ) : (
-                  <div className="w-full h-full grid place-items-center text-ink/30 dark:text-paper-dark/30">
-                    <FileSpreadsheet size={28} />
-                  </div>
-                )}
+                <SafeImage
+                  src={project.image}
+                  alt={project.title[lang]}
+                  className="w-full h-full object-cover object-top"
+                />
               </div>
 
               <div className="p-4">
@@ -903,18 +943,11 @@ function Projects({
               className="group text-start border border-line dark:border-line-dark rounded-sm overflow-hidden bg-surface/50 dark:bg-surface-dark/50 hover:border-gold dark:hover:border-gold-soft transition-colors"
             >
               <div className="h-44 bg-line/40 dark:bg-line-dark/40 overflow-hidden border-b border-line dark:border-line-dark">
-                {project.image ? (
-                  <img
-                    src={project.image}
-                    alt={project.title[lang]}
-                    className="w-full h-full object-cover object-top group-hover:scale-[1.03] transition-transform duration-500"
-                    loading="lazy"
-                  />
-                ) : (
-                  <div className="w-full h-full grid place-items-center text-ink/30 dark:text-paper-dark/30">
-                    <FileSpreadsheet size={32} />
-                  </div>
-                )}
+                <SafeImage
+                  src={project.image}
+                  alt={project.title[lang]}
+                  className="w-full h-full object-cover object-top group-hover:scale-[1.03] transition-transform duration-500"
+                />
               </div>
 
               <div className="p-5">
@@ -990,11 +1023,13 @@ function ProjectModal({ project, lang, t, onClose }) {
         aria-label={project.title[lang]}
       >
         {project.image && (
-          <img
-            src={project.image}
-            alt={project.title[lang]}
-            className="w-full h-52 object-cover object-top"
-          />
+          <div className="h-52 w-full overflow-hidden">
+            <SafeImage
+              src={project.image}
+              alt={project.title[lang]}
+              className="w-full h-full object-cover object-top"
+            />
+          </div>
         )}
 
         <div className="p-6 sm:p-8">
@@ -1236,6 +1271,7 @@ function Contact({
   setFormState,
   onSubmit,
   submitted,
+  loading,
 }) {
   function update(field) {
     return (e) =>
@@ -1406,15 +1442,25 @@ function Contact({
 
           <button
             type="submit"
-            className="w-full inline-flex items-center justify-center gap-2 bg-ink dark:bg-gold text-paper dark:text-ink-dark px-5 py-3 rounded-sm text-sm hover:opacity-90 transition-opacity"
+            disabled={loading}
+            className="w-full inline-flex items-center justify-center gap-2 bg-ink dark:bg-gold text-paper dark:text-ink-dark px-5 py-3 rounded-sm text-sm hover:opacity-90 transition-opacity disabled:opacity-50"
           >
-            <Send size={15} />
-            {t.formSubmit}
+            {loading ? (
+              <>
+                <Loader2 size={15} className="animate-spin" />
+                {t.formSending}
+              </>
+            ) : (
+              <>
+                <Send size={15} />
+                {t.formSubmit}
+              </>
+            )}
           </button>
 
           {submitted && (
             <div className="flex items-start gap-2 text-sm text-steel dark:text-steel-dark bg-steel/10 rounded-sm px-4 py-3">
-              <CheckCircle2 size={16} className="shrink-0 mt-0.5" />
+              <CheckCircle2 size={16} className="shrink-0 mt-0.5 text-gold" />
               {t.formSuccess}
             </div>
           )}
@@ -1476,6 +1522,15 @@ function Footer({ t, lang }) {
               aria-label="LinkedIn"
             >
               <Linkedin size={16} />
+            </a>
+
+            <a
+              href={`https://wa.me/${PROFILE.phone.replace('+', '')}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp"
+            >
+              <MessageCircle size={16} />
             </a>
           </div>
         </div>
