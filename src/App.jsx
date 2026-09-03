@@ -51,7 +51,7 @@ const NAV_IDS = ['home', 'projects', 'skills', 'experience', 'about', 'contact']
 
 const STATS = [
   {
-    value: 5,
+    value: 6,
     suffix: '',
     label: { en: 'End-to-end analytics projects', ar: 'مشاريع تحليل بيانات متكاملة' },
   },
@@ -128,6 +128,29 @@ const PROJECTS = [
     tools: ['SQL', 'Power BI', 'Window Functions', 'ODBC Live Connection'],
     github: 'https://github.com/fatahallah/Ecommerce-SQL-Analytics',
   },
+  {
+    id: 'customer-retention-ltv-intelligence',
+    categories: ['data', 'dashboards'],
+    image: '/projects/retention-ltv.png',
+    metric: {
+      en: '29 customers hold $192K in at-risk revenue',
+      ar: '29 عميل يمثلون 192 ألف دولار من الإيرادات المعرضة للخطر',
+    },
+    title: {
+      en: 'Customer Retention & LTV Intelligence',
+      ar: 'ذكاء الاحتفاظ بالعملاء والقيمة الدائمة',
+    },
+    summary: {
+      en: 'Built a Monetary-aware churn risk model and monthly cohort retention matrix, isolating a small high-value customer segment responsible for a disproportionate share of at-risk revenue.',
+      ar: 'بنيت نموذج تصنيف مخاطر فقدان عملاء يراعي القيمة المالية، وجدول احتفاظ شهري (Cohort)، وحددت شريحة صغيرة من العملاء عالي القيمة مسؤولة عن نسبة كبيرة من الإيرادات المعرضة للخطر.',
+    },
+    detail: {
+      en: 'Using the two-year UCI Online Retail II dataset, I built a churn risk model in Python that checks lifetime spend before recency alone — isolating a "High Value at Risk" segment of just 29 customers (0.67% of the customer base) who nonetheless represent $192,374 in historical revenue and an average lifetime value of $6,633, over 3x the overall average. I validated the SQL cohort retention matrix and CLV calculations directly inside the notebook before exporting to a live Power BI dashboard.',
+      ar: 'باستخدام داتاسيت UCI Online Retail II الممتد لسنتين، بنيت نموذج تصنيف مخاطر فقدان عملاء بلغة Python بيراعي إجمالي الإنفاق مش الحداثة بس — وحددت شريحة "عالية القيمة ومعرضة للخطر" من 29 عميل بس (0.67% من قاعدة العملاء) لكنهم يمثلون 192,374 دولار من الإيرادات التاريخية، بمتوسط قيمة دائمة 6,633 دولار، أكتر من 3 أضعاف المتوسط العام. تحققت من جدول الاحتفاظ الشهري وحسابات القيمة الدائمة مباشرة داخل النوتبوك قبل عرضها في داشبورد Power BI حي.',
+    },
+    tools: ['Python', 'Pandas', 'SQL', 'Power BI', 'Cohort Analysis', 'RFM'],
+    github: 'https://github.com/fatahallah/Customer-Retention-LTV-Intelligence',
+},
     {
     id: 'ecommerce-pipeline-python-sql-powerbi',
     categories: ['data', 'dashboards'],
