@@ -105,29 +105,7 @@ const SKILL_GROUPS = [
 const CATEGORIES = ['all', 'data', 'hr', 'dashboards']
 
 const PROJECTS = [
-  {
-    id: 'ecommerce-sql-geo',
-    categories: ['data', 'dashboards'],
-    image: '/projects/ecommerce-sql-geo.png',
-    metric: {
-      en: 'Only 7.9% of orders actually delayed',
-      ar: '7.9% فقط من الطلبات تأخرت فعليًا',
-    },
-    title: {
-      en: 'E-Commerce SQL & Geo-Spatial Analytics',
-      ar: 'تحليل جغرافي مكاني للتجارة الإلكترونية بلغة SQL',
-    },
-    summary: {
-      en: 'Rebuilt shipping distance from scratch with a manual Haversine calculation across 99,441 orders and 8 linked tables — found that delay is an estimation problem, not a distance problem.',
-      ar: 'أعدت بناء مسافة الشحن من الصفر بمعادلة Haversine يدويًا عبر 99,441 طلب و8 جداول مترابطة — واكتشفت أن التأخير مشكلة تقدير وليست مشكلة مسافة.',
-    },
-    detail: {
-      en: 'A Brazilian e-commerce marketplace’s delivery-time reputation was based on assumption, not evidence. I queried and joined 8 linked tables covering 99,441 orders, then reduced a 1M-row geolocation table by 98% into a usable dataset. With no built-in distance field, I calculated real shipping distance in SQL using the Haversine formula, then connected the model live to Power BI via ODBC. The result: an inflated delivery estimate — not the actual logistics — was driving the delay narrative.',
-      ar: 'كانت سمعة أوقات التسليم لمتجر تجارة إلكترونية برازيلي مبنية على افتراض لا دليل. قمت بربط واستعلام 8 جداول تغطي 99,441 طلب، ثم اختصرت جدول مواقع جغرافية مكوّن من مليون صف بنسبة 98% ليصبح بيانات قابلة للاستخدام. ولعدم وجود حقل مسافة جاهز، حسبت مسافة الشحن الحقيقية بلغة SQL باستخدام معادلة Haversine، ثم ربطت النموذج مباشرة بـ Power BI عبر ODBC. والنتيجة: أن تقدير التسليم المبالغ فيه — وليس اللوجستيات فعليًا — هو ما كان يقود قصة التأخير.',
-    },
-    tools: ['SQL', 'Power BI', 'Window Functions', 'ODBC Live Connection'],
-    github: 'https://github.com/fatahallah/Ecommerce-SQL-Analytics',
-  },
+ 
   {
     id: 'customer-retention-ltv-intelligence',
     categories: ['data', 'dashboards'],
