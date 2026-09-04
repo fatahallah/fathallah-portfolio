@@ -150,7 +150,7 @@ const PROJECTS = [
       ar: 'تحليل شامل لبيانات متجر Olist (99,441 طلب) باستخدام استعلامات SQL معقدة، دوان النافذة (Window Functions)، وحساب مسافات الشحن المباشرة بمعادلة Haversine. تم توسيع المشروع ليشمل التحليل التنبؤي باستخدام Python ومكتبة Facebook Prophet لنمذجة الإيرادات التاريخية وتوقع إيرادات 6 أشهر قادمة بقيمة 7.20M$ عند هامش ثقة 95%. تم تصدير مخرجات التوقع إلى قاعدة بيانات SQLite متخصصة (olist_forecast.db) وربطها بداشبورد Power BI قيادي يبرز مؤشرات DAX المخصصة للشهر القادم ($1.10M) وإجمالي الـ 6 أشهر.',
     },
     tools: ['SQL', 'Python (Prophet)', 'Power BI', 'DAX', 'SQLite', 'Geo-Spatial Analysis'],
-    github: 'https://github.com/fatahallah/Ecommerce-Data-Pipeline-Python-SQL-PowerBI/tree/main',
+   github: 'https://github.com/fatahallah/Ecommerce-SQL-Analytics',
   },
   {
     id: 'hr-workforce',
