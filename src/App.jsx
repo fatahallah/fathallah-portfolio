@@ -152,26 +152,26 @@ const PROJECTS = [
     github: 'https://github.com/fatahallah/Customer-Retention-LTV-Intelligence',
 },
     {
-    id: 'ecommerce-pipeline-python-sql-powerbi',
+    id: 'olist-ecommerce-sql-geospatial-predictive-analytics',
     categories: ['data', 'dashboards'],
-    image: '/projects/ecommerce-pipeline.png',
+    image: '/projects/olist_forecasting_dashboard.png',
     metric: {
-      en: '14.7x spending gap between top and at-risk customers',
-      ar: 'فجوة إنفاق 14.7 ضعف بين أفضل العملاء والمعرضين للتسرب',
+      en: '$7.20M projected 6-month revenue expansion',
+      ar: 'نمو متوقع في الإيرادات بقيمة 7.20 مليون دولار خلال 6 أشهر',
     },
     title: {
-      en: 'End-to-End E-Commerce Data Pipeline (Python, SQL & Power BI)',
-      ar: 'خط بيانات متكامل للتجارة الإلكترونية (Python وSQL وPower BI)',
+      en: 'E-Commerce SQL, Geo-Spatial & Predictive Analytics (Prophet + Power BI)',
+      ar: 'تحليلات SQL وجغرافية وتنبؤية للتجارة الإلكترونية (Prophet وPower BI)',
     },
     summary: {
-      en: 'Cleaned 541,909 raw transactions with Python, built an RFM customer segmentation model, and validated it in SQL before surfacing it in a live Power BI dashboard.',
-      ar: 'نظفت 541,909 معاملة خام باستخدام Python، وبنيت نموذج تصنيف عملاء RFM، وتحققت منه في SQL قبل عرضه في داشبورد Power BI حي.',
+      en: 'Analyzed 99,441 orders via complex SQL joins & Haversine distance, then built a Python Facebook Prophet pipeline to project a $7.20M 6-month forecast with 95% confidence bands in Power BI.',
+      ar: 'حللت 99,441 طلب عبر ربط معقد بـ SQL ومعادلة Haversine للمسافات، ثم بنيت نموذج تنبؤ بـ Python وProphet لتقدير إيرادات 7.20M$ لـ 6 أشهر مع فترات ثقة 95% في Power BI.',
     },
     detail: {
-      en: 'A raw UCI retail export of 541,909 transactions carried duplicates, missing customer IDs, and invalid returns. I built a Python pipeline (pandas) to profile and clean it down to 392,692 valid transactions, then engineered an RFM (Recency, Frequency, Monetary) segmentation model to classify all 4,338 customers into behavioral segments. I uploaded the segmented dataset to SQL and cross-validated the Python-side counts against a direct SQL query — an exact match. The result surfaced a 14.7x spending gap between "Champions" ($7,501.84 average) and "At Risk" customers ($508.82 average), a concrete, quantified target for retention efforts. The cleaned model powers a live Power BI dashboard tracking $8.89M in revenue across 18.53K orders.',
-      ar: 'كانت بيانات خام من UCI لمتجر تجزئة (541,909 معاملة) تحتوي على تكرارات ومعرّفات عملاء مفقودة ومرتجعات غير صالحة. بنيت خط معالجة بلغة Python (pandas) لفحص البيانات وتنظيفها لتصل إلى 392,692 معاملة صالحة، ثم صممت نموذج تصنيف RFM (الحداثة والتكرار والقيمة المالية) لتصنيف جميع الـ4,338 عميل إلى فئات سلوكية. رفعت البيانات المصنفة إلى SQL وتحققت من تطابق النتائج بين Python واستعلام SQL مباشر — وتطابقت تمامًا. كشفت النتيجة عن فجوة إنفاق تصل إلى 14.7 ضعف بين عملاء "Champions" (بمتوسط 7,501.84 دولار) وعملاء "At Risk" (بمتوسط 508.82 دولار)، وهو هدف محدد وقابل للقياس لجهود الاستبقاء. يغذي هذا النموذج المنظف داشبورد Power BI حي يتتبع 8.89 مليون دولار من الإيرادات عبر 18.53 ألف طلب.',
+      en: 'Analyzed Olist e-commerce dataset (99,441 orders) using multi-table SQL joins, window functions, and a manual Haversine distance calculation to resolve shipping delay factors. Extended the project into predictive analytics using Python (Facebook Prophet) to model historical revenues (Jan 2017 – Aug 2018) and project a 6-month forecast (Sep 2018 – Feb 2019) at $7.20M with 95% confidence bounds. Pipeline exported structured forecast outputs to a dedicated SQLite DB (olist_forecast.db) and surfaced them in an executive Power BI dashboard using explicit DAX measures for Next Month ($1.10M) and 6M Total forecasts.',
+      ar: 'تحليل شامل لبيانات متجر Olist (99,441 طلب) باستخدام استعلامات SQL معقدة، دوان النافذة (Window Functions)، وحساب مسافات الشحن المباشرة بمعادلة Haversine. تم توسيع المشروع ليشمل التحليل التنبؤي باستخدام Python ومكتبة Facebook Prophet لنمذجة الإيرادات التاريخية وتوقع إيرادات 6 أشهر قادمة بقيمة 7.20M$ عند هامش ثقة 95%. تم تصدير مخرجات التوقع إلى قاعدة بيانات SQLite متخصصة (olist_forecast.db) وربطها بداشبورد Power BI قيادي يبرز مؤشرات DAX المخصصة للشهر القادم ($1.10M) وإجمالي الـ 6 أشهر.',
     },
-    tools: ['Python', 'Pandas', 'SQL', 'Power BI', 'RFM Segmentation'],
+    tools: ['SQL', 'Python (Prophet)', 'Power BI', 'DAX', 'SQLite', 'Geo-Spatial Analysis'],
     github: 'https://github.com/fatahallah/Ecommerce-Data-Pipeline-Python-SQL-PowerBI/tree/main',
   },
   {
