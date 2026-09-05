@@ -109,7 +109,7 @@ const PROJECTS = [
   {
     id: 'global-ecommerce-retail-analytics-dashboard',
     categories: ['dashboards', 'data'],
-    image: '/projects/Diagram View.png',
+    image: '/projects/ECommerce_Analytics_v1.png',
     metric: {
       en: '$5.28M Revenue analyzed across 10K orders',
       ar: 'تحليل إيرادات بقيمة 5.28 مليون دولار عبر 10 آلاف طلب',
