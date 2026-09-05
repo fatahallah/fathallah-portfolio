@@ -105,6 +105,30 @@ const SKILL_GROUPS = [
 const CATEGORIES = ['all', 'data', 'hr', 'dashboards']
 
 const PROJECTS = [
+
+  {
+    id: 'global-ecommerce-retail-analytics-dashboard',
+    categories: ['dashboards', 'data'],
+    image: '/projects/Diagram View.png',
+    metric: {
+      en: '$5.28M Revenue analyzed across 10K orders',
+      ar: 'تحليل إيرادات بقيمة 5.28 مليون دولار عبر 10 آلاف طلب',
+    },
+    title: {
+      en: 'Global E-Commerce & Retail Analytics Dashboard',
+      ar: 'داشبورد تحليلات التجارة الإلكترونية والتجزئة العالمية',
+    },
+    summary: {
+      en: 'Engineered an institutional dark-mode Excel analytics dashboard powered by a Power Pivot Star Schema and custom DAX measures, tracking key financial KPIs and multi-year growth trends.',
+      ar: 'صممت داشبورد تفاعلية محترفة بلغة Excel بالنمط المظلم معتمدة على نموذج بيانات Star Schema في Power Pivot ومعادلات DAX متقدمة لمتابعة مؤشرات الأداء المالية ونسب النمو السنوي.',
+    },
+    detail: {
+      en: 'Built an enterprise-grade analytics solution uniting multi-table transactional data into a Star Schema Data Model (Fact_Sales linked to 4 Dimension tables). Developed dynamic DAX measures for Revenue, Profit Margin (27.21%), AOV ($528.44), and Time Intelligence YoY Growth %. The solution features automated Data Quality Audit sheets and an executive Dark-Mode UI optimized for print and portfolio presentation.',
+      ar: 'بنيت حل تحليلي مؤسسي يربط المعاملات المالية بنموذج بيانات Star Schema داخل Excel Power Pivot (جدول المبيعات مرتبط بـ 4 جداول أبعاد). قمت بصياغة معادلات DAX ديناميكية لحساب الإيرادات، هامش الربح (27.21%)، ومتوسط قيمة الطلب (528.44$)، ونسب النمو السنوي YoY. يتضمن المشروع شيتات توثيق وجودة البيانات Data Quality Audit مع واجهة Dark-Mode متكاملة ومجهزة للتصدير المباشر.',
+    },
+    tools: ['Excel Power Pivot', 'DAX', 'Star Schema', 'Data Modeling', 'Data Quality Audit', 'Dark-Mode UI'],
+    github: 'https://github.com/fatahallah/Global-Ecommerce-Performance-Dashboard',
+},
  
   {
     id: 'customer-retention-ltv-intelligence',
