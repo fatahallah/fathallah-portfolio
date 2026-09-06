@@ -51,7 +51,7 @@ const NAV_IDS = ['home', 'projects', 'skills', 'experience', 'about', 'contact']
 
 const STATS = [
   {
-    value: 7,
+    value: 8,
     suffix: '',
     label: { en: 'End-to-end analytics projects', ar: 'مشاريع تحليل بيانات متكاملة' },
   },
@@ -106,6 +106,30 @@ const CATEGORIES = ['all', 'data', 'hr', 'dashboards']
 
 const PROJECTS = [
 
+{
+    id: 'hr-attrition-analysis-excel-python',
+    categories: ['dashboards', 'data'],
+    image: '/projects/HR_Employee_Attrition_Excel_Analysis.png',
+    metric: {
+      en: '70% recall vs. 23% — fixing a hidden model failure',
+      ar: 'رفع معدل اكتشاف الحالات من 23% إلى 70% بحل مشكلة خفية في الموديل',
+    },
+    title: {
+      en: 'HR Employee Attrition Analysis (Advanced Excel + Python Prediction)',
+      ar: 'تحليل ترك خدمة الموظفين (Excel متقدم وتنبؤ بـ Python)',
+    },
+    summary: {
+      en: 'Identified the key drivers of employee attrition using advanced Excel (PivotTables, DAX-free interactive dashboard), then built a Python classification model — uncovering and fixing a class-imbalance trap that was hiding 77% of at-risk employees.',
+      ar: 'حددت العوامل الرئيسية لترك الموظفين للخدمة باستخدام Excel المتقدم (PivotTables وداشبورد تفاعلي)، ثم بنيت موديل تصنيف بلغة Python — واكتشفت وحليت مشكلة عدم توازن الفئات اللي كانت مخفية عن 77% من الموظفين المعرضين للخطر.',
+    },
+    detail: {
+      en: 'Using the real IBM HR Analytics dataset (1,470 employees), I identified overtime as the strongest attrition driver (3x higher departure rate) through advanced Excel PivotTables and an interactive dashboard. I then built a Logistic Regression model in Python — but the initial 86.73% accuracy model was misleading: it caught only 11 of 47 actual departures. After diagnosing this as a class-imbalance problem and retraining with balanced class weights, recall on departing employees rose to 70% (33 of 47 caught), a deliberate trade-off explained by the asymmetric cost of missing a real flight risk versus a false alarm.',
+      ar: 'باستخدام داتاسيت IBM الحقيقي لتحليلات الموارد البشرية (1,470 موظف)، حددت العمل الإضافي كأقوى عامل لترك الخدمة (معدل مغادرة أعلى 3 مرات) من خلال PivotTables متقدمة وداشبورد تفاعلي في Excel. بعدها بنيت موديل Logistic Regression بلغة Python — لكن دقة الموديل الأولى (86.73%) كانت مضللة: اكتشف 11 بس من أصل 47 حالة مغادرة حقيقية. بعد تشخيص المشكلة كخلل في توازن الفئات وإعادة التدريب بأوزان متوازنة، ارتفع معدل الاكتشاف لـ 70% (33 من 47)، وهي مقايضة مقصودة بسبب التكلفة غير المتماثلة بين تفويت موظف معرض للخطر فعليًا وإنذار كاذب.',
+    },
+    tools: ['Excel PivotTables', 'Python', 'Scikit-learn', 'Logistic Regression', 'Class Imbalance'],
+    github: 'https://github.com/fatahallah/HR-Attrition-Analysis-Excel-Python',
+},
+  
   {
     id: 'global-ecommerce-retail-analytics-dashboard',
     categories: ['dashboards', 'data'],
