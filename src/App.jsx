@@ -109,7 +109,7 @@ const PROJECTS = [
 {
     id: 'hr-payroll-excel-power-query',
     categories: ['dashboards', 'data'],
-    image: '/projects/الرئيسية_-_Main_Cover.png',
+    image: '/projects/الرئيسية - Main Cover.png',
     metric: {
       en: 'Automated payroll engine across 1,470 employees',
       ar: 'محرك رواتب آلي لـ 1,470 موظف',
