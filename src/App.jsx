@@ -51,7 +51,7 @@ const NAV_IDS = ['home', 'projects', 'skills', 'experience', 'about', 'contact']
 
 const STATS = [
   {
-    value: 8,
+    value: 9,
     suffix: '',
     label: { en: 'End-to-end analytics projects', ar: 'مشاريع تحليل بيانات متكاملة' },
   },
@@ -106,6 +106,30 @@ const CATEGORIES = ['all', 'data', 'hr', 'dashboards']
 
 const PROJECTS = [
 
+{
+    id: 'hr-payroll-excel-power-query',
+    categories: ['dashboards', 'data'],
+    image: '/projects/الرئيسية_-_Main_Cover.png',
+    metric: {
+      en: 'Automated payroll engine across 1,470 employees',
+      ar: 'محرك رواتب آلي لـ 1,470 موظف',
+    },
+    title: {
+      en: 'HR Operations & Executive Payroll Intelligence System',
+      ar: 'نظام ذكاء الرواتب التنفيذي وعمليات الموارد البشرية',
+    },
+    summary: {
+      en: 'Built a documented payroll calculation engine in Excel and Power Query on top of real HR data, generating automated payslips and an executive dashboard with full data quality governance.',
+      ar: 'بنيت محرك حساب رواتب موثق باستخدام Excel وPower Query فوق بيانات موارد بشرية حقيقية، لإنشاء قسائم رواتب آلية وداشبورد تنفيذي مع حوكمة كاملة لجودة البيانات.',
+    },
+    detail: {
+      en: 'Using real employee attributes (hourly rate, overtime status) from the IBM HR Analytics dataset, I designed a transparent, formula-based payroll simulation model — since the source data does not include payroll details — to calculate overtime pay, allowances, gross salary, statutory deductions, and net salary for all 1,470 employees. Power Query handled the ETL pipeline, while Excel delivered an interactive employee payslip lookup and an executive dashboard tracking gross/net payroll and departmental cost breakdowns. A dedicated Data Quality tab verifies zero missing values and full payroll reconciliation (Gross − Deductions = Net) across every record.',
+      ar: 'باستخدام خصائص حقيقية للموظفين (معدل الأجر بالساعة، حالة العمل الإضافي) من داتاسيت IBM لتحليلات الموارد البشرية، صممت موديل محاكاة رواتب شفاف وموثق بالمعادلات — بما أن البيانات الأصلية لا تحتوي على تفاصيل رواتب — لحساب أجر العمل الإضافي، البدلات، الراتب الإجمالي، الخصومات القانونية، والراتب الصافي لجميع الـ1,470 موظف. تولى Power Query خط معالجة البيانات، بينما قدم Excel نظام بحث تفاعلي لقسيمة راتب الموظف وداشبورد تنفيذي يتتبع الرواتب الإجمالية والصافية وتوزيع التكلفة على الأقسام. شيت مخصص لجودة البيانات يتحقق من عدم وجود قيم مفقودة ومطابقة كاملة لحسابات الرواتب عبر كل سجل.',
+    },
+    tools: ['Excel', 'Power Query', 'XLOOKUP', 'PivotTables', 'Data Quality Audit'],
+    github: 'https://github.com/fatahallah/HR-Executive-Payroll-System',
+},
+  
 {
     id: 'hr-attrition-analysis-excel-python',
     categories: ['dashboards', 'data'],
