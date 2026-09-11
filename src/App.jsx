@@ -109,7 +109,7 @@ const PROJECTS = [
 {
     id: 'maintenance-operations-reliability-dashboard',
     categories: ['dashboards', 'data'],
-    image: '/projects/maintenance-dashboard.png',
+    image: '/projects/Maintenance_Dashboard_Executive_Overview.png',
     metric: {
       en: '$86.5K maintenance cost · 13.29h MTTR',
       ar: '86.5 ألف دولار تكلفة صيانة · 13.29 ساعة متوسط وقت الإصلاح',
