@@ -51,7 +51,7 @@ const NAV_IDS = ['home', 'projects', 'skills', 'experience', 'about', 'contact']
 
 const STATS = [
   {
-    value: 9,
+    value: 10,
     suffix: '',
     label: { en: 'End-to-end analytics projects', ar: 'مشاريع تحليل بيانات متكاملة' },
   },
@@ -106,6 +106,30 @@ const CATEGORIES = ['all', 'data', 'hr', 'dashboards']
 
 const PROJECTS = [
 
+{
+    id: 'maintenance-operations-reliability-dashboard',
+    categories: ['dashboards', 'data'],
+    image: '/projects/maintenance-dashboard.png',
+    metric: {
+      en: '$86.5K maintenance cost · 13.29h MTTR',
+      ar: '86.5 ألف دولار تكلفة صيانة · 13.29 ساعة متوسط وقت الإصلاح',
+    },
+    title: {
+      en: 'Maintenance Operations & Equipment Reliability Dashboard',
+      ar: 'داشبورد عمليات الصيانة وموثوقية المعدات',
+    },
+    summary: {
+      en: 'Consolidated scattered maintenance logs into a two-page Power BI dashboard tracking repair costs, downtime trends, and true response-time performance across 180 tickets.',
+      ar: 'وحّدت سجلات صيانة متفرقة في داشبورد Power BI من صفحتين لتتبع تكاليف الإصلاح واتجاهات التوقف وأداء زمن الاستجابة الفعلي عبر 180 بلاغ صيانة.',
+    },
+    detail: {
+      en: 'Built a maintenance analytics model from 180 tickets across 12 assets and 5 departments, connected through a star-schema data model with a dedicated Calendar table (custom-sorted so months order correctly across year boundaries). Six DAX measures power the report, including a Mean Time To Repair calculated from the actual DATEDIFF between reported and resolved timestamps rather than a static duration field — surfacing a true MTTR of 13.29 hours, a 75.56% completion rate, and $86.5K in total maintenance spend concentrated on a handful of high-cost assets.',
+      ar: 'بنيت نموذج تحليل صيانة من 180 بلاغ عبر 12 معدة و5 أقسام، مرتبط بنموذج بيانات نجمي مع جدول تقويم مخصص (مرتب زمنيًا بشكل مخصص عشان الشهور تترتب صح عبر السنوات). ستة مقاييس DAX تشغّل التقرير، من ضمنها متوسط وقت الإصلاح المحسوب من الفرق الفعلي بين وقت البلاغ ووقت الحل بدل عمود مدة ثابت — كاشفًا متوسط وقت إصلاح حقيقي 13.29 ساعة، ومعدل إنجاز 75.56%، و86.5 ألف دولار إجمالي تكلفة صيانة متركزة على عدد قليل من المعدات عالية التكلفة.',
+    },
+    tools: ['Power BI', 'DAX', 'Power Query', 'Data Modeling'],
+    github: 'https://github.com/fatahallah/Maintenance-Operations-Dashboard-PowerBI',
+},
+  
 {
     id: 'hr-payroll-excel-power-query',
     categories: ['dashboards', 'data'],
