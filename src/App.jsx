@@ -1297,6 +1297,64 @@ function ProjectModal({ project, lang, t, onClose }) {
   )
 }
 
+function CaseStudyModal({ caseStudy, lang, t, onClose }) {
+  useEffect(() => {
+    function onKey(e) {
+      if (e.key === 'Escape') onClose()
+    }
+    window.addEventListener('keydown', onKey)
+    document.body.style.overflow = 'hidden'
+    return () => {
+      window.removeEventListener('keydown', onKey)
+      document.body.style.overflow = ''
+    }
+  }, [onClose])
+
+  return (
+    <div
+      className="fixed inset-0 z-50 bg-ink/60 backdrop-blur-sm flex items-center justify-center p-4"
+      onClick={onClose}
+    >
+      <div
+        className="bg-paper dark:bg-ink-dark border border-line dark:border-line-dark rounded-sm max-w-2xl w-full max-h-[85vh] overflow-y-auto p-6 sm:p-8"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="flex items-start justify-between gap-4 mb-4">
+          <div>
+            <span className="font-mono text-xs text-gold dark:text-gold-soft">
+              {caseStudy.category[lang]}
+            </span>
+            <h3 className="font-display text-xl sm:text-2xl mt-1 text-ink dark:text-paper-dark">
+              {caseStudy.title[lang]}
+            </h3>
+          </div>
+          <button
+            onClick={onClose}
+            className="w-8 h-8 grid place-items-center rounded-full border border-line dark:border-line-dark hover:border-gold transition-colors"
+          >
+            <X size={14} />
+          </button>
+        </div>
+
+        <div className="space-y-4 text-sm text-ink/80 dark:text-paper-dark/80 leading-relaxed mt-6">
+          <div>
+            <h4 className="font-bold text-ink dark:text-paper-dark mb-1">Problem / المشكلة:</h4>
+            <p>{caseStudy.problem[lang]}</p>
+          </div>
+          <div>
+            <h4 className="font-bold text-ink dark:text-paper-dark mb-1">Solution / الحل:</h4>
+            <p>{caseStudy.solution[lang]}</p>
+          </div>
+          <div>
+            <h4 className="font-bold text-ink dark:text-paper-dark mb-1">Impact & Results / النتائج:</h4>
+            <p className="font-mono text-gold dark:text-gold-soft">{caseStudy.metrics[lang]}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 /* ------------------------------------------------------------------ */
 /*  SKILLS                                                              */
 /* ------------------------------------------------------------------ */
