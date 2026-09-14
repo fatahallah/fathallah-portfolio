@@ -47,7 +47,7 @@ const PROFILE = {
   cv: '/Fathallah_Saied_CV.pdf',
 }
 
-const NAV_IDS = ['home', 'projects', 'skills', 'experience', 'about', 'contact']
+const NAV_IDS = ['home', 'projects', 'case-studies', 'skills', 'experience', 'about', 'contact']
 
 const STATS = [
   {
@@ -103,6 +103,90 @@ const SKILL_GROUPS = [
 ]
 
 const CATEGORIES = ['all', 'data', 'hr', 'dashboards']
+
+const CASE_STUDIES = [
+  {
+    id: 'cs-maintenance-ops',
+    projectId: 'maintenance-operations-reliability-dashboard',
+    category: 'Operations & Reliability',
+    title: {
+      en: 'Maintenance Operations & Equipment Reliability Dashboard',
+      ar: 'لوحة قيادة عمليات الصيانة وموثوقية المعدات'
+    },
+    tools: ['Power BI', 'DAX', 'Power Query', 'Star Schema'],
+    metrics: [
+      { label: 'Total Cost', value: '$86.53K' },
+      { label: 'True MTTR', value: '13.29 Hours' },
+      { label: 'Completion Rate', value: '75.56%' }
+    ],
+    problem: {
+      en: 'Manufacturing facility experiencing high maintenance costs and unplanned downtime without clear root-cause visibility or MTTR tracking.',
+      ar: 'تعاني منشأة صناعية من ارتفاع تكاليف الصيانة وتكرار توقف المعدات دون معرفة الأسباب الجذرية أو قياس كفاءة الإصلاح (MTTR).'
+    },
+    solution: {
+      en: 'Built an interactive Power BI model linking 180 work orders to a custom Calendar table using Star Schema and DATEDIFF DAX logic.',
+      ar: 'بناء نموذج تحليلي بـ Power BI يربط 180 تذكرة أعطال بجدول تقويم مخصص عبر Star Schema مع قياس MTTR بدقة باستخدام DAX.'
+    },
+    impact: {
+      en: 'Identified $86.5K cost concentration in key assets and benchmarked true MTTR (13.29h) to streamline maintenance response.',
+      ar: 'تحديد تركز $86.5K من مصاريف الصيانة في عدد محدود من المعدات، وتحديد MTTR الحقيقي بـ 13.29 ساعة لتقليل وقت التوقف.'
+    }
+  },
+  {
+    id: 'cs-hr-payroll',
+    projectId: 'hr-operations-payroll-system', // تأكد من مطابقة الـ id مع مشروع الـ HR في PROJECTS
+    category: 'HR & Operations',
+    title: {
+      en: 'HR Operations & Executive Payroll Intelligence System',
+      ar: 'نظام إدارة الموارد البشرية وتحليل الرواتب التنفيذي'
+    },
+    tools: ['Excel', 'Power Query', 'ETL', 'Payroll Engine'],
+    metrics: [
+      { label: 'Gross Payroll', value: '$10.90M' },
+      { label: "Net Payroll", value: '$8.76M' },
+      { label: 'Coverage', value: '1,470 Employees' }
+    ],
+    problem: {
+      en: 'Automating manual payroll processing across 1,470 employees while gaining clear visibility into tax deductions and departmental costs.',
+      ar: 'حاجة مؤسسة إلى نظام أوتوماتيكي لمعالجة رواتب 1,470 موظفاً مع رؤية لقيادية لتوزيع كتلة الرواتب والاستقطاعات.'
+    },
+    solution: {
+      en: 'Designed an automated ETL pipeline using Power Query and advanced Excel formulas with a dedicated Data Quality audit sheet.',
+      ar: 'بناء خط معالجة وتدفق بيانات (ETL) باستخدام Power Query ومحرك رواتب قائم على المعادلات المتقدمة وشيت للتدقيق المالي.'
+    },
+    impact: {
+      en: 'Accurately audited $10.90M gross payroll with zero calculation errors and enabled instant dynamic payslip generation.',
+      ar: 'حصر كتلة الرواتب بـ $10.90M وضمان صفر أخطاء حسابية، مع إتاحة استخراج قسيمة راتب الموظف فورياً.'
+    }
+  },
+  {
+    id: 'cs-pos-reconciliation',
+    projectId: 'pos-delivery-sales-reconciliation', // تأكد من مطابقة الـ id مع مشروع الـ POS في PROJECTS
+    category: 'Finance & Retail',
+    title: {
+      en: 'Multi-Platform Delivery Sales Reconciliation System',
+      ar: 'نظام مطابقة مبيعات منصات التوصيل وتسوية الفروقات'
+    },
+    tools: ['Excel', 'Power Query', 'Financial Audit', 'POS Engine'],
+    metrics: [
+      { label: 'Matched Rate', value: '98.6%' },
+      { label: 'Net Sales', value: '31,206 SAR' },
+      { label: 'Discrepancy', value: '524.86 SAR' }
+    ],
+    problem: {
+      en: 'Difficulty in reconciling internal POS sales against 5 delivery platforms and detecting missing payouts or fees.',
+      ar: 'صعوبة مطابقة مبيعات الـ POS الداخلي مع المستحقات المتوقعة من 5 تطبيقات توصيل واكتشاف الفروقات المالية.'
+    },
+    solution: {
+      en: 'Automated matching engine built in Excel & Power Query comparing order IDs and net amounts to isolate discrepancies.',
+      ar: 'بناء محرك مطابقة مالية آلي يجمع تقارير المنصات ويقارن المعاملات لعزل الفروقات في شيت تدقيق موحد.'
+    },
+    impact: {
+      en: 'Achieved 98.6% matched order rate and flagged 524.86 SAR in discrepancies for financial recovery.',
+      ar: 'تحقيق نسبة مطابقة 98.6% واكتشاف فروقات مالية بقيمة 524.86 SAR لتسهيل المطالبة بها.'
+    }
+  }
+];
 
 const PROJECTS = [
 
@@ -399,6 +483,7 @@ const T = {
       about: 'About',
       skills: 'Skills',
       projects: 'Projects',
+      'case-studies': 'Case Studies',
       experience: 'Experience',
       contact: 'Contact',
     },
@@ -466,6 +551,7 @@ const T = {
       about: 'نبذة عني',
       skills: 'المهارات',
       projects: 'المشاريع',
+      'case-studies': 'دراسات الحالة',
       experience: 'المسيرة',
       contact: 'تواصل معي',
     },
