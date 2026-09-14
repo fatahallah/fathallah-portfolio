@@ -29,6 +29,7 @@ import {
 /*  CONFIG & CONSTANTS                                                */
 /* ------------------------------------------------------------------ */
 
+// استبدل هذا الرابط بـ Endpoint الخاص بك من Formspree
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/myeyjyrp'
 
 const PROFILE = {
@@ -50,7 +51,7 @@ const NAV_IDS = ['home', 'projects', 'case-studies', 'skills', 'experience', 'ab
 
 const STATS = [
   {
-    value: 10,
+    value: 11,
     suffix: '',
     label: { en: 'End-to-end analytics projects', ar: 'مشاريع تحليل بيانات متكاملة' },
   },
@@ -105,90 +106,310 @@ const CATEGORIES = ['all', 'data', 'hr', 'dashboards']
 
 const CASE_STUDIES = [
   {
-    id: 'cs-maintenance-ops',
-    projectId: 'maintenance-operations-reliability-dashboard',
-    category: { en: 'Operations & Reliability', ar: 'العمليات والصيانة' },
+    id: 'cs-olist-ecommerce',
+    projectId: 'olist-ecommerce-sql-geospatial-predictive-analytics',
+    featured: true,
+    category: { en: 'E-Commerce & Logistics', ar: 'التجارة الإلكترونية واللوجستيات' },
     title: {
-      en: 'Maintenance Operations & Equipment Reliability Dashboard',
-      ar: 'لوحة قيادة عمليات الصيانة وموثوقية المعدات'
+      en: 'E-Commerce SQL, Geo-Spatial & Predictive Analytics',
+      ar: 'تحليلات SQL وجغرافية وتنبؤية للتجارة الإلكترونية',
     },
-    tools: ['Power BI', 'DAX', 'Power Query', 'Star Schema'],
+    tools: ['SQL', 'Python (Prophet)', 'Power BI', 'Haversine Formula'],
     metrics: [
-      { label: { en: 'Total Cost', ar: 'التكلفة الإجمالية' }, value: '$86.53K' },
-      { label: { en: 'True MTTR', ar: 'متوسط وقت الإصلاح' }, value: '13.29 Hours' },
-      { label: { en: 'Completion Rate', ar: 'معدل الإنجاز' }, value: '75.56%' }
+      { label: { en: 'Late Delivery Rate', ar: 'معدل التأخير' }, value: '7.9%' },
+      { label: { en: '6-Month Revenue Forecast', ar: 'توقع إيرادات 6 أشهر' }, value: '$7.20M' },
+      { label: { en: 'Orders Analyzed', ar: 'طلب تم تحليله' }, value: '99,441' },
     ],
     problem: {
-      en: 'Manufacturing facility experiencing high maintenance costs and unplanned downtime without clear root-cause visibility or MTTR tracking.',
-      ar: 'تعاني منشأة صناعية من ارتفاع تكاليف الصيانة وتكرار توقف المعدات دون معرفة الأسباب الجذرية أو قياس كفاءة الإصلاح (MTTR).'
+      en: 'Management needed to know whether actual delivery times were consistent with promised dates, and whether shipping distance was the real driver of any delay — before committing to logistics investment or adjusting delivery promises.',
+      ar: 'احتاجت الإدارة لمعرفة هل مواعيد التسليم الفعلية متوافقة مع المواعيد الموعودة، وهل المسافة الجغرافية هي السبب الحقيقي وراء أي تأخير — قبل اتخاذ قرار استثمار لوجستي أو تعديل مواعيد التسليم المعلنة.',
     },
     solution: {
-      en: 'Built an interactive Power BI model linking 180 work orders to a custom Calendar table using Star Schema and DATEDIFF DAX logic.',
-      ar: 'بناء نموذج تحليلي بـ Power BI يربط 180 تذكرة أعطال بجدول تقويم مخصص عبر Star Schema مع قياس MTTR بدقة باستخدام DAX.'
+      en: 'Cleaned and joined 8 tables via SQL (window functions, correlated subqueries), reduced a 1M-row geolocation table by 98% and calculated real shipping distance with a manual Haversine formula, then added a Facebook Prophet forecasting layer surfaced live in Power BI.',
+      ar: 'تنظيف وربط 8 جداول عبر SQL (window functions وsubqueries مترابطة)، وتقليص جدول جغرافي من مليون صف بنسبة 98% وحساب مسافة الشحن الحقيقية بمعادلة Haversine يدويًا، ثم إضافة طبقة تنبؤ بـ Facebook Prophet معروضة حيًا في Power BI.',
     },
     impact: {
-      en: 'Identified $86.5K cost concentration in key assets and benchmarked true MTTR (13.29h) to streamline maintenance response.',
-      ar: 'تحديد تركز $86.5K من مصاريف الصيانة في عدد محدود من المعدات، وتحديد MTTR الحقيقي بـ 13.29 ساعة لتقليل وقت التوقف.'
-    }
+      en: 'Found only 7.9% of orders are actually delayed despite an ~11-day early buffer, and that distance does not shorten delay — the company simply over-pads estimates for longer routes. Recommended trimming the delivery-date buffer by 3-4 days on stable routes (e.g. the São Paulo hub) without risking the 92%+ on-time rate, alongside a $7.20M 6-month revenue forecast (MAPE 17.57%) for planning.',
+      ar: 'اكتُشف أن 7.9% فقط من الطلبات متأخرة فعليًا رغم هامش أمان ~11 يوم، وأن المسافة لا تُقصّر التأخير — الشركة ببساطة تبالغ في هامش الأمان للمسارات الطويلة. التوصية: تقليل هامش الأمان 3-4 أيام في المسارات المستقرة (محور ساو باولو) دون المساس بمعدل الالتزام (92%+)، مع توقع إيرادات 6 أشهر بقيمة 7.20 مليون دولار (بدقة MAPE 17.57%) لدعم التخطيط.',
+    },
   },
   {
-    id: 'cs-hr-payroll',
-    projectId: 'hr-payroll-excel-power-query',
-    category: { en: 'HR & Operations', ar: 'الموارد البشرية والعمليات' },
+    id: 'cs-customer-retention',
+    projectId: 'customer-retention-ltv-intelligence',
+    featured: true,
+    category: { en: 'Customer Analytics', ar: 'تحليلات العملاء' },
     title: {
-      en: 'HR Operations & Executive Payroll Intelligence System',
-      ar: 'نظام إدارة الموارد البشرية وتحليل الرواتب التنفيذي'
+      en: 'Customer Retention & LTV Intelligence',
+      ar: 'ذكاء الاحتفاظ بالعملاء والقيمة الدائمة',
     },
-    tools: ['Excel', 'Power Query', 'ETL', 'Payroll Engine'],
+    tools: ['Python', 'SQLite', 'Power BI', 'RFM & Cohort Analysis'],
     metrics: [
-      { label: { en: 'Gross Payroll', ar: 'إجمالي الرواتب' }, value: '$10.90M' },
-      { label: { en: 'Net Payroll', ar: 'صافي الرواتب' }, value: '$8.76M' },
-      { label: { en: 'Coverage', ar: 'التغطية' }, value: '1,470 Employees' }
+      { label: { en: 'At-Risk Revenue', ar: 'إيرادات معرضة للخطر' }, value: '$192K' },
+      { label: { en: 'High-Value-at-Risk Customers', ar: 'عملاء عالي القيمة ومعرضين للخطر' }, value: '29' },
+      { label: { en: 'Avg. CLV (at-risk segment)', ar: 'متوسط القيمة الدائمة (الشريحة المعرضة)' }, value: '$6,633' },
     ],
     problem: {
-      en: 'Automating manual payroll processing across 1,470 employees while gaining clear visibility into tax deductions and departmental costs.',
-      ar: 'حاجة مؤسسة إلى نظام أوتوماتيكي لمعالجة رواتب 1,470 موظفاً مع رؤية لقيادية لتوزيع كتلة الرواتب والاستقطاعات.'
+      en: 'The business needed to know which customers carry the highest future value and are at risk of churning right now — a far more urgent question than who bought the most last month.',
+      ar: 'احتاجت الشركة لمعرفة مين العملاء اللي قيمتهم المستقبلية الأعلى ومعرضين لخطر المغادرة الآن — سؤال أهم بكتير من مين اشترى أكتر الشهر الماضي.',
     },
     solution: {
-      en: 'Designed an automated ETL pipeline using Power Query and advanced Excel formulas with a dedicated Data Quality audit sheet.',
-      ar: 'بناء خط معالجة وتدفق بيانات (ETL) باستخدام Power Query ومحرك رواتب قائم على المعادلات المتقدمة وشيت للتدقيق المالي.'
+      en: 'Built an RFM and churn-risk scoring model in Python, a cohort retention matrix and CLV calculation in SQLite via CTEs and window logic, and a live Power BI dashboard connected via ODBC.',
+      ar: 'بناء نموذج RFM وتصنيف مخاطر مغادرة في Python، ومصفوفة احتفاظ عبر الأفواج وحساب CLV في SQLite باستخدام CTEs، وداشبورد Power BI حي متصل عبر ODBC.',
     },
     impact: {
-      en: 'Accurately audited $10.90M gross payroll with zero calculation errors and enabled instant dynamic payslip generation.',
-      ar: 'حصر كتلة الرواتب بـ $10.90M وضمان صفر أخطاء حسابية، مع إتاحة استخراج قسيمة راتب الموظف فورياً.'
-    }
+      en: 'Isolated a "High Value at Risk" segment of just 29 customers (0.67% of the base) holding $192,374 in revenue at risk, with an average CLV over 3x the overall average. Recommended a concentrated retention campaign for these 29 customers instead of a generic campaign spread across the full base — a far higher expected return per dollar spent.',
+      ar: 'تحديد شريحة "عالية القيمة ومعرضة للخطر" من 29 عميل فقط (0.67% من القاعدة) يحملون 192,374 دولار إيرادات مهددة، بمتوسط قيمة دائمة أكثر من 3 أضعاف المتوسط العام. التوصية: حملة استبقاء مركزة على الـ 29 عميل دول بدل حملة عامة موزعة على كل القاعدة — عائد متوقع أعلى بكتير لكل دولار يُنفق.',
+    },
   },
   {
     id: 'cs-pos-reconciliation',
     projectId: 'pos-delivery-sales-reconciliation',
-    category: { en: 'Finance & Retail', ar: 'المالية والتجزئة' },
+    featured: true,
+    category: { en: 'Finance & Retail Ops', ar: 'المالية وعمليات التجزئة' },
     title: {
-      en: 'Multi-Platform Delivery Sales Reconciliation System',
-      ar: 'نظام مطابقة مبيعات منصات التوصيل وتسوية الفروقات'
+      en: 'Multi-Platform Delivery Sales Reconciliation & Performance Analytics',
+      ar: 'نظام مطابقة مبيعات منصات التوصيل وتسوية الفروقات',
     },
-    tools: ['Excel', 'Power Query', 'Financial Audit', 'POS Engine'],
+    tools: ['Excel', 'Power Query', 'XLOOKUP', 'Financial Audit'],
     metrics: [
-      { label: { en: 'Matched Rate', ar: 'نسبة المطابقة' }, value: '98.6%' },
-      { label: { en: 'Net Sales', ar: 'صافي المبيعات' }, value: '31,206 SAR' },
-      { label: { en: 'Discrepancy', ar: 'الفروقات' }, value: '524.86 SAR' }
+      { label: { en: 'Matched Orders Rate', ar: 'نسبة تطابق الطلبات' }, value: '98.6%' },
+      { label: { en: 'Platforms Reconciled', ar: 'منصات تمت تسويتها' }, value: '5' },
+      { label: { en: 'Effective Platform Cut', ar: 'نسبة اقتطاع المنصات الفعلية' }, value: '20.9%' },
     ],
     problem: {
-      en: 'Difficulty in reconciling internal POS sales against 5 delivery platforms and detecting missing payouts or fees.',
-      ar: 'صعوبة مطابقة مبيعات الـ POS الداخلي مع المستحقات المتوقعة من 5 تطبيقات توصيل واكتشاف الفروقات المالية.'
+      en: 'A restaurant selling through POS and 5 delivery platforms — each with a different commission rate — needed to know whether payouts actually matched what was sold, and whether any orders were slipping through unpaid.',
+      ar: 'مطعم بيبيع عبر نظام POS و5 منصات توصيل مختلفة العمولات، احتاج يعرف هل المتحصلات فعليًا متطابقة مع المبيعات، وهل فيه طلبات بتضيع من غير تحصيل.',
     },
     solution: {
-      en: 'Automated matching engine built in Excel & Power Query comparing order IDs and net amounts to isolate discrepancies.',
-      ar: 'بناء محرك مطابقة مالية آلي يجمع تقارير المنصات ويقارن المعاملات لعزل الفروقات في شيت تدقيق موحد.'
+      en: 'Merged POS and platform reports via a cross-system XLOOKUP join with a rounding-tolerance threshold, modeled a distinct commission and VAT rule per platform, and built an audit-flag system (Matched / Missing in Platform / Amount Mismatch).',
+      ar: 'دمج تقارير الـ POS والمنصات عبر XLOOKUP وحد تسامح للتقريب، وبناء منطق عمولة وضريبة مختلف لكل منصة، ونظام أعلام تدقيق (مطابق / مفقود لدى المنصة / فرق في المبلغ).',
     },
     impact: {
-      en: 'Achieved 98.6% matched order rate and flagged 524.86 SAR in discrepancies for financial recovery.',
-      ar: 'تحقيق نسبة مطابقة 98.6% واكتشاف فروقات مالية بقيمة 524.86 SAR لتسهيل المطالبة بها.'
-    }
-  }
+      en: 'Found delivery platforms take an effective 20.9% combined cut of sales, and caught one confirmed revenue leak (a 157.24 SAR order paid in POS but never remitted by the platform). Recommended shifting promotional weight toward lower-commission platforms (Ninja 12%, Jahez 18%) over the highest-commission one (Chefz 22%) for an estimated 8-10% net revenue uplift, and running the reconciliation monthly rather than as a one-off.',
+      ar: 'اكتُشف إن منصات التوصيل مجتمعة بتاخد اقتطاع فعلي 20.9% من المبيعات، وتم رصد حالة تسريب مؤكدة (طلب بقيمة 157.24 SAR اتباع في الـ POS لكن المنصة ما حولتش مقابله). التوصية: تحويل جزء من الترويج لصالح المنصات الأقل عمولة (Ninja 12%, Jahez 18%) بدل الأعلى عمولة (Chefz 22%) لزيادة صافي إيرادات تقديرية 8-10%، وتفعيل التسوية كإجراء شهري دوري.',
+    },
+  },
+  {
+    id: 'cs-hr-workforce',
+    projectId: 'hr-workforce',
+    category: { en: 'HR & Workforce', ar: 'الموارد البشرية والقوى العاملة' },
+    title: {
+      en: 'HR Workforce Analytics (SQL & Power BI)',
+      ar: 'تحليل القوى العاملة بلغة SQL وPower BI',
+    },
+    tools: ['SQL', 'Power BI', 'CTEs & Self-Joins', 'ODBC'],
+    metrics: [
+      { label: { en: 'Employees Analyzed', ar: 'موظف تم تحليله' }, value: '1,562' },
+      { label: { en: 'Attrition Rate', ar: 'معدل الدوران الوظيفي' }, value: '28.4%' },
+      { label: { en: 'Performance Gap (stayed vs. left)', ar: 'فجوة الأداء (باقي مقابل مغادر)' }, value: '~0.1 pts' },
+    ],
+    problem: {
+      en: 'Management assumed low performers were the ones leaving the company, and wanted to know which departments needed urgent retention attention.',
+      ar: 'افترضت الإدارة إن أصحاب الأداء الضعيف هم اللي بيسيبوا الشركة، واحتاجت تعرف أي الأقسام محتاجة تدخل احتفاظ عاجل.',
+    },
+    solution: {
+      en: 'Validated 3 linked tables, decoded undocumented HR action codes via pattern analysis, and built a two-page live Power BI dashboard via ODBC using CTEs and self-joins.',
+      ar: 'تحقق من صحة 3 جداول مرتبطة، وفك تشفير أكواد إجراءات موارد بشرية غير موثقة عبر تحليل الأنماط، وبناء داشبورد Power BI حي من صفحتين عبر ODBC باستخدام CTEs وself-joins.',
+    },
+    impact: {
+      en: 'Found performance ratings were nearly identical between employees who stayed and left (2.95 vs 3.05) — disproving the performance assumption entirely. Recommended redirecting retention efforts toward compensation and satisfaction instead, a hypothesis directly confirmed by the follow-up HR Attrition project.',
+      ar: 'وُجد إن تقييم الأداء متقارب جدًا بين الباقين والمغادرين (2.95 مقابل 3.05) — نفي كامل لافتراض الأداء. التوصية: توجيه جهود الاحتفاظ نحو التعويض والرضا الوظيفي بدلًا من ذلك، وهي فرضية تأكدت فعليًا في مشروع تحليل ترك الخدمة التالي.',
+    },
+  },
+  {
+    id: 'cs-hr-attrition',
+    projectId: 'hr-attrition-analysis-excel-python',
+    category: { en: 'HR & Predictive Analytics', ar: 'الموارد البشرية والتحليل التنبؤي' },
+    title: {
+      en: 'HR Employee Attrition Analysis (Excel + Python)',
+      ar: 'تحليل ترك خدمة الموظفين (Excel وPython)',
+    },
+    tools: ['Excel PivotTables', 'Python', 'Scikit-learn', 'Logistic Regression'],
+    metrics: [
+      { label: { en: 'Model Recall Improvement', ar: 'تحسين معدل اكتشاف الحالات' }, value: '23% → 70%' },
+      { label: { en: 'Overtime Attrition Gap', ar: 'فجوة الاستقالة بسبب العمل الإضافي' }, value: '30.5% vs 10.4%' },
+      { label: { en: 'Income Gap (left vs. stayed)', ar: 'فجوة الدخل (مغادر مقابل باقي)' }, value: '~26%' },
+    ],
+    problem: {
+      en: 'Following the finding that performance wasn\u2019t driving attrition, the real question became: what actually predicts who leaves, and can departures be flagged before they happen?',
+      ar: 'بعد ما ثبت إن الأداء مش السبب في الاستقالة، السؤال الحقيقي بقى: إيه اللي فعلاً بيتنبأ بمين هيسيب، وهل نقدر نكتشف الحالة قبل ما تحصل؟',
+    },
+    solution: {
+      en: 'Ran PivotTable exploratory analysis to isolate the strongest factors, then built a Logistic Regression model in Python — diagnosing and fixing a class-imbalance trap with balanced class weights.',
+      ar: 'تحليل استكشافي بـ PivotTables لعزل أقوى العوامل، ثم بناء نموذج Logistic Regression بـ Python — وتشخيص وحل مشكلة عدم توازن الفئات عبر أوزان متوازنة.',
+    },
+    impact: {
+      en: 'Overtime emerged as the strongest driver (30.5% vs 10.4% departure rate), alongside a ~26% income gap and a clear satisfaction gap. The corrected model raised recall on true departures from 23% to 70% — recommended for use as a monthly early-warning risk score instead of a reactive resignation report.',
+      ar: 'العمل الإضافي ظهر كأقوى عامل (معدل مغادرة 30.5% مقابل 10.4%)، مع فجوة دخل ~26% وفجوة رضا واضحة. النموذج المُصحح رفع معدل اكتشاف الحالات الحقيقية من 23% إلى 70% — التوصية: استخدامه كإنذار مبكر شهري بدل تقرير استقالات بعد وقوعها.',
+    },
+  },
+  {
+    id: 'cs-sales-powerbi',
+    projectId: 'sales-power-bi',
+    category: { en: 'Sales & Profitability', ar: 'المبيعات والربحية' },
+    title: {
+      en: 'Sales Performance & Profitability Analytics',
+      ar: 'تحليل أداء المبيعات والربحية',
+    },
+    tools: ['Power BI', 'Power Query', 'ERP Data'],
+    metrics: [
+      { label: { en: 'Total Sales', ar: 'إجمالي المبيعات' }, value: '$829.07K' },
+      { label: { en: 'Profit Margin', ar: 'هامش الربح' }, value: '32.87%' },
+      { label: { en: 'Corporate AOV Premium', ar: 'زيادة متوسط طلب Corporate' }, value: '+18%' },
+    ],
+    problem: {
+      en: 'Management needed to know which reps, segments, and categories were actually driving profit, to align incentives and marketing spend accordingly.',
+      ar: 'احتاجت الإدارة تعرف مين المندوبين والقطاعات والفئات اللي فعلاً بتحرك الربح، عشان توازن الحوافز والإنفاق التسويقي بناءً عليها.',
+    },
+    solution: {
+      en: 'Cleaned unstructured ERP exports with Power Query and built a two-page executive Power BI dashboard covering sales, margin, and regional target performance.',
+      ar: 'تنظيف بيانات ERP غير منظمة عبر Power Query وبناء داشبورد تنفيذي من صفحتين في Power BI يغطي المبيعات والهامش وأداء الأهداف الإقليمية.',
+    },
+    impact: {
+      en: 'Found the Corporate segment, despite being only 14.63% of sales, carries an 18% higher average order value than retail. Recommended reallocating a portion of marketing spend toward Corporate to grow margin faster than pushing an already-saturated Consumer segment.',
+      ar: 'وُجد إن قطاع Corporate، رغم إنه 14.63% بس من المبيعات، بيحقق متوسط قيمة طلب أعلى بـ18% عن التجزئة. التوصية: إعادة توزيع جزء من ميزانية التسويق لصالح Corporate لرفع الهامش أسرع من محاولة زيادة حجم قطاع Consumer المُشبع فعلاً.',
+    },
+  },
+  {
+    id: 'cs-sales-excel',
+    projectId: 'sales-excel',
+    category: { en: 'Sales Systems (Excel)', ar: 'أنظمة مبيعات (إكسل)' },
+    title: {
+      en: 'Advanced Sales Performance Dashboard (Excel)',
+      ar: 'داشبورد متقدم لأداء المبيعات (إكسل)',
+    },
+    tools: ['Excel', 'Power Query', 'Star Schema', 'PivotTables'],
+    metrics: [
+      { label: { en: 'Data Model', ar: 'نموذج البيانات' }, value: 'Star Schema' },
+      { label: { en: 'Core Formulas', ar: 'المعادلات الأساسية' }, value: 'SUMIFS · XLOOKUP' },
+      { label: { en: 'Deployment Cost', ar: 'تكلفة النشر' }, value: 'No BI license needed' },
+    ],
+    problem: {
+      en: 'Teams without a BI license or IT support still need the same depth of sales tracking and KPI visibility as a full Power BI dashboard.',
+      ar: 'فرق بدون ترخيص BI أو دعم IT محتاجة نفس عمق تتبع المبيعات ورؤية المؤشرات زي داشبورد Power BI كامل.',
+    },
+    solution: {
+      en: 'Cleaned multi-source sales data with Power Query, modeled it into a relational Star Schema inside Excel itself, and surfaced it through PivotTables and dynamic SUMIFS/XLOOKUP formulas.',
+      ar: 'تنظيف بيانات مبيعات متعددة المصادر عبر Power Query، ونمذجتها في مخطط نجمي داخل Excel نفسه، وعرضها عبر PivotTables ومعادلات SUMIFS/XLOOKUP ديناميكية.',
+    },
+    impact: {
+      en: 'Delivered the same analytical depth as a BI-tool dashboard using only Excel — a solution any small or mid-size business can deploy immediately with zero additional licensing cost, opening a distinct client segment from BI-tool buyers.',
+      ar: 'تحقيق نفس العمق التحليلي لداشبورد BI باستخدام Excel فقط — حل تقدر أي شركة صغيرة أو متوسطة تنشره فورًا بدون أي تكلفة ترخيص إضافية، وده بيفتح شريحة عملاء مختلفة عن مشتري أدوات BI.',
+    },
+  },
+  {
+    id: 'cs-hr-payroll-excel',
+    projectId: 'hr-payroll-excel',
+    category: { en: 'HR Operations (Foundational)', ar: 'عمليات موارد بشرية (تأسيسية)' },
+    title: {
+      en: 'HR Operations & Payroll Analytics System (Excel)',
+      ar: 'نظام تحليل عمليات الموارد البشرية والرواتب (إكسل)',
+    },
+    tools: ['Excel', 'XLOOKUP', 'Dynamic FILTER', 'Data Validation'],
+    metrics: [
+      { label: { en: 'Net Salary Tracked', ar: 'صافي رواتب تم تتبعه' }, value: '$219,558.07' },
+      { label: { en: 'Overtime Cost', ar: 'تكلفة العمل الإضافي' }, value: '$3,627.64' },
+      { label: { en: 'Employees Covered', ar: 'موظف مغطى' }, value: '35' },
+    ],
+    problem: {
+      en: 'A small manufacturer managing 35 employees\u2019 payroll and attendance manually needed visibility into real overtime cost and workforce distribution.',
+      ar: 'مصنع صغير بيدير رواتب وحضور 35 موظف يدويًا، احتاج رؤية لتكلفة العمل الإضافي الحقيقية وتوزيع القوى العاملة.',
+    },
+    solution: {
+      en: 'Built a multi-sheet automated workbook linking employee data, attendance, leave, and payroll with XLOOKUP and dynamic FILTER formulas, with built-in data-validation error logging.',
+      ar: 'بناء ملف متعدد الشيتات ومؤتمت يربط بيانات الموظفين والحضور والإجازات والرواتب بمعادلات XLOOKUP وFILTER ديناميكية، مع تسجيل أخطاء تحقق مدمج.',
+    },
+    impact: {
+      en: 'Surfaced an overtime cost of $3,627.64 concentrated mostly in the largest department (Warehouse), suggesting a part-time hire could break even within a few months of continued overtime reliance. This was the first project in the portfolio timeline — the starting point that led into the SQL, Power BI, and Python projects that followed.',
+      ar: 'كشف تكلفة عمل إضافي $3,627.64 متركزة غالبًا في أكبر الأقسام (Warehouse)، ما يشير إلى إن توظيف بدوام جزئي ممكن يكسر التعادل خلال شهور قليلة لو استمر الاعتماد على الأوفرتايم. ده كان أول مشروع في المسار الزمني للبورتفوليو — نقطة البداية اللي قادت لمشاريع SQL وPower BI وPython اللي جت بعده.',
+    },
+  },
+  {
+    id: 'cs-hr-payroll-engine',
+    projectId: 'hr-payroll-excel-power-query',
+    category: { en: 'HR Operations & Payroll Engine', ar: 'محرك عمليات الرواتب' },
+    title: {
+      en: 'HR Operations & Executive Payroll Intelligence System',
+      ar: 'نظام ذكاء الرواتب التنفيذي وعمليات الموارد البشرية',
+    },
+    tools: ['Excel', 'Power Query', 'XLOOKUP', 'Data Quality Audit'],
+    metrics: [
+      { label: { en: 'Employees Covered', ar: 'موظف مغطى' }, value: '1,470' },
+      { label: { en: 'Gross Payroll Modeled', ar: 'إجمالي رواتب تمت نمذجته' }, value: '$10.90M' },
+      { label: { en: 'Reconciliation Accuracy', ar: 'دقة التسوية' }, value: 'Zero errors' },
+    ],
+    problem: {
+      en: 'The source HR dataset (1,470 employees) had no payroll fields at all — but the underlying question of gross/net cost and departmental cost breakdown still needed an answer.',
+      ar: 'داتاسيت الموارد البشرية المصدر (1,470 موظف) معندهوش أي حقول رواتب أصلًا — لكن سؤال التكلفة الإجمالية والصافية وتوزيعها على الأقسام لسه محتاج إجابة.',
+    },
+    solution: {
+      en: 'Designed a transparent, formula-based payroll simulation engine in Excel and Power Query on top of real employee attributes (hourly rate, overtime status), with a dedicated Data Quality tab verifying full Gross \u2212 Deductions = Net reconciliation.',
+      ar: 'تصميم محرك محاكاة رواتب شفاف بالمعادلات في Excel وPower Query فوق خصائص موظفين حقيقية (معدل الأجر، حالة العمل الإضافي)، مع شيت جودة بيانات مخصص يتحقق من مطابقة كاملة (الإجمالي − الخصومات = الصافي).',
+    },
+    impact: {
+      en: 'Modeled $10.90M gross / $8.76M net payroll across all 1,470 employees with zero calculation errors and instant per-employee payslip lookup. Documented clearly as a simulation model (the source data had no real payroll figures) rather than presenting it as audited real payroll — an honesty choice that protects credibility with any client reviewing the methodology.',
+      ar: 'تمت نمذجة رواتب إجمالية $10.90M وصافية $8.76M عبر كل الـ1,470 موظف بصفر أخطاء حسابية مع استخراج قسيمة راتب فوري لكل موظف. تم توثيقه بوضوح كنموذج محاكاة (البيانات الأصلية معندهاش أرقام رواتب حقيقية) بدل تقديمه كرواتب فعلية مدققة — اختيار بالشفافية بيحمي مصداقية المشروع أمام أي عميل بيراجع المنهجية.',
+    },
+  },
+  {
+    id: 'cs-global-ecommerce',
+    projectId: 'global-ecommerce-retail-analytics-dashboard',
+    category: { en: 'Retail & Finance (Excel Power Pivot)', ar: 'تجزئة ومالية (Excel Power Pivot)' },
+    title: {
+      en: 'Global E-Commerce & Retail Analytics Dashboard',
+      ar: 'داشبورد تحليلات التجارة الإلكترونية والتجزئة العالمية',
+    },
+    tools: ['Excel Power Pivot', 'DAX', 'Star Schema', 'Data Quality Audit'],
+    metrics: [
+      { label: { en: 'Revenue Analyzed', ar: 'إيرادات تم تحليلها' }, value: '$5.28M' },
+      { label: { en: 'Profit Margin', ar: 'هامش الربح' }, value: '27.21%' },
+      { label: { en: '2024 YoY Change', ar: 'التغير السنوي 2024' }, value: '-50.28%' },
+    ],
+    problem: {
+      en: 'A global retailer needed to track multi-year revenue growth and category profitability across a 10,000-order dataset without relying on slow flat spreadsheets.',
+      ar: 'شركة تجزئة عالمية احتاجت تتبع نمو الإيرادات متعدد السنوات وربحية الفئات عبر بيانات 10,000 طلب بدون الاعتماد على شيتات مسطحة بطيئة.',
+    },
+    solution: {
+      en: 'Modeled the transactions into a Star Schema inside Excel Power Pivot (Fact_Sales + 4 dimension tables) with 9 DAX measures, including Time Intelligence YoY Growth %, plus an automated Data Quality Audit sheet.',
+      ar: 'نمذجة المعاملات في Star Schema داخل Excel Power Pivot (جدول حقائق + 4 جداول أبعاد) مع 9 مقاييس DAX، منها Time Intelligence لنسبة النمو السنوي، بالإضافة لشيت تدقيق جودة بيانات آلي.',
+    },
+    impact: {
+      en: 'Revealed a 2023 revenue peak ($2.31M) followed by a sharp 2024 decline to $1.15M (-50.28% YoY) — with Electronics alone responsible for ~64% of total revenue ($3.38M), making the category the most likely source of the drop. Recommended (estimated) reallocating 10-15% of the 2025 marketing budget toward category diversification once the decline is confirmed at the category-year level.',
+      ar: 'كشف طفرة إيرادات في 2023 ($2.31M) تبعها تراجع حاد في 2024 لـ$1.15M (-50.28% سنويًا) — مع كون Electronics مسؤولة وحدها عن ~64% من الإيرادات ($3.38M)، ما يجعلها المصدر الأرجح للتراجع. التوصية (تقديرية): إعادة تخصيص 10-15% من ميزانية تسويق 2025 لتنويع الفئات بعد تأكيد مصدر التراجع على مستوى الفئة والسنة.',
+    },
+  },
+  {
+    id: 'cs-maintenance-ops',
+    projectId: 'maintenance-operations-reliability-dashboard',
+    category: { en: 'Operations & Reliability', ar: 'العمليات والموثوقية' },
+    title: {
+      en: 'Maintenance Operations & Equipment Reliability Dashboard',
+      ar: 'داشبورد عمليات الصيانة وموثوقية المعدات',
+    },
+    tools: ['Power BI', 'DAX', 'Power Query', 'Star Schema'],
+    metrics: [
+      { label: { en: 'Total Maintenance Cost', ar: 'إجمالي تكلفة الصيانة' }, value: '$86.53K' },
+      { label: { en: 'True MTTR', ar: 'متوسط وقت الإصلاح الحقيقي' }, value: '13.29 Hours' },
+      { label: { en: 'Preventive Maintenance Ratio', ar: 'نسبة الصيانة الوقائية' }, value: '60%' },
+    ],
+    problem: {
+      en: 'A manufacturing facility faced high maintenance costs and repeated equipment downtime with no clear root-cause visibility or accurate repair-time tracking.',
+      ar: 'منشأة صناعية تعاني من ارتفاع تكاليف الصيانة وتكرار توقف المعدات دون معرفة الأسباب الجذرية أو قياس دقيق لوقت الإصلاح.',
+    },
+    solution: {
+      en: 'Built a Star Schema model linking 180 work orders across 12 assets and 5 departments to a custom Calendar table, with DAX measures computing true MTTR via DATEDIFF between report and resolution timestamps.',
+      ar: 'بناء نموذج Star Schema يربط 180 تذكرة أعطال عبر 12 معدة و5 أقسام بجدول تقويم مخصص، مع مقاييس DAX تحسب MTTR الحقيقي عبر DATEDIFF بين وقت البلاغ والحل.',
+    },
+    impact: {
+      en: 'Identified $86.5K in maintenance cost concentrated in a handful of assets, alongside a preventive-maintenance ratio of only 60%. Recommended (estimated) raising that ratio to 75-80%, which could reduce total downtime (currently 2.53K hours) by 10-15% — an estimated $8.6K-$13K in annual savings, pending a cost breakdown by maintenance type to confirm.',
+      ar: 'تحديد تركز $86.5K من تكلفة الصيانة في عدد محدود من المعدات، مع نسبة صيانة وقائية 60% فقط. التوصية (تقديرية): رفع النسبة إلى 75-80%، ما قد يقلل التوقف الكلي (حاليًا 2.53K ساعة) بنسبة 10-15% — بتوفير تقديري $8.6K-$13K سنويًا، محتاج تأكيد بمقارنة التكلفة حسب نوع الصيانة.',
+    },
+  },
 ];
 
 const PROJECTS = [
-  {
+
+{
     id: 'maintenance-operations-reliability-dashboard',
     categories: ['dashboards', 'data'],
     image: '/projects/Maintenance_Dashboard_Executive_Overview.png',
@@ -210,8 +431,9 @@ const PROJECTS = [
     },
     tools: ['Power BI', 'DAX', 'Power Query', 'Data Modeling'],
     github: 'https://github.com/fatahallah/Maintenance-Operations-Dashboard-PowerBI',
-  },
-  {
+},
+  
+{
     id: 'hr-payroll-excel-power-query',
     categories: ['dashboards', 'data'],
     image: '/projects/الرئيسية - Main Cover.png',
@@ -233,8 +455,9 @@ const PROJECTS = [
     },
     tools: ['Excel', 'Power Query', 'XLOOKUP', 'PivotTables', 'Data Quality Audit'],
     github: 'https://github.com/fatahallah/HR-Operations-Executive-Payroll-System',
-  },
-  {
+},
+  
+{
     id: 'hr-attrition-analysis-excel-python',
     categories: ['dashboards', 'data'],
     image: '/projects/HR_Employee_Attrition_Excel_Analysis.png',
@@ -256,7 +479,8 @@ const PROJECTS = [
     },
     tools: ['Excel PivotTables', 'Python', 'Scikit-learn', 'Logistic Regression', 'Class Imbalance'],
     github: 'https://github.com/fatahallah/HR-Attrition-Analysis-Excel-Python',
-  },
+},
+  
   {
     id: 'global-ecommerce-retail-analytics-dashboard',
     categories: ['dashboards', 'data'],
@@ -279,7 +503,8 @@ const PROJECTS = [
     },
     tools: ['Excel Power Pivot', 'DAX', 'Star Schema', 'Data Modeling', 'Data Quality Audit', 'Dark-Mode UI'],
     github: 'https://github.com/fatahallah/Global-Ecommerce-Performance-Dashboard',
-  },
+},
+ 
   {
     id: 'customer-retention-ltv-intelligence',
     categories: ['data', 'dashboards'],
@@ -302,8 +527,8 @@ const PROJECTS = [
     },
     tools: ['Python', 'Pandas', 'SQL', 'Power BI', 'Cohort Analysis', 'RFM'],
     github: 'https://github.com/fatahallah/Customer-Retention-LTV-Intelligence',
-  },
-  {
+},
+    {
     id: 'olist-ecommerce-sql-geospatial-predictive-analytics',
     categories: ['data', 'dashboards'],
     image: '/projects/olist_forecasting_dashboard.png',
@@ -324,7 +549,7 @@ const PROJECTS = [
       ar: 'تحليل شامل لبيانات متجر Olist (99,441 طلب) باستخدام استعلامات SQL معقدة، دوان النافذة (Window Functions)، وحساب مسافات الشحن المباشرة بمعادلة Haversine. تم توسيع المشروع ليشمل التحليل التنبؤي باستخدام Python ومكتبة Facebook Prophet لنمذجة الإيرادات التاريخية وتوقع إيرادات 6 أشهر قادمة بقيمة 7.20M$ عند هامش ثقة 95%. تم تصدير مخرجات التوقع إلى قاعدة بيانات SQLite متخصصة (olist_forecast.db) وربطها بداشبورد Power BI قيادي يبرز مؤشرات DAX المخصصة للشهر القادم ($1.10M) وإجمالي الـ 6 أشهر.',
     },
     tools: ['SQL', 'Python (Prophet)', 'Power BI', 'DAX', 'SQLite', 'Geo-Spatial Analysis'],
-    github: 'https://github.com/fatahallah/Ecommerce-SQL-Analytics',
+   github: 'https://github.com/fatahallah/Ecommerce-SQL-Analytics',
   },
   {
     id: 'hr-workforce',
@@ -418,6 +643,29 @@ const PROJECTS = [
     tools: ['Excel', 'XLOOKUP', 'Dynamic FILTER', 'Data Validation'],
     github: null,
   },
+  {
+    id: 'pos-delivery-sales-reconciliation',
+    categories: ['data'],
+    image: '/projects/pos-reconciliation-dashboard.png',
+    metric: {
+      en: '98.6% matched orders across 5 delivery platforms',
+      ar: '98.6% نسبة تطابق عبر 5 منصات توصيل',
+    },
+    title: {
+      en: 'Multi-Platform Delivery Sales Reconciliation & Performance Analytics',
+      ar: 'نظام مطابقة مبيعات منصات التوصيل وتسوية الفروقات',
+    },
+    summary: {
+      en: 'Reconciled POS sales against 5 delivery platforms with different commission structures, catching a confirmed revenue leak and quantifying the real cost of each platform.',
+      ar: 'تسوية مبيعات الـ POS مقابل 5 منصات توصيل بعمولات مختلفة، مع رصد تسريب إيرادات مؤكد وتحديد التكلفة الفعلية لكل منصة.',
+    },
+    detail: {
+      en: 'Merged Foodics POS sales data with a combined delivery-platform report via a cross-system XLOOKUP join (Platform_Reference_ID ↔ Platform_Order_ID) and a <0.01 SAR rounding-tolerance threshold. Modeled a distinct commission rate per platform (Jahez 18%, Hungerstation 20%, ToYou 15%, Ninja 12%, Chefz 22%) with 15% VAT applied to the commission only, and built an audit-flag system distinguishing Matched, Missing in Platform (confirmed revenue leak), and Amount Mismatch orders. Found the platforms take an effective 20.9% combined cut of gross sales, and caught one confirmed leak worth 157.24 SAR.',
+      ar: 'دمج بيانات مبيعات Foodics POS مع تقرير منصات التوصيل المجمّع عبر ربط XLOOKUP عابر للأنظمة (Platform_Reference_ID ↔ Platform_Order_ID) وحد تسامح للتقريب أقل من 0.01 SAR. تصميم نسبة عمولة مختلفة لكل منصة (Jahez 18%، Hungerstation 20%، ToYou 15%، Ninja 12%، Chefz 22%) مع ضريبة قيمة مضافة 15% على العمولة فقط، وبناء نظام أعلام تدقيق يميز الطلبات المطابقة والمفقودة لدى المنصة (تسريب مؤكد) وفروق المبلغ. تبين أن المنصات تأخذ اقتطاعًا فعليًا 20.9% من إجمالي المبيعات، ورُصدت حالة تسريب مؤكدة بقيمة 157.24 ريال سعودي.',
+    },
+    tools: ['Excel', 'Power Query', 'XLOOKUP', 'Financial Audit'],
+    github: 'https://github.com/fatahallah/Multi-Platform-POS-Reconciliation-Hub',
+  },
 ]
 
 const TIMELINE = [
@@ -493,8 +741,6 @@ const T = {
     proofLede:
       'A few examples of how I clean, model, analyze, and communicate data across Power BI, SQL, and Excel.',
     proofCta: 'Explore all projects',
-    caseStudiesEyebrow: 'Deep Dives',
-    caseStudiesTitle: 'End-to-End Business Case Studies',
     aboutEyebrow: 'About',
     aboutTitle: 'From HR data operations into data analysis',
     aboutP1:
@@ -514,10 +760,18 @@ const T = {
     filterHr: 'HR Systems',
     filterDashboards: 'Dashboards',
     viewDetails: 'View details',
-    viewCaseStudy: 'Read Full Case Study',
     viewCode: 'View on GitHub',
     close: 'Close',
     noRepo: 'Excel workbook — file available on request',
+    caseStudiesEyebrow: 'Case Studies',
+    caseStudiesTitle: 'Problem → Solution → Business Impact, for every project',
+    caseStudiesLede:
+      'Each project below follows the same framework: the business decision it was meant to inform, how it was built, and the quantified outcome or recommendation it produced.',
+    featuredLabel: 'Featured',
+    readCaseStudy: 'Read case study',
+    csProblem: 'Business Problem',
+    csSolution: 'Technical Solution',
+    csImpact: 'Business Impact',
     experienceEyebrow: 'Timeline',
     experienceTitle: 'Experience & milestones',
     contactEyebrow: 'Contact',
@@ -564,8 +818,6 @@ const T = {
     proofLede:
       'نماذج توضح كيف أنظف البيانات وأنمذجها وأحللها وأعرض نتائجها باستخدام Power BI وSQL وExcel.',
     proofCta: 'استعرض كل المشاريع',
-    caseStudiesEyebrow: 'تحليل عميق',
-    caseStudiesTitle: 'دراسات حالة عمل متكاملة',
     aboutEyebrow: 'نبذة عني',
     aboutTitle: 'من التعامل مع بيانات الموارد البشرية إلى تحليل البيانات',
     aboutP1:
@@ -585,10 +837,18 @@ const T = {
     filterHr: 'أنظمة موارد بشرية',
     filterDashboards: 'داشبوردات',
     viewDetails: 'عرض التفاصيل',
-    viewCaseStudy: 'قراءة دراسة الحالة بالكامل',
     viewCode: 'عرض على GitHub',
     close: 'إغلاق',
     noRepo: 'ملف Excel — متاح عند الطلب',
+    caseStudiesEyebrow: 'دراسات الحالة',
+    caseStudiesTitle: 'المشكلة ← الحل ← الأثر التجاري، لكل مشروع',
+    caseStudiesLede:
+      'كل مشروع تحت بيتبع نفس المنهجية: القرار التجاري اللي كان المشروع بيخدمه، إزاي اتبنى، والنتيجة أو التوصية القابلة للقياس اللي طلعها.',
+    featuredLabel: 'مميز',
+    readCaseStudy: 'اقرأ دراسة الحالة',
+    csProblem: 'المشكلة التجارية',
+    csSolution: 'الحل التقني',
+    csImpact: 'الأثر التجاري',
     experienceEyebrow: 'المسيرة الزمنية',
     experienceTitle: 'الخبرات والمحطات المهنية',
     contactEyebrow: 'تواصل معي',
@@ -848,11 +1108,7 @@ export default function App() {
         setActiveProject={setActiveProject}
       />
 
-      <CaseStudies
-        t={t}
-        lang={lang}
-        setActiveCaseStudy={setActiveCaseStudy}
-      />
+      <CaseStudies t={t} lang={lang} setActiveCaseStudy={setActiveCaseStudy} />
 
       <Skills t={t} lang={lang} />
 
@@ -1009,7 +1265,7 @@ function Hero({ t, lang, heroRef, statsInView, onNavClick }) {
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <button
-              onClick={() => onNavClick('case-studies')}
+              onClick={() => onNavClick('projects')}
               className="inline-flex items-center gap-2 bg-ink dark:bg-gold text-paper dark:text-ink-dark px-5 py-3 rounded-sm text-sm hover:opacity-90 transition-opacity"
             >
               {t.viewProjects}
@@ -1213,173 +1469,6 @@ function Projects({
 }
 
 /* ------------------------------------------------------------------ */
-/*  CASE STUDIES SECTION & MODAL                                      */
-/* ------------------------------------------------------------------ */
-
-function CaseStudies({ t, lang, setActiveCaseStudy }) {
-  return (
-    <section id="case-studies" className="border-t border-line dark:border-line-dark bg-surface/30 dark:bg-surface-dark/30">
-      <div className="max-w-6xl mx-auto px-5 sm:px-8 py-16">
-        <div className="mb-10">
-          <span className="font-mono text-xs text-steel dark:text-steel-dark">
-            {t.caseStudiesEyebrow}
-          </span>
-          <h2 className="font-display text-2xl sm:text-3xl mt-2 text-ink dark:text-paper-dark">
-            {t.caseStudiesTitle}
-          </h2>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-6">
-          {CASE_STUDIES.map((cs) => (
-            <div
-              key={cs.id}
-              className="border border-line dark:border-line-dark rounded-sm p-6 bg-paper dark:bg-ink-dark flex flex-col justify-between hover:border-gold dark:hover:border-gold-soft transition-colors"
-            >
-              <div>
-                <span className="font-mono text-xs text-gold dark:text-gold-soft block mb-2">
-                  {cs.category[lang]}
-                </span>
-                <h3 className="font-display text-lg mb-3 text-ink dark:text-paper-dark leading-snug">
-                  {cs.title[lang]}
-                </h3>
-                <p className="text-sm text-ink/70 dark:text-paper-dark/70 line-clamp-3 mb-4 leading-relaxed">
-                  {cs.problem[lang]}
-                </p>
-
-                <div className="grid grid-cols-3 gap-2 my-4 py-3 border-y border-line/60 dark:border-line-dark/60">
-                  {cs.metrics.map((m, idx) => (
-                    <div key={idx} className="text-center">
-                      <span className="block font-mono text-xs font-bold text-ink dark:text-paper-dark">
-                        {m.value}
-                      </span>
-                      <span className="block text-[0.65rem] text-ink/60 dark:text-paper-dark/60 truncate mt-0.5">
-                        {m.label[lang]}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <div className="flex flex-wrap gap-1.5 mb-5">
-                  {cs.tools.map((tool) => (
-                    <span
-                      key={tool}
-                      className="font-mono text-[0.65rem] px-2 py-0.5 rounded-sm bg-steel/10 text-steel dark:text-steel-dark"
-                    >
-                      {tool}
-                    </span>
-                  ))}
-                </div>
-
-                <button
-                  onClick={() => setActiveCaseStudy(cs)}
-                  className="w-full inline-flex items-center justify-center gap-1.5 text-xs font-mono py-2.5 border border-line dark:border-line-dark rounded-sm hover:border-gold dark:hover:border-gold-soft hover:text-gold transition-colors"
-                >
-                  {t.viewCaseStudy}
-                  <ChevronRight
-                    size={13}
-                    className={lang === 'ar' ? 'rotate-180' : ''}
-                  />
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}
-
-function CaseStudyModal({ caseStudy, lang, t, onClose }) {
-  useEffect(() => {
-    function onKey(e) {
-      if (e.key === 'Escape') onClose()
-    }
-    window.addEventListener('keydown', onKey)
-    document.body.style.overflow = 'hidden'
-    return () => {
-      window.removeEventListener('keydown', onKey)
-      document.body.style.overflow = ''
-    }
-  }, [onClose])
-
-  return (
-    <div
-      className="fixed inset-0 z-50 bg-ink/60 backdrop-blur-sm flex items-center justify-center p-4"
-      onClick={onClose}
-    >
-      <div
-        className="bg-paper dark:bg-ink-dark border border-line dark:border-line-dark rounded-sm max-w-2xl w-full max-h-[85vh] overflow-y-auto p-6 sm:p-8"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div className="flex items-start justify-between gap-4 mb-4 border-b border-line dark:border-line-dark pb-4">
-          <div>
-            <span className="font-mono text-xs text-gold dark:text-gold-soft">
-              {caseStudy.category[lang]}
-            </span>
-            <h3 className="font-display text-xl sm:text-2xl mt-1 text-ink dark:text-paper-dark">
-              {caseStudy.title[lang]}
-            </h3>
-          </div>
-          <button
-            onClick={onClose}
-            className="w-8 h-8 grid place-items-center rounded-full border border-line dark:border-line-dark hover:border-gold transition-colors shrink-0"
-          >
-            <X size={14} />
-          </button>
-        </div>
-
-        <div className="grid grid-cols-3 gap-3 my-5 p-4 rounded-sm bg-surface/50 dark:bg-surface-dark/50 border border-line dark:border-line-dark">
-          {caseStudy.metrics.map((m, idx) => (
-            <div key={idx} className="text-center">
-              <span className="block font-mono text-base font-bold text-gold dark:text-gold-soft">
-                {m.value}
-              </span>
-              <span className="block text-xs text-ink/70 dark:text-paper-dark/70 mt-1">
-                {m.label[lang]}
-              </span>
-            </div>
-          ))}
-        </div>
-
-        <div className="space-y-5 text-sm text-ink/80 dark:text-paper-dark/80 leading-relaxed">
-          <div>
-            <h4 className="font-bold text-ink dark:text-paper-dark mb-1 text-base">
-              {lang === 'ar' ? 'المشكلة (Problem)' : 'Problem Statement'}
-            </h4>
-            <p>{caseStudy.problem[lang]}</p>
-          </div>
-          <div>
-            <h4 className="font-bold text-ink dark:text-paper-dark mb-1 text-base">
-              {lang === 'ar' ? 'الحل الهندسي (Solution)' : 'Applied Solution'}
-            </h4>
-            <p>{caseStudy.solution[lang]}</p>
-          </div>
-          <div>
-            <h4 className="font-bold text-ink dark:text-paper-dark mb-1 text-base">
-              {lang === 'ar' ? 'الأثر والنتائج (Business Impact)' : 'Business Impact'}
-            </h4>
-            <p>{caseStudy.impact[lang]}</p>
-          </div>
-        </div>
-
-        <div className="flex flex-wrap gap-1.5 mt-6 pt-4 border-t border-line dark:border-line-dark">
-          {caseStudy.tools.map((tool) => (
-            <span
-              key={tool}
-              className="font-mono text-xs px-2.5 py-1 rounded-sm bg-steel/10 text-steel dark:text-steel-dark"
-            >
-              {tool}
-            </span>
-          ))}
-        </div>
-      </div>
-    </div>
-  )
-}
-
-/* ------------------------------------------------------------------ */
 /*  PROJECT MODAL                                                       */
 /* ------------------------------------------------------------------ */
 
@@ -1477,6 +1566,201 @@ function ProjectModal({ project, lang, t, onClose }) {
         </div>
       </div>
     </div>
+  )
+}
+
+function CaseStudyModal({ caseStudy, lang, t, onClose }) {
+  useEffect(() => {
+    function onKey(e) {
+      if (e.key === 'Escape') onClose()
+    }
+    window.addEventListener('keydown', onKey)
+    document.body.style.overflow = 'hidden'
+    return () => {
+      window.removeEventListener('keydown', onKey)
+      document.body.style.overflow = ''
+    }
+  }, [onClose])
+
+  return (
+    <div
+      className="fixed inset-0 z-50 bg-ink/60 backdrop-blur-sm flex items-center justify-center p-4"
+      onClick={onClose}
+      role="presentation"
+    >
+      <div
+        className="bg-paper dark:bg-ink-dark border border-line dark:border-line-dark rounded-sm max-w-2xl w-full max-h-[85vh] overflow-y-auto p-6 sm:p-8"
+        onClick={(e) => e.stopPropagation()}
+        role="dialog"
+        aria-modal="true"
+        aria-label={caseStudy.title[lang]}
+      >
+        <div className="flex items-start justify-between gap-4 mb-4">
+          <div>
+            <span className="font-mono text-xs text-gold dark:text-gold-soft">
+              {caseStudy.category[lang]}
+            </span>
+            <h3 className="font-display text-xl sm:text-2xl mt-1 text-ink dark:text-paper-dark">
+              {caseStudy.title[lang]}
+            </h3>
+          </div>
+          <button
+            onClick={onClose}
+            className="w-8 h-8 shrink-0 grid place-items-center rounded-full border border-line dark:border-line-dark hover:border-gold transition-colors"
+            aria-label={t.close}
+          >
+            <X size={14} />
+          </button>
+        </div>
+
+        <div className="grid grid-cols-3 gap-2 my-5">
+          {caseStudy.metrics.map((m) => (
+            <div
+              key={m.label[lang]}
+              className="border border-line dark:border-line-dark rounded-sm p-3 text-center bg-surface/50 dark:bg-surface-dark/50"
+            >
+              <div className="font-display text-base sm:text-lg text-gold dark:text-gold-soft">
+                {m.value}
+              </div>
+              <div className="text-[0.65rem] mt-1 text-ink/60 dark:text-paper-dark/60 leading-tight">
+                {m.label[lang]}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="space-y-4 text-sm text-ink/80 dark:text-paper-dark/80 leading-relaxed">
+          <div>
+            <h4 className="font-bold text-ink dark:text-paper-dark mb-1">{t.csProblem}</h4>
+            <p>{caseStudy.problem[lang]}</p>
+          </div>
+          <div>
+            <h4 className="font-bold text-ink dark:text-paper-dark mb-1">{t.csSolution}</h4>
+            <p>{caseStudy.solution[lang]}</p>
+          </div>
+          <div>
+            <h4 className="font-bold text-ink dark:text-paper-dark mb-1">{t.csImpact}</h4>
+            <p>{caseStudy.impact[lang]}</p>
+          </div>
+        </div>
+
+        <div className="flex flex-wrap gap-1.5 mt-6">
+          {caseStudy.tools.map((tool) => (
+            <span
+              key={tool}
+              className="font-mono text-[0.7rem] px-2.5 py-1 rounded-sm bg-steel/10 text-steel dark:text-steel-dark"
+            >
+              {tool}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+/* ------------------------------------------------------------------ */
+/*  CASE STUDIES SECTION                                                */
+/* ------------------------------------------------------------------ */
+
+function CaseStudies({ t, lang, setActiveCaseStudy }) {
+  const featured = CASE_STUDIES.filter((cs) => cs.featured)
+  const rest = CASE_STUDIES.filter((cs) => !cs.featured)
+
+  return (
+    <section id="case-studies" className="border-t border-line dark:border-line-dark">
+      <div className="max-w-6xl mx-auto px-5 sm:px-8 py-16">
+        <div className="mb-10">
+          <span className="font-mono text-xs text-steel dark:text-steel-dark">
+            {t.caseStudiesEyebrow}
+          </span>
+          <h2 className="font-display text-2xl sm:text-3xl mt-2 text-ink dark:text-paper-dark max-w-2xl">
+            {t.caseStudiesTitle}
+          </h2>
+          <p className="mt-3 text-sm text-ink/65 dark:text-paper-dark/65 max-w-2xl leading-relaxed">
+            {t.caseStudiesLede}
+          </p>
+        </div>
+
+        {/* Featured — top 3, full Problem/Solution/Impact visible */}
+        <div className="grid lg:grid-cols-3 gap-6 mb-10">
+          {featured.map((cs) => (
+            <div
+              key={cs.id}
+              className="border border-gold/40 dark:border-gold-soft/30 rounded-sm p-6 bg-surface/50 dark:bg-surface-dark/50 flex flex-col"
+            >
+              <span className="inline-block w-fit font-mono text-[0.65rem] tracking-wide text-gold dark:text-gold-soft border border-gold/40 dark:border-gold-soft/30 rounded-sm px-2 py-0.5 mb-3">
+                {t.featuredLabel}
+              </span>
+
+              <span className="font-mono text-[0.7rem] text-steel dark:text-steel-dark">
+                {cs.category[lang]}
+              </span>
+
+              <h3 className="font-display text-lg mt-1.5 mb-3 text-ink dark:text-paper-dark leading-snug">
+                {cs.title[lang]}
+              </h3>
+
+              <div className="grid grid-cols-3 gap-1.5 mb-4">
+                {cs.metrics.map((m) => (
+                  <div
+                    key={m.label[lang]}
+                    className="border border-line dark:border-line-dark rounded-sm p-2 text-center"
+                  >
+                    <div className="font-display text-sm text-gold dark:text-gold-soft">
+                      {m.value}
+                    </div>
+                    <div className="text-[0.6rem] mt-0.5 text-ink/55 dark:text-paper-dark/55 leading-tight">
+                      {m.label[lang]}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="space-y-3 text-sm text-ink/70 dark:text-paper-dark/70 leading-relaxed flex-1">
+                <p className="line-clamp-3">
+                  <span className="font-bold text-ink dark:text-paper-dark">{t.csProblem} </span>
+                  {cs.problem[lang]}
+                </p>
+              </div>
+
+              <button
+                onClick={() => setActiveCaseStudy(cs)}
+                className="inline-flex items-center gap-1.5 text-sm mt-4 text-ink dark:text-paper-dark hover:text-gold dark:hover:text-gold-soft transition-colors"
+              >
+                {t.readCaseStudy}
+                <ChevronRight size={14} className={lang === 'ar' ? 'rotate-180' : ''} />
+              </button>
+            </div>
+          ))}
+        </div>
+
+        {/* Remaining case studies — compact cards */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {rest.map((cs) => (
+            <button
+              key={cs.id}
+              onClick={() => setActiveCaseStudy(cs)}
+              className="group text-start border border-line dark:border-line-dark rounded-sm p-4 bg-surface/50 dark:bg-surface-dark/50 hover:border-gold dark:hover:border-gold-soft transition-colors"
+            >
+              <span className="font-mono text-[0.65rem] text-steel dark:text-steel-dark">
+                {cs.category[lang]}
+              </span>
+              <h3 className="font-display text-sm mt-1.5 mb-2 text-ink dark:text-paper-dark leading-snug line-clamp-2">
+                {cs.title[lang]}
+              </h3>
+              <span className="font-mono text-[0.68rem] text-gold dark:text-gold-soft">
+                {cs.metrics[0].value}
+              </span>
+              <span className="flex items-center gap-1 text-xs mt-3 text-ink/70 dark:text-paper-dark/70 group-hover:text-gold dark:group-hover:text-gold-soft transition-colors">
+                {t.readCaseStudy}
+                <ChevronRight size={12} className={lang === 'ar' ? 'rotate-180' : ''} />
+              </span>
+            </button>
+          ))}
+        </div>
+      </div>
+    </section>
   )
 }
 
