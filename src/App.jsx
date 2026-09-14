@@ -29,7 +29,6 @@ import {
 /*  CONFIG & CONSTANTS                                                */
 /* ------------------------------------------------------------------ */
 
-// استبدل هذا الرابط بـ Endpoint الخاص بك من Formspree
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/myeyjyrp'
 
 const PROFILE = {
@@ -108,16 +107,16 @@ const CASE_STUDIES = [
   {
     id: 'cs-maintenance-ops',
     projectId: 'maintenance-operations-reliability-dashboard',
-    category: 'Operations & Reliability',
+    category: { en: 'Operations & Reliability', ar: 'العمليات والصيانة' },
     title: {
       en: 'Maintenance Operations & Equipment Reliability Dashboard',
       ar: 'لوحة قيادة عمليات الصيانة وموثوقية المعدات'
     },
     tools: ['Power BI', 'DAX', 'Power Query', 'Star Schema'],
     metrics: [
-      { label: 'Total Cost', value: '$86.53K' },
-      { label: 'True MTTR', value: '13.29 Hours' },
-      { label: 'Completion Rate', value: '75.56%' }
+      { label: { en: 'Total Cost', ar: 'التكلفة الإجمالية' }, value: '$86.53K' },
+      { label: { en: 'True MTTR', ar: 'متوسط وقت الإصلاح' }, value: '13.29 Hours' },
+      { label: { en: 'Completion Rate', ar: 'معدل الإنجاز' }, value: '75.56%' }
     ],
     problem: {
       en: 'Manufacturing facility experiencing high maintenance costs and unplanned downtime without clear root-cause visibility or MTTR tracking.',
@@ -134,17 +133,17 @@ const CASE_STUDIES = [
   },
   {
     id: 'cs-hr-payroll',
-    projectId: 'hr-operations-payroll-system', // تأكد من مطابقة الـ id مع مشروع الـ HR في PROJECTS
-    category: 'HR & Operations',
+    projectId: 'hr-payroll-excel-power-query',
+    category: { en: 'HR & Operations', ar: 'الموارد البشرية والعمليات' },
     title: {
       en: 'HR Operations & Executive Payroll Intelligence System',
       ar: 'نظام إدارة الموارد البشرية وتحليل الرواتب التنفيذي'
     },
     tools: ['Excel', 'Power Query', 'ETL', 'Payroll Engine'],
     metrics: [
-      { label: 'Gross Payroll', value: '$10.90M' },
-      { label: "Net Payroll", value: '$8.76M' },
-      { label: 'Coverage', value: '1,470 Employees' }
+      { label: { en: 'Gross Payroll', ar: 'إجمالي الرواتب' }, value: '$10.90M' },
+      { label: { en: 'Net Payroll', ar: 'صافي الرواتب' }, value: '$8.76M' },
+      { label: { en: 'Coverage', ar: 'التغطية' }, value: '1,470 Employees' }
     ],
     problem: {
       en: 'Automating manual payroll processing across 1,470 employees while gaining clear visibility into tax deductions and departmental costs.',
@@ -161,17 +160,17 @@ const CASE_STUDIES = [
   },
   {
     id: 'cs-pos-reconciliation',
-    projectId: 'pos-delivery-sales-reconciliation', // تأكد من مطابقة الـ id مع مشروع الـ POS في PROJECTS
-    category: 'Finance & Retail',
+    projectId: 'pos-delivery-sales-reconciliation',
+    category: { en: 'Finance & Retail', ar: 'المالية والتجزئة' },
     title: {
       en: 'Multi-Platform Delivery Sales Reconciliation System',
       ar: 'نظام مطابقة مبيعات منصات التوصيل وتسوية الفروقات'
     },
     tools: ['Excel', 'Power Query', 'Financial Audit', 'POS Engine'],
     metrics: [
-      { label: 'Matched Rate', value: '98.6%' },
-      { label: 'Net Sales', value: '31,206 SAR' },
-      { label: 'Discrepancy', value: '524.86 SAR' }
+      { label: { en: 'Matched Rate', ar: 'نسبة المطابقة' }, value: '98.6%' },
+      { label: { en: 'Net Sales', ar: 'صافي المبيعات' }, value: '31,206 SAR' },
+      { label: { en: 'Discrepancy', ar: 'الفروقات' }, value: '524.86 SAR' }
     ],
     problem: {
       en: 'Difficulty in reconciling internal POS sales against 5 delivery platforms and detecting missing payouts or fees.',
@@ -189,8 +188,7 @@ const CASE_STUDIES = [
 ];
 
 const PROJECTS = [
-
-{
+  {
     id: 'maintenance-operations-reliability-dashboard',
     categories: ['dashboards', 'data'],
     image: '/projects/Maintenance_Dashboard_Executive_Overview.png',
@@ -212,9 +210,8 @@ const PROJECTS = [
     },
     tools: ['Power BI', 'DAX', 'Power Query', 'Data Modeling'],
     github: 'https://github.com/fatahallah/Maintenance-Operations-Dashboard-PowerBI',
-},
-  
-{
+  },
+  {
     id: 'hr-payroll-excel-power-query',
     categories: ['dashboards', 'data'],
     image: '/projects/الرئيسية - Main Cover.png',
@@ -236,9 +233,8 @@ const PROJECTS = [
     },
     tools: ['Excel', 'Power Query', 'XLOOKUP', 'PivotTables', 'Data Quality Audit'],
     github: 'https://github.com/fatahallah/HR-Operations-Executive-Payroll-System',
-},
-  
-{
+  },
+  {
     id: 'hr-attrition-analysis-excel-python',
     categories: ['dashboards', 'data'],
     image: '/projects/HR_Employee_Attrition_Excel_Analysis.png',
@@ -260,8 +256,7 @@ const PROJECTS = [
     },
     tools: ['Excel PivotTables', 'Python', 'Scikit-learn', 'Logistic Regression', 'Class Imbalance'],
     github: 'https://github.com/fatahallah/HR-Attrition-Analysis-Excel-Python',
-},
-  
+  },
   {
     id: 'global-ecommerce-retail-analytics-dashboard',
     categories: ['dashboards', 'data'],
@@ -284,8 +279,7 @@ const PROJECTS = [
     },
     tools: ['Excel Power Pivot', 'DAX', 'Star Schema', 'Data Modeling', 'Data Quality Audit', 'Dark-Mode UI'],
     github: 'https://github.com/fatahallah/Global-Ecommerce-Performance-Dashboard',
-},
- 
+  },
   {
     id: 'customer-retention-ltv-intelligence',
     categories: ['data', 'dashboards'],
@@ -308,8 +302,8 @@ const PROJECTS = [
     },
     tools: ['Python', 'Pandas', 'SQL', 'Power BI', 'Cohort Analysis', 'RFM'],
     github: 'https://github.com/fatahallah/Customer-Retention-LTV-Intelligence',
-},
-    {
+  },
+  {
     id: 'olist-ecommerce-sql-geospatial-predictive-analytics',
     categories: ['data', 'dashboards'],
     image: '/projects/olist_forecasting_dashboard.png',
@@ -330,7 +324,7 @@ const PROJECTS = [
       ar: 'تحليل شامل لبيانات متجر Olist (99,441 طلب) باستخدام استعلامات SQL معقدة، دوان النافذة (Window Functions)، وحساب مسافات الشحن المباشرة بمعادلة Haversine. تم توسيع المشروع ليشمل التحليل التنبؤي باستخدام Python ومكتبة Facebook Prophet لنمذجة الإيرادات التاريخية وتوقع إيرادات 6 أشهر قادمة بقيمة 7.20M$ عند هامش ثقة 95%. تم تصدير مخرجات التوقع إلى قاعدة بيانات SQLite متخصصة (olist_forecast.db) وربطها بداشبورد Power BI قيادي يبرز مؤشرات DAX المخصصة للشهر القادم ($1.10M) وإجمالي الـ 6 أشهر.',
     },
     tools: ['SQL', 'Python (Prophet)', 'Power BI', 'DAX', 'SQLite', 'Geo-Spatial Analysis'],
-   github: 'https://github.com/fatahallah/Ecommerce-SQL-Analytics',
+    github: 'https://github.com/fatahallah/Ecommerce-SQL-Analytics',
   },
   {
     id: 'hr-workforce',
@@ -499,6 +493,8 @@ const T = {
     proofLede:
       'A few examples of how I clean, model, analyze, and communicate data across Power BI, SQL, and Excel.',
     proofCta: 'Explore all projects',
+    caseStudiesEyebrow: 'Deep Dives',
+    caseStudiesTitle: 'End-to-End Business Case Studies',
     aboutEyebrow: 'About',
     aboutTitle: 'From HR data operations into data analysis',
     aboutP1:
@@ -518,6 +514,7 @@ const T = {
     filterHr: 'HR Systems',
     filterDashboards: 'Dashboards',
     viewDetails: 'View details',
+    viewCaseStudy: 'Read Full Case Study',
     viewCode: 'View on GitHub',
     close: 'Close',
     noRepo: 'Excel workbook — file available on request',
@@ -567,6 +564,8 @@ const T = {
     proofLede:
       'نماذج توضح كيف أنظف البيانات وأنمذجها وأحللها وأعرض نتائجها باستخدام Power BI وSQL وExcel.',
     proofCta: 'استعرض كل المشاريع',
+    caseStudiesEyebrow: 'تحليل عميق',
+    caseStudiesTitle: 'دراسات حالة عمل متكاملة',
     aboutEyebrow: 'نبذة عني',
     aboutTitle: 'من التعامل مع بيانات الموارد البشرية إلى تحليل البيانات',
     aboutP1:
@@ -586,6 +585,7 @@ const T = {
     filterHr: 'أنظمة موارد بشرية',
     filterDashboards: 'داشبوردات',
     viewDetails: 'عرض التفاصيل',
+    viewCaseStudy: 'قراءة دراسة الحالة بالكامل',
     viewCode: 'عرض على GitHub',
     close: 'إغلاق',
     noRepo: 'ملف Excel — متاح عند الطلب',
@@ -725,6 +725,7 @@ export default function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [filter, setFilter] = useState('all')
   const [activeProject, setActiveProject] = useState(null)
+  const [activeCaseStudy, setActiveCaseStudy] = useState(null)
   const [formState, setFormState] = useState({
     name: '',
     email: '',
@@ -847,6 +848,12 @@ export default function App() {
         setActiveProject={setActiveProject}
       />
 
+      <CaseStudies
+        t={t}
+        lang={lang}
+        setActiveCaseStudy={setActiveCaseStudy}
+      />
+
       <Skills t={t} lang={lang} />
 
       <Experience t={t} lang={lang} />
@@ -871,6 +878,15 @@ export default function App() {
           lang={lang}
           t={t}
           onClose={() => setActiveProject(null)}
+        />
+      )}
+
+      {activeCaseStudy && (
+        <CaseStudyModal
+          caseStudy={activeCaseStudy}
+          lang={lang}
+          t={t}
+          onClose={() => setActiveCaseStudy(null)}
         />
       )}
     </div>
@@ -993,7 +1009,7 @@ function Hero({ t, lang, heroRef, statsInView, onNavClick }) {
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <button
-              onClick={() => onNavClick('projects')}
+              onClick={() => onNavClick('case-studies')}
               className="inline-flex items-center gap-2 bg-ink dark:bg-gold text-paper dark:text-ink-dark px-5 py-3 rounded-sm text-sm hover:opacity-90 transition-opacity"
             >
               {t.viewProjects}
@@ -1197,6 +1213,173 @@ function Projects({
 }
 
 /* ------------------------------------------------------------------ */
+/*  CASE STUDIES SECTION & MODAL                                      */
+/* ------------------------------------------------------------------ */
+
+function CaseStudies({ t, lang, setActiveCaseStudy }) {
+  return (
+    <section id="case-studies" className="border-t border-line dark:border-line-dark bg-surface/30 dark:bg-surface-dark/30">
+      <div className="max-w-6xl mx-auto px-5 sm:px-8 py-16">
+        <div className="mb-10">
+          <span className="font-mono text-xs text-steel dark:text-steel-dark">
+            {t.caseStudiesEyebrow}
+          </span>
+          <h2 className="font-display text-2xl sm:text-3xl mt-2 text-ink dark:text-paper-dark">
+            {t.caseStudiesTitle}
+          </h2>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-6">
+          {CASE_STUDIES.map((cs) => (
+            <div
+              key={cs.id}
+              className="border border-line dark:border-line-dark rounded-sm p-6 bg-paper dark:bg-ink-dark flex flex-col justify-between hover:border-gold dark:hover:border-gold-soft transition-colors"
+            >
+              <div>
+                <span className="font-mono text-xs text-gold dark:text-gold-soft block mb-2">
+                  {cs.category[lang]}
+                </span>
+                <h3 className="font-display text-lg mb-3 text-ink dark:text-paper-dark leading-snug">
+                  {cs.title[lang]}
+                </h3>
+                <p className="text-sm text-ink/70 dark:text-paper-dark/70 line-clamp-3 mb-4 leading-relaxed">
+                  {cs.problem[lang]}
+                </p>
+
+                <div className="grid grid-cols-3 gap-2 my-4 py-3 border-y border-line/60 dark:border-line-dark/60">
+                  {cs.metrics.map((m, idx) => (
+                    <div key={idx} className="text-center">
+                      <span className="block font-mono text-xs font-bold text-ink dark:text-paper-dark">
+                        {m.value}
+                      </span>
+                      <span className="block text-[0.65rem] text-ink/60 dark:text-paper-dark/60 truncate mt-0.5">
+                        {m.label[lang]}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <div className="flex flex-wrap gap-1.5 mb-5">
+                  {cs.tools.map((tool) => (
+                    <span
+                      key={tool}
+                      className="font-mono text-[0.65rem] px-2 py-0.5 rounded-sm bg-steel/10 text-steel dark:text-steel-dark"
+                    >
+                      {tool}
+                    </span>
+                  ))}
+                </div>
+
+                <button
+                  onClick={() => setActiveCaseStudy(cs)}
+                  className="w-full inline-flex items-center justify-center gap-1.5 text-xs font-mono py-2.5 border border-line dark:border-line-dark rounded-sm hover:border-gold dark:hover:border-gold-soft hover:text-gold transition-colors"
+                >
+                  {t.viewCaseStudy}
+                  <ChevronRight
+                    size={13}
+                    className={lang === 'ar' ? 'rotate-180' : ''}
+                  />
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function CaseStudyModal({ caseStudy, lang, t, onClose }) {
+  useEffect(() => {
+    function onKey(e) {
+      if (e.key === 'Escape') onClose()
+    }
+    window.addEventListener('keydown', onKey)
+    document.body.style.overflow = 'hidden'
+    return () => {
+      window.removeEventListener('keydown', onKey)
+      document.body.style.overflow = ''
+    }
+  }, [onClose])
+
+  return (
+    <div
+      className="fixed inset-0 z-50 bg-ink/60 backdrop-blur-sm flex items-center justify-center p-4"
+      onClick={onClose}
+    >
+      <div
+        className="bg-paper dark:bg-ink-dark border border-line dark:border-line-dark rounded-sm max-w-2xl w-full max-h-[85vh] overflow-y-auto p-6 sm:p-8"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="flex items-start justify-between gap-4 mb-4 border-b border-line dark:border-line-dark pb-4">
+          <div>
+            <span className="font-mono text-xs text-gold dark:text-gold-soft">
+              {caseStudy.category[lang]}
+            </span>
+            <h3 className="font-display text-xl sm:text-2xl mt-1 text-ink dark:text-paper-dark">
+              {caseStudy.title[lang]}
+            </h3>
+          </div>
+          <button
+            onClick={onClose}
+            className="w-8 h-8 grid place-items-center rounded-full border border-line dark:border-line-dark hover:border-gold transition-colors shrink-0"
+          >
+            <X size={14} />
+          </button>
+        </div>
+
+        <div className="grid grid-cols-3 gap-3 my-5 p-4 rounded-sm bg-surface/50 dark:bg-surface-dark/50 border border-line dark:border-line-dark">
+          {caseStudy.metrics.map((m, idx) => (
+            <div key={idx} className="text-center">
+              <span className="block font-mono text-base font-bold text-gold dark:text-gold-soft">
+                {m.value}
+              </span>
+              <span className="block text-xs text-ink/70 dark:text-paper-dark/70 mt-1">
+                {m.label[lang]}
+              </span>
+            </div>
+          ))}
+        </div>
+
+        <div className="space-y-5 text-sm text-ink/80 dark:text-paper-dark/80 leading-relaxed">
+          <div>
+            <h4 className="font-bold text-ink dark:text-paper-dark mb-1 text-base">
+              {lang === 'ar' ? 'المشكلة (Problem)' : 'Problem Statement'}
+            </h4>
+            <p>{caseStudy.problem[lang]}</p>
+          </div>
+          <div>
+            <h4 className="font-bold text-ink dark:text-paper-dark mb-1 text-base">
+              {lang === 'ar' ? 'الحل الهندسي (Solution)' : 'Applied Solution'}
+            </h4>
+            <p>{caseStudy.solution[lang]}</p>
+          </div>
+          <div>
+            <h4 className="font-bold text-ink dark:text-paper-dark mb-1 text-base">
+              {lang === 'ar' ? 'الأثر والنتائج (Business Impact)' : 'Business Impact'}
+            </h4>
+            <p>{caseStudy.impact[lang]}</p>
+          </div>
+        </div>
+
+        <div className="flex flex-wrap gap-1.5 mt-6 pt-4 border-t border-line dark:border-line-dark">
+          {caseStudy.tools.map((tool) => (
+            <span
+              key={tool}
+              className="font-mono text-xs px-2.5 py-1 rounded-sm bg-steel/10 text-steel dark:text-steel-dark"
+            >
+              {tool}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+/* ------------------------------------------------------------------ */
 /*  PROJECT MODAL                                                       */
 /* ------------------------------------------------------------------ */
 
@@ -1290,64 +1473,6 @@ function ProjectModal({ project, lang, t, onClose }) {
                 {t.noRepo}
               </span>
             )}
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-function CaseStudyModal({ caseStudy, lang, t, onClose }) {
-  useEffect(() => {
-    function onKey(e) {
-      if (e.key === 'Escape') onClose()
-    }
-    window.addEventListener('keydown', onKey)
-    document.body.style.overflow = 'hidden'
-    return () => {
-      window.removeEventListener('keydown', onKey)
-      document.body.style.overflow = ''
-    }
-  }, [onClose])
-
-  return (
-    <div
-      className="fixed inset-0 z-50 bg-ink/60 backdrop-blur-sm flex items-center justify-center p-4"
-      onClick={onClose}
-    >
-      <div
-        className="bg-paper dark:bg-ink-dark border border-line dark:border-line-dark rounded-sm max-w-2xl w-full max-h-[85vh] overflow-y-auto p-6 sm:p-8"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div className="flex items-start justify-between gap-4 mb-4">
-          <div>
-            <span className="font-mono text-xs text-gold dark:text-gold-soft">
-              {caseStudy.category[lang]}
-            </span>
-            <h3 className="font-display text-xl sm:text-2xl mt-1 text-ink dark:text-paper-dark">
-              {caseStudy.title[lang]}
-            </h3>
-          </div>
-          <button
-            onClick={onClose}
-            className="w-8 h-8 grid place-items-center rounded-full border border-line dark:border-line-dark hover:border-gold transition-colors"
-          >
-            <X size={14} />
-          </button>
-        </div>
-
-        <div className="space-y-4 text-sm text-ink/80 dark:text-paper-dark/80 leading-relaxed mt-6">
-          <div>
-            <h4 className="font-bold text-ink dark:text-paper-dark mb-1">Problem / المشكلة:</h4>
-            <p>{caseStudy.problem[lang]}</p>
-          </div>
-          <div>
-            <h4 className="font-bold text-ink dark:text-paper-dark mb-1">Solution / الحل:</h4>
-            <p>{caseStudy.solution[lang]}</p>
-          </div>
-          <div>
-            <h4 className="font-bold text-ink dark:text-paper-dark mb-1">Impact & Results / النتائج:</h4>
-            <p className="font-mono text-gold dark:text-gold-soft">{caseStudy.metrics[lang]}</p>
           </div>
         </div>
       </div>
