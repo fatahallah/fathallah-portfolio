@@ -1598,21 +1598,36 @@ function ProjectModal({ project, lang, t, onClose }) {
             ))}
           </div>
 
-          <div className="mt-7">
-            {project.github ? (
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-ink dark:bg-gold text-paper dark:text-ink-dark px-4 py-2.5 rounded-sm text-sm hover:opacity-90 transition-opacity"
-              >
-                <Github size={15} />
-                {t.viewCode}
-                <ExternalLink size={13} />
-              </a>
-            ) : (
-              <span className="inline-flex items-center gap-2 text-sm text-ink/50 dark:text-paper-dark/50 font-mono">
-                {t.noRepo}
+          <<div className="mt-7 flex flex-wrap items-center gap-3">
+  {project.live && (
+    <a
+      href={project.live}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2.5 rounded-lg text-sm font-medium transition-colors shadow-sm"
+    >
+      <ExternalLink size={15} />
+      <span>{isAr ? 'اللوحة التفاعلية (Live)' : 'Live Dashboard'}</span>
+    </a>
+  )}
+
+  {project.github ? (
+    <a
+      href={project.github}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex items-center gap-2 bg-ink dark:bg-gold text-paper dark:text-ink-dark px-4 py-2.5 rounded-lg text-sm font-medium transition-colors"
+    >
+      <Github size={15} />
+      {t.viewCode}
+      <ExternalLink size={13} />
+    </a>
+  ) : (
+    <span className="inline-flex items-center gap-2 text-sm text-ink/50 dark:text-paper-dark/50 font-mono">
+      {t.noRepo}
+    </span>
+  )}
+</div>
               </span>
             )}
           </div>
