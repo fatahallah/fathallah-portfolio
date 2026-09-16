@@ -132,7 +132,7 @@ const CASE_STUDIES = [
     en: 'Surfaced key conversion drivers and customer income correlations ($63.83K average customer income), highlighting channel sales performance across store, web, and catalog channels while providing a responsive, zero-latency dashboard deployed live on Vercel.',
     ar: 'كشف المحركات الرئيسية للتحويل وعلاقة دخل العملاء بمعدل الشراء (متوسط دخل العملاء 63.83 ألف دولار)، مع إبراز أداء مبيعات القنوات عبر المتجر المباشر، الويب، والكتالوج، وتوفير لوحة بيانات حية استجابتها لحظية ومرفوعة على Vercel.',
   },
-}
+},
   {
     id: 'cs-olist-ecommerce',
     projectId: 'olist-ecommerce-sql-geospatial-predictive-analytics',
