@@ -51,7 +51,7 @@ const NAV_IDS = ['home', 'projects', 'case-studies', 'skills', 'experience', 'ab
 
 const STATS = [
   {
-    value: 11,
+    value: 12,
     suffix: '',
     label: { en: 'End-to-end analytics projects', ar: 'مشاريع تحليل بيانات متكاملة' },
   },
@@ -105,6 +105,34 @@ const SKILL_GROUPS = [
 const CATEGORIES = ['all', 'data', 'hr', 'dashboards']
 
 const CASE_STUDIES = [
+  {
+  id: 'cs-marketing-analytics',
+  projectId: 'digital-marketing-ecommerce-performance-dashboard',
+  featured: true,
+  category: { en: 'Marketing & Web Analytics', ar: 'تسويق الأداء وتحليلات الويب' },
+  title: {
+    en: 'Digital Marketing & E-Commerce Web Analytics Dashboard',
+    ar: 'تحليلات أداء التسويق والتجارة الإلكترونية ولوحة الويب التفاعلية',
+  },
+  tools: ['React', 'Tailwind CSS', 'Recharts', 'Vite', 'Power BI', 'SQL', 'Vercel'],
+  metrics: [
+    { label: { en: 'Total Revenue Analyzed', ar: 'إجمالي الإيرادات المحللة' }, value: '$1.36M' },
+    { label: { en: 'Purchases Processed', ar: 'عمليات الشراء المعالجة' }, value: '45.20K' },
+    { label: { en: 'Total Conversions', ar: 'إجمالي التحويلات' }, value: '3,890' },
+  ],
+  problem: {
+    en: 'Marketing leadership required clear visibility into customer purchasing behaviors across product categories, revenue distribution per channel, and campaign response rates, but lacked an integrated, client-side interactive tool for dynamic exploration.',
+    ar: 'احتاجت إدارة التسويق إلى رؤية واضحة لسلوكيات شراء العملاء عبر فئات المنتجات، وتوزيع الإيرادات حسب القناة، ومعدلات الاستجابة للحملات، ولكنها كانت تفتقر إلى أداة تفاعلية متكاملة وسريعة للاستكشاف الديناميكي للبيانات.',
+  },
+  solution: {
+    en: 'Processed transactional e-commerce data using multi-table SQL queries, modeled key attributes in Power BI, and built a standalone, high-performance web analytics application featuring real-time category filtering, dynamic visual analytics using Recharts, and CSV export functionality.',
+    ar: 'تمت معالجة بيانات المبيعات عبر استعلامات SQL متقدمة متعددة الجداول، ونمذجة الخصائص الرئيسية في Power BI، ثم بناء تطبيق تحليلات ويب تفاعلي عالي الأداء باستخدام React وTailwind CSS وRecharts يتيح التصفية الفورية للبيانات وتصدير التقارير.',
+  },
+  impact: {
+    en: 'Surfaced key conversion drivers and customer income correlations ($63.83K average customer income), highlighting channel sales performance across store, web, and catalog channels while providing a responsive, zero-latency dashboard deployed live on Vercel.',
+    ar: 'كشف المحركات الرئيسية للتحويل وعلاقة دخل العملاء بمعدل الشراء (متوسط دخل العملاء 63.83 ألف دولار)، مع إبراز أداء مبيعات القنوات عبر المتجر المباشر، الويب، والكتالوج، وتوفير لوحة بيانات حية استجابتها لحظية ومرفوعة على Vercel.',
+  },
+}
   {
     id: 'cs-olist-ecommerce',
     projectId: 'olist-ecommerce-sql-geospatial-predictive-analytics',
@@ -409,6 +437,31 @@ const CASE_STUDIES = [
 
 const PROJECTS = [
 
+{
+  id: 'digital-marketing-ecommerce-performance-dashboard',
+  categories: ['dashboards', 'data', 'web-apps'],
+  image: '/projects/marketing_analytics_dashboard_overview.png',
+  metric: {
+    en: '$1.36M revenue · 45.20K purchases · 3,890 conversions',
+    ar: '1.36 مليون دولار إيرادات · 45.20 ألف عملية شراء · 3,890 تحويل',
+  },
+  title: {
+    en: 'Digital Marketing & E-commerce Performance Dashboard',
+    ar: 'لوحة تحليلات تسويق الأداء والتجارة الإلكترونية التفاعلية',
+  },
+  summary: {
+    en: 'An end-to-end analytics project combining multi-table SQL querying, Power BI data modeling, and a responsive React web dashboard deployed on Vercel.',
+    ar: 'مشروع تحليلي متكامل يجمع بين استعلامات SQL متعددة الجداول، ونمذجة بيانات Power BI، ولائحة تحليلات تفاعلية مبنية بـ React ومرفوعة على Vercel.',
+  },
+  detail: {
+    en: 'Built an end-to-end marketing performance analytics ecosystem. Cleaned and structured transactional data using SQL to uncover sales trends, customer income correlations, and channel attribution. Modeled the findings in Power BI and developed a custom, high-performance web dashboard using React, Tailwind CSS, and Recharts. Deployed the interactive web app on Vercel with real-time dynamic filtering and CSV data export capabilities.',
+    ar: 'تصميم وبناء منظومة تحليلات متكاملة لأداء التسويق والتجارة الإلكترونية. شملت معالجة وهيكلة البيانات باستخدام SQL لتحليل سلوك العملاء وقنوات الشراء وعلاقة الدخل بمعدل التحويل، ثم نمذجة البيانات في Power BI، وبناء لوحة تحليلات ويب تفاعلية عالية الأداء باستخدام React وTailwind CSS وRecharts ونشرها لايف على Vercel مع تصفية ديناميكية للبيانات وتصدير CSV.',
+  },
+  tools: ['React', 'Tailwind CSS', 'Recharts', 'Vite', 'Power BI', 'SQL', 'Vercel'],
+  github: 'https://github.com/fatahallah/marketing-analytics-dashboard',
+  live: 'https://marketing-analytics-dashboard-eight.vercel.app',
+},
+  
 {
     id: 'maintenance-operations-reliability-dashboard',
     categories: ['dashboards', 'data'],
