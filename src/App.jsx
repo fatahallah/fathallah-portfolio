@@ -484,7 +484,7 @@ const PROJECTS = [
   },
   tools: ['Python', 'SciPy', 'Statsmodels', 'Tableau Public', 'Dual-Axis Error Bars', 'A/B Testing'],
   github: 'https://github.com/fatahallah/Marketing-AB-Testing-Frequency-Optimization',
-  live: 'https://public.tableau.com/views/MarketingABTestingAdFrequencyOptimization/MarketingABTestingAdFrequencyOptimization',
+  live: 'https://public.tableau.com/views/MarketingABTestingAdFrequencyOptimization/Dashboard?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link',
 },
 {
   id: 'digital-marketing-ecommerce-performance-dashboard',
