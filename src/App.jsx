@@ -51,9 +51,14 @@ const NAV_IDS = ['home', 'projects', 'case-studies', 'skills', 'experience', 'ab
 
 const STATS = [
   {
-    value: 12,
+    value: 13,
     suffix: '',
     label: { en: 'End-to-end analytics projects', ar: 'مشاريع تحليل بيانات متكاملة' },
+  },
+  {
+    value: 588101,
+    suffix: '',
+    label: { en: 'A/B Test sample users analyzed', ar: 'مستخدم تم تحليلهم في اختبار A/B' },
   },
   {
     value: 99441,
@@ -61,25 +66,20 @@ const STATS = [
     label: { en: 'E-commerce orders analyzed', ar: 'طلب تجارة إلكترونية تم تحليله' },
   },
   {
-    value: 1562,
-    suffix: '',
-    label: { en: 'Employee records analyzed', ar: 'سجل موظف تم تحليله' },
-  },
-  {
-    value: 28.4,
+    value: 43.1,
     suffix: '%',
-    label: { en: 'Attrition rate identified', ar: 'معدل دوران وظيفي تم رصده' },
+    label: { en: 'A/B Test relative conversion lift', ar: 'نسبة الرفع الزمبي المحققة للاختبار' },
   },
 ]
 
 const SKILL_GROUPS = [
   {
     icon: Database,
-    title: { en: 'Data Analysis', ar: 'تحليل البيانات' },
+    title: { en: 'Data Analysis & A/B Testing', ar: 'تحليل البيانات واختبارات A/B' },
     items: [
       { name: 'SQL — Joins, Window Functions, CTEs', level: 85 },
-      { name: 'Power BI — DAX, Data Modeling', level: 85 },
-      { name: 'Python — pandas, scipy (applied)', level: 55 },
+      { name: 'Power BI & Tableau — Dual-Axis, Error Bars', level: 85 },
+      { name: 'Python — SciPy, Statsmodels, Hypothesis Testing', level: 65 },
     ],
   },
   {
@@ -106,33 +106,61 @@ const CATEGORIES = ['all', 'data', 'hr', 'dashboards']
 
 const CASE_STUDIES = [
   {
-  id: 'cs-marketing-analytics',
-  projectId: 'digital-marketing-ecommerce-performance-dashboard',
-  featured: true,
-  category: { en: 'Marketing & Web Analytics', ar: 'تسويق الأداء وتحليلات الويب' },
-  title: {
-    en: 'Digital Marketing & E-Commerce Web Analytics Dashboard',
-    ar: 'تحليلات أداء التسويق والتجارة الإلكترونية ولوحة الويب التفاعلية',
+    id: 'cs-ab-testing-frequency',
+    projectId: 'marketing-ab-testing-frequency-optimization',
+    featured: true,
+    category: { en: 'Marketing & Statistical Analytics', ar: 'تسويق أداء وتحليلات إحصائية' },
+    title: {
+      en: 'Marketing A/B Testing & Ad Frequency Optimization',
+      ar: 'اختبارات A/B للتسويق وتحسين حدود التكرار الإعلاني',
+    },
+    tools: ['Python (SciPy, Statsmodels)', 'Tableau Public', 'Hypothesis Testing', 'Dual-Axis Error Bars'],
+    metrics: [
+      { label: { en: 'Relative Conversion Lift', ar: 'نسبة الرفع النسبي للتحويل' }, value: '+43.09%' },
+      { label: { en: 'Statistical Significance', ar: 'الدلالة الإحصائية' }, value: 'p < 0.001' },
+      { label: { en: 'Optimal Frequency Cap', ar: 'الحد الأقصى الأمثل للتكرار' }, value: '100-200 Ads' },
+    ],
+    problem: {
+      en: 'A major marketing campaign needed to prove whether ad exposure generated a statistically significant conversion lift over a PSA control group ($N = 588,101$), while identifying the exact ad frequency cap to prevent ad fatigue and wasted ad spend.',
+      ar: 'احتاجت حملة تسويقية كبيرة لإثبات ما إذا كان عرض الإعلانات يحقق زيادة معنوية إحصائيًا في معدل التحويل مقارنة بمجموعة الضبط (إعلانات التوعية العامة PSA) على عينة $N = 588,101$، مع تحديد الحد الأقصى الدقيق لتكرار الإعلانات لمنع الإرهاق الإعلاني وهدر الميزانية.',
+    },
+    solution: {
+      en: 'Engineered an end-to-end Python pipeline using Chi-Square and Two-Proportion Z-Tests to confirm lift ($2.55\%$ Ad vs $1.79\%$ Control, $p < 0.001$). Calculated 95% Confidence Intervals for frequency bins and constructed an executive Tableau Public dashboard using dual-axis Gantt error bars to distinguish high-confidence zones from sample uncertainty.',
+      ar: 'تطوير خط معالجة وتدقيق متكامل بـ Python باستخدام اختبارات Chi-Square وTwo-Proportion Z-Test لتأكيد نسبة الرفع ($2.55\%$ للإعلانات مقابل $1.79\%$ للضبط، $p < 0.001$). تم حساب فترات الثقة 95% لشرائح التكرار وبناء داشبورد تنفيذي على Tableau Public باستخدام Dual-Axis Gantt Error Bars للتمييز البصري بين المناطق عالية اليقين وتشتت العينات الصغيرة.',
+    },
+    impact: {
+      en: 'Identified an optimal frequency cap of 100–200 ads per user ($17.68\%$ peak CR, narrow 95% CI). Proved that performance drops to $15.37\%$ in the 201–500 zone due to fatigue, and successfully discarded a misleading quadratic model peak ($\sim 271$ ads) due to severe sample uncertainty in the $500+$ category.',
+      ar: 'تحديد حد التكرار الأمثل بين 100-200 إعلان لكل مستخدم (قمة تحويل $17.68\%$ مع هامش ثقة ضيق). إثبات انخفاض الأداء إلى $15.37\%$ في شريحة 201-500 بسبب الإرهاق الإعلاني، واستبعاد قمة النموذج التربيعي المضللة عند ~271 إعلان بفضل تمثيل شريط الـ CI الواسع في شريحة 500+ إعلان.',
+    },
   },
-  tools: ['React', 'Tailwind CSS', 'Recharts', 'Vite', 'Power BI', 'SQL', 'Vercel'],
-  metrics: [
-    { label: { en: 'Total Revenue Analyzed', ar: 'إجمالي الإيرادات المحللة' }, value: '$1.36M' },
-    { label: { en: 'Purchases Processed', ar: 'عمليات الشراء المعالجة' }, value: '45.20K' },
-    { label: { en: 'Total Conversions', ar: 'إجمالي التحويلات' }, value: '3,890' },
-  ],
-  problem: {
-    en: 'Marketing leadership required clear visibility into customer purchasing behaviors across product categories, revenue distribution per channel, and campaign response rates, but lacked an integrated, client-side interactive tool for dynamic exploration.',
-    ar: 'احتاجت إدارة التسويق إلى رؤية واضحة لسلوكيات شراء العملاء عبر فئات المنتجات، وتوزيع الإيرادات حسب القناة، ومعدلات الاستجابة للحملات، ولكنها كانت تفتقر إلى أداة تفاعلية متكاملة وسريعة للاستكشاف الديناميكي للبيانات.',
+  {
+    id: 'cs-marketing-analytics',
+    projectId: 'digital-marketing-ecommerce-performance-dashboard',
+    featured: true,
+    category: { en: 'Marketing & Web Analytics', ar: 'تسويق الأداء وتحليلات الويب' },
+    title: {
+      en: 'Digital Marketing & E-Commerce Web Analytics Dashboard',
+      ar: 'تحليلات أداء التسويق والتجارة الإلكترونية ولوحة الويب التفاعلية',
+    },
+    tools: ['React', 'Tailwind CSS', 'Recharts', 'Vite', 'Power BI', 'SQL', 'Vercel'],
+    metrics: [
+      { label: { en: 'Total Revenue Analyzed', ar: 'إجمالي الإيرادات المحللة' }, value: '$1.36M' },
+      { label: { en: 'Purchases Processed', ar: 'عمليات الشراء المعالجة' }, value: '45.20K' },
+      { label: { en: 'Total Conversions', ar: 'إجمالي التحويلات' }, value: '3,890' },
+    ],
+    problem: {
+      en: 'Marketing leadership required clear visibility into customer purchasing behaviors across product categories, revenue distribution per channel, and campaign response rates, but lacked an integrated, client-side interactive tool for dynamic exploration.',
+      ar: 'احتاجت إدارة التسويق إلى رؤية واضحة لسلوكيات شراء العملاء عبر فئات المنتجات، وتوزيع الإيرادات حسب القناة، ومعدلات الاستجابة للحملات، ولكنها كانت تفتقر إلى أداة تفاعلية متكاملة وسريعة للاستكشاف الديناميكي للبيانات.',
+    },
+    solution: {
+      en: 'Processed transactional e-commerce data using multi-table SQL queries, modeled key attributes in Power BI, and built a standalone, high-performance web analytics application featuring real-time category filtering, dynamic visual analytics using Recharts, and CSV export functionality.',
+      ar: 'تمت معالجة بيانات المبيعات عبر استعلامات SQL متقدمة متعددة الجداول، ونمذجة الخصائص الرئيسية في Power BI، ثم بناء تطبيق تحليلات ويب تفاعلي عالي الأداء باستخدام React وTailwind CSS وRecharts يتيح التصفية الفورية للبيانات وتصدير التقارير.',
+    },
+    impact: {
+      en: 'Surfaced key conversion drivers and customer income correlations ($63.83K average customer income), highlighting channel sales performance across store, web, and catalog channels while providing a responsive, zero-latency dashboard deployed live on Vercel.',
+      ar: 'كشف المحركات الرئيسية للتحويل وعلاقة دخل العملاء بمعدل الشراء (متوسط دخل العملاء 63.83 ألف دولار)، مع إبراز أداء مبيعات القنوات عبر المتجر المباشر، الويب، والكتالوج، وتوفير لوحة بيانات حية استجابتها لحظية ومرفوعة على Vercel.',
+    },
   },
-  solution: {
-    en: 'Processed transactional e-commerce data using multi-table SQL queries, modeled key attributes in Power BI, and built a standalone, high-performance web analytics application featuring real-time category filtering, dynamic visual analytics using Recharts, and CSV export functionality.',
-    ar: 'تمت معالجة بيانات المبيعات عبر استعلامات SQL متقدمة متعددة الجداول، ونمذجة الخصائص الرئيسية في Power BI، ثم بناء تطبيق تحليلات ويب تفاعلي عالي الأداء باستخدام React وTailwind CSS وRecharts يتيح التصفية الفورية للبيانات وتصدير التقارير.',
-  },
-  impact: {
-    en: 'Surfaced key conversion drivers and customer income correlations ($63.83K average customer income), highlighting channel sales performance across store, web, and catalog channels while providing a responsive, zero-latency dashboard deployed live on Vercel.',
-    ar: 'كشف المحركات الرئيسية للتحويل وعلاقة دخل العملاء بمعدل الشراء (متوسط دخل العملاء 63.83 ألف دولار)، مع إبراز أداء مبيعات القنوات عبر المتجر المباشر، الويب، والكتالوج، وتوفير لوحة بيانات حية استجابتها لحظية ومرفوعة على Vercel.',
-  }
-},
   {
     id: 'cs-olist-ecommerce',
     projectId: 'olist-ecommerce-sql-geospatial-predictive-analytics',
@@ -164,7 +192,6 @@ const CASE_STUDIES = [
   {
     id: 'cs-customer-retention',
     projectId: 'customer-retention-ltv-intelligence',
-    featured: true,
     category: { en: 'Customer Analytics', ar: 'تحليلات العملاء' },
     title: {
       en: 'Customer Retention & LTV Intelligence',
@@ -192,7 +219,6 @@ const CASE_STUDIES = [
   {
     id: 'cs-pos-reconciliation',
     projectId: 'pos-delivery-sales-reconciliation',
-    featured: true,
     category: { en: 'Finance & Retail Ops', ar: 'المالية وعمليات التجزئة' },
     title: {
       en: 'Multi-Platform Delivery Sales Reconciliation & Performance Analytics',
@@ -436,7 +462,30 @@ const CASE_STUDIES = [
 ];
 
 const PROJECTS = [
-
+{
+  id: 'marketing-ab-testing-frequency-optimization',
+  categories: ['dashboards', 'data'],
+  image: '/projects/dashboard_preview.png',
+  metric: {
+    en: '+43.09% Lift · p < 0.001 · Cap: 100-200 Ads',
+    ar: 'زيادة تحويل +43.09% · دلالة إحصائية p < 0.001 · الحد الأمثل: 100-200 إعلان',
+  },
+  title: {
+    en: 'Marketing A/B Testing & Ad Frequency Optimization',
+    ar: 'اختبارات A/B للتسويق وتحسين حدود التكرار الإعلاني',
+  },
+  summary: {
+    en: 'End-to-end A/B test analysis proving campaign lift ($N = 588,101$) and determining optimal ad exposure caps using Python statistical validation and dual-axis Gantt Error Bars in Tableau Public.',
+    ar: 'تحليل متكامل لاختبار A/B على 588 ألف مستخدم لإثبات جدوى الحملة وتحديد السقف الأمثل لتكرار الإعلانات لمنع الإرهاق الإعلاني باستخدام Python وTableau Public مع شريط فترات الثقة 95%.',
+  },
+  detail: {
+    en: 'Evaluated a large-scale marketing dataset (588,101 users) using Python (SciPy, Statsmodels) to confirm that ad exposure delivers a statistically significant relative conversion lift of +43.09% (2.55% Ad vs 1.79% PSA Control, p < 0.001). Engineered a Dose-Response frequency analysis to identify diminishing returns and ad burnout. Designed a custom dual-axis Gantt Error Bar visualization in Tableau Public to visually communicate 95% Confidence Interval uncertainty, justifying a recommended frequency cap at 100–200 ads while discarding misleading quadratic model extrapolations in low-sample ranges.',
+    ar: 'تقييم تجربة A/B على عينة ضخمة (588,101 مستخدم) باستخدام Python لتأكيد نجاح الحملة الإعلانية في تحقيق نسبة رفع معنوية بنسبة +43.09% ($p < 0.001$). قمت بإنشاء تحليل الجرعة والاستجابة (Dose-Response) لتتبع تأثير تكرار مشاهدة الإعلانات على معدل التحويل وتحديد نطاق الإرهاق الإعلاني. تم تطوير داشبورد تنفيذي على Tableau Public باستخدام Dual-Axis Gantt Error Bars لتمثيل فترات الثقة 95% بصريًا، مما يدعم توصية وضع سقف إعلاني عند 100-200 إعلان ويحمِي ميزانية التسويق من التبديد.',
+  },
+  tools: ['Python', 'SciPy', 'Statsmodels', 'Tableau Public', 'Dual-Axis Error Bars', 'A/B Testing'],
+  github: 'https://github.com/fatahallah/Marketing-AB-Testing-Frequency-Optimization',
+  live: 'https://public.tableau.com/views/MarketingABTestingAdFrequencyOptimization/MarketingABTestingAdFrequencyOptimization',
+},
 {
   id: 'digital-marketing-ecommerce-performance-dashboard',
   categories: ['dashboards', 'data', 'web-apps'],
@@ -723,12 +772,21 @@ const PROJECTS = [
 
 const TIMELINE = [
   {
-    icon: Briefcase,
-    date: { en: 'Before 2025', ar: 'قبل 2025' },
-    title: { en: 'HR Data & Operations Context', ar: 'سياق بيانات وعمليات الموارد البشرية' },
+    icon: Database,
+    date: { en: 'In progress', ar: 'قيد التنفيذ' },
+    title: { en: 'A/B Testing & Statistical Inference Project', ar: 'مشروع اختبارات A/B والاستدلال الإحصائي' },
     text: {
-      en: 'Built practical familiarity with employee, payroll, attendance, and leave data through HR-focused portfolio work — the starting point that led me deeper into data analysis.',
-      ar: 'بنيت خبرة عملية في التعامل مع بيانات الموظفين والرواتب والحضور والإجازات من خلال مشاريع موجهة للموارد البشرية — وهي نقطة الانطلاق التي قادتني للتعمق في تحليل البيانات.',
+      en: 'Completed an end-to-end A/B test analysis in Python and Tableau Public evaluating campaign lift and ad frequency optimization caps with 95% confidence interval error bars.',
+      ar: 'إتمام مشروع تحليل اختبار A/B متكامل باستخدام Python وTableau Public لقياس نسبة الرفع للحملة وتحديد سقف تكرار الإعلانات مع تمثيل فترات الثقة 95%.',
+    },
+  },
+  {
+    icon: BarChart3,
+    date: { en: '2025 - 2026', ar: '2025 - 2026' },
+    title: { en: 'Excel → Power Query → Power BI → SQL', ar: 'Excel ← Power Query ← Power BI ← SQL' },
+    text: {
+      en: 'Moved deliberately from advanced Excel and PivotTables to Power Query, Power BI, and SQL — building end-to-end case studies around sales, e-commerce, and HR data.',
+      ar: 'تدرجت بشكل مقصود من Excel المتقدم وPivotTables إلى Power Query ثم Power BI وSQL — مع بناء دراسات حالة متكاملة حول بيانات المبيعات والتجارة الإلكترونية والموارد البشرية.',
     },
   },
   {
@@ -741,21 +799,12 @@ const TIMELINE = [
     },
   },
   {
-    icon: BarChart3,
-    date: { en: '2025', ar: '2025' },
-    title: { en: 'Excel → Power Query → Power BI → SQL', ar: 'Excel ← Power Query ← Power BI ← SQL' },
+    icon: Briefcase,
+    date: { en: 'Before 2025', ar: 'قبل 2025' },
+    title: { en: 'HR Data & Operations Context', ar: 'سياق بيانات وعمليات الموارد البشرية' },
     text: {
-      en: 'Moved deliberately from advanced Excel and PivotTables to Power Query, Power BI, and SQL — building end-to-end case studies around sales, e-commerce, and HR data.',
-      ar: 'تدرجت بشكل مقصود من Excel المتقدم وPivotTables إلى Power Query ثم Power BI وSQL — مع بناء دراسات حالة متكاملة حول بيانات المبيعات والتجارة الإلكترونية والموارد البشرية.',
-    },
-  },
-  {
-    icon: Database,
-    date: { en: 'In progress', ar: 'قيد التنفيذ' },
-    title: { en: 'A/B Testing Analysis with Python', ar: 'تحليل اختبار A/B بلغة Python' },
-    text: {
-      en: 'Applying Python (pandas, scipy) hands-on to a project analyzing two advertising campaigns (test vs. control), adding statistical testing to the current analytics toolkit.',
-      ar: 'تطبيق Python (pandas, scipy) بشكل عملي في مشروع لتحليل حملتين إعلانيتين (تجريبية مقابل ضابطة)، لإضافة الاختبار الإحصائي إلى مجموعة أدوات تحليل البيانات.',
+      en: 'Built practical familiarity with employee, payroll, attendance, and leave data through HR-focused portfolio work — the starting point that led me deeper into data analysis.',
+      ar: 'بنيت خبرة عملية في التعامل مع بيانات الموظفين والرواتب والحضور والإجازات من خلال مشاريع موجهة للموارد البشرية — وهي نقطة الانطلاق التي قادتني للتعمق في تحليل البيانات.',
     },
   },
 ]
@@ -783,21 +832,21 @@ const T = {
       contact: 'Contact',
     },
     hireMe: 'Start a project',
-    heroEyebrow: 'Data Analyst — Power BI · SQL · Excel',
+    heroEyebrow: 'Data Analyst — Power BI · SQL · Python · Excel',
     heroTitle: 'I turn raw, messy business data into decisions people can act on.',
     heroLede:
-      'I build end-to-end analytics — from cleaning inconsistent source data to interactive dashboards — for sales, e-commerce, and HR operations. Every project starts with a business question, not a chart.',
+      'I build end-to-end analytics — from cleaning inconsistent source data to interactive dashboards and statistical A/B testing — for sales, e-commerce, and HR operations.',
     viewProjects: 'View case studies',
     downloadCV: 'Download CV',
     proofEyebrow: 'Selected work',
     proofTitle: 'Built to answer business questions, not just display charts.',
     proofLede:
-      'A few examples of how I clean, model, analyze, and communicate data across Power BI, SQL, and Excel.',
+      'A few examples of how I clean, model, analyze, and communicate data across Power BI, Tableau, Python, SQL, and Excel.',
     proofCta: 'Explore all projects',
     aboutEyebrow: 'About',
     aboutTitle: 'From HR data operations into data analysis',
     aboutP1:
-      'I’m a 2025 graduate who chose to build a career around working with data — a direction that grew naturally out of my comfort with Microsoft’s tools. I started hands-on with Excel: employee databases, payroll, attendance, and leave data in HR-focused work.',
+      'I’m a graduate who chose to build a career around working with data — a direction that grew naturally out of my comfort with Microsoft’s tools. I started hands-on with Excel: employee databases, payroll, attendance, and leave data in HR-focused work.',
     aboutP2:
       'Cleaning that data, validating it, and reporting from it showed me that data analysis was the part I wanted to go deeper into. I don’t add a tool to my profile until I’ve used it in a finished project.',
     aboutEducationLabel: 'Education',
@@ -845,7 +894,7 @@ const T = {
       'Thank you! Your message has been sent successfully. I will get back to you shortly.',
     directContact: 'Or reach me directly',
     footerTagline:
-      'Data Analyst — Power BI, SQL & Excel case studies for sales, e-commerce, and HR operations.',
+      'Data Analyst — Power BI, Tableau, SQL & Excel case studies for sales, e-commerce, and HR operations.',
     footerRights: 'Portfolio projects are based on real datasets and documented analysis.',
     statCount: 'Quick numbers',
   },
@@ -860,21 +909,21 @@ const T = {
       contact: 'تواصل معي',
     },
     hireMe: 'ابدأ مشروعًا',
-    heroEyebrow: 'محلل بيانات — Power BI · SQL · Excel',
+    heroEyebrow: 'محلل بيانات — Power BI · SQL · Python · Excel',
     heroTitle: 'أحوّل بيانات الأعمال الفوضوية إلى قرارات يمكن للناس التصرف بناءً عليها.',
     heroLede:
-      'أبني حلول تحليل بيانات متكاملة — من تنظيف البيانات المصدرية غير المتسقة إلى داشبوردات تفاعلية — للمبيعات والتجارة الإلكترونية وعمليات الموارد البشرية. كل مشروع يبدأ بسؤال عمل حقيقي، وليس برسم بياني.',
+      'أبني حلول تحليل بيانات متكاملة — من تنظيف البيانات المصدرية غير المتسقة إلى الداشبوردات التفاعلية واختبارات A/B الإحصائية — للمبيعات والتجارة الإلكترونية وعمليات الموارد البشرية.',
     viewProjects: 'استعرض دراسات الحالة',
     downloadCV: 'تحميل السيرة الذاتية',
     proofEyebrow: 'نماذج من أعمالي',
     proofTitle: 'أبني التحليل للإجابة عن أسئلة العمل، وليس لعرض الرسوم فقط.',
     proofLede:
-      'نماذج توضح كيف أنظف البيانات وأنمذجها وأحللها وأعرض نتائجها باستخدام Power BI وSQL وExcel.',
+      'نماذج توضح كيف أنظف البيانات وأنمذجها وأحللها وأعرض نتائجها باستخدام Power BI وTableau وPython وSQL وExcel.',
     proofCta: 'استعرض كل المشاريع',
     aboutEyebrow: 'نبذة عني',
     aboutTitle: 'من التعامل مع بيانات الموارد البشرية إلى تحليل البيانات',
     aboutP1:
-      'أنا خريج دفعة 2025 اخترت بناء مسيرتي المهنية حول العمل مع البيانات — اتجاه نما بشكل طبيعي من إتقاني لأدوات Microsoft. بدأت عمليًا مع Excel: قواعد بيانات الموظفين والرواتب والحضور والإجازات ضمن أعمال موجهة للموارد البشرية.',
+      'أنا خريج اخترت بناء مسيرتي المهنية حول العمل مع البيانات — اتجاه نما بشكل طبيعي من إتقاني لأدوات Microsoft. بدأت عمليًا مع Excel: قواعد بيانات الموظفين والرواتب والحضور والإجازات ضمن أعمال موجهة للموارد البشرية.',
     aboutP2:
       'تنظيف تلك البيانات والتحقق منها وإعداد التقارير منها أظهر لي أن تحليل البيانات هو المجال الذي أردت التعمق فيه. لا أضيف أداة إلى ملفي الشخصي حتى أكون قد استخدمتها في مشروع مكتمل.',
     aboutEducationLabel: 'المؤهل الدراسي',
@@ -921,7 +970,7 @@ const T = {
       'شكراً لك! تم إرسال رسالتك بنجاح. سأتواصل معك في أقرب وقت ممكن.',
     directContact: 'أو تواصل معي مباشرة',
     footerTagline:
-      'محلل بيانات — دراسات حالة بـ Power BI وSQL وExcel للمبيعات والتجارة الإلكترونية وعمليات الموارد البشرية.',
+      'محلل بيانات — دراسات حالة بـ Power BI وTableau وSQL وExcel للمبيعات والتجارة الإلكترونية وعمليات الموارد البشرية.',
     footerRights: 'مشاريع Portfolio مبنية على بيانات حقيقية وتحليل موثق.',
     statCount: 'أرقام سريعة',
   },
@@ -1608,7 +1657,7 @@ function ProjectModal({ project, lang, t, onClose }) {
                 className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2.5 rounded-sm text-sm font-medium transition-colors shadow-sm"
               >
                 <ExternalLink size={15} />
-                <span>Live Dashboard</span>
+                <span>Live Dashboard / Viz</span>
               </a>
             )}
 
