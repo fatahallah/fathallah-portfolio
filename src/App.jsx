@@ -121,22 +121,21 @@ const CASE_STUDIES = [
       { label: { en: 'Optimal Frequency Cap', ar: 'الحد الأقصى الأمثل للتكرار' }, value: '100-200 Ads' },
     ],
     problem: {
-      en: 'A major marketing campaign needed to prove whether ad exposure generated a statistically significant conversion lift over a PSA control group ($N = 588,101$), while identifying the exact ad frequency cap to prevent ad fatigue and wasted ad spend.',
-      ar: 'احتاجت حملة تسويقية كبيرة لإثبات ما إذا كان عرض الإعلانات يحقق زيادة معنوية إحصائيًا في معدل التحويل مقارنة بمجموعة الضبط (إعلانات التوعية العامة PSA) على عينة $N = 588,101$، مع تحديد الحد الأقصى الدقيق لتكرار الإعلانات لمنع الإرهاق الإعلاني وهدر الميزانية.',
+      en: 'A major marketing campaign needed to prove whether ad exposure generated a statistically significant conversion lift over a PSA control group (N = 588,101), while identifying the exact ad frequency cap to prevent ad fatigue and wasted ad spend.',
+      ar: 'احتاجت حملة تسويقية كبيرة لإثبات ما إذا كان عرض الإعلانات يحقق زيادة معنوية إحصائيًا في معدل التحويل مقارنة بمجموعة الضبط (إعلانات التوعية العامة PSA) على عينة N = 588,101، مع تحديد الحد الأقصى الدقيق لتكرار الإعلانات لمنع الإرهاق الإعلاني وهدر الميزانية.',
     },
     solution: {
-      en: 'Engineered an end-to-end Python pipeline using Chi-Square and Two-Proportion Z-Tests to confirm lift ($2.55\%$ Ad vs $1.79\%$ Control, $p < 0.001$). Calculated 95% Confidence Intervals for frequency bins and constructed an executive Tableau Public dashboard using dual-axis Gantt error bars to distinguish high-confidence zones from sample uncertainty.',
-      ar: 'تطوير خط معالجة وتدقيق متكامل بـ Python باستخدام اختبارات Chi-Square وTwo-Proportion Z-Test لتأكيد نسبة الرفع ($2.55\%$ للإعلانات مقابل $1.79\%$ للضبط، $p < 0.001$). تم حساب فترات الثقة 95% لشرائح التكرار وبناء داشبورد تنفيذي على Tableau Public باستخدام Dual-Axis Gantt Error Bars للتمييز البصري بين المناطق عالية اليقين وتشتت العينات الصغيرة.',
+      en: 'Engineered an end-to-end Python pipeline using Chi-Square and Two-Proportion Z-Tests to confirm lift (2.55% Ad vs 1.79% Control, p < 0.001). Calculated 95% Confidence Intervals for frequency bins and constructed an executive Tableau Public dashboard using dual-axis Gantt error bars to distinguish high-confidence zones from sample uncertainty.',
+      ar: 'تطوير خط معالجة وتدقيق متكامل بـ Python باستخدام اختبارات Chi-Square وTwo-Proportion Z-Test لتأكيد نسبة الرفع (2.55% للإعلانات مقابل 1.79% للضبط، p < 0.001). تم حساب فترات الثقة 95% لشرائح التكرار وبناء داشبورد تنفيذي على Tableau Public باستخدام Dual-Axis Gantt Error Bars للتمييز البصري بين المناطق عالية اليقين وتشتت العينات الصغيرة.',
     },
     impact: {
-      en: 'Identified an optimal frequency cap of 100–200 ads per user ($17.68\%$ peak CR, narrow 95% CI). Proved that performance drops to $15.37\%$ in the 201–500 zone due to fatigue, and successfully discarded a misleading quadratic model peak ($\sim 271$ ads) due to severe sample uncertainty in the $500+$ category.',
-      ar: 'تحديد حد التكرار الأمثل بين 100-200 إعلان لكل مستخدم (قمة تحويل $17.68\%$ مع هامش ثقة ضيق). إثبات انخفاض الأداء إلى $15.37\%$ في شريحة 201-500 بسبب الإرهاق الإعلاني، واستبعاد قمة النموذج التربيعي المضللة عند ~271 إعلان بفضل تمثيل شريط الـ CI الواسع في شريحة 500+ إعلان.',
+      en: 'Identified an optimal frequency cap of 100–200 ads per user (17.68% peak CR, narrow 95% CI). Proved that performance drops to 15.37% in the 201–500 zone due to fatigue, and successfully discarded a misleading quadratic model peak (sim 271 ads) due to severe sample uncertainty in the 500+ category.',
+      ar: 'تحديد حد التكرار الأمثل بين 100-200 إعلان لكل مستخدم (قمة تحويل 17.68% مع هامش ثقة ضيق). إثبات انخفاض الأداء إلى 15.37% في شريحة 201-500 بسبب الإرهاق الإعلاني، واستبعاد قمة النموذج التربيعي المضللة عند ~271 إعلان بفضل تمثيل شريط الـ CI الواسع في شريحة 500+ إعلان.',
     },
   },
   {
     id: 'cs-marketing-analytics',
     projectId: 'digital-marketing-ecommerce-performance-dashboard',
-    featured: true,
     category: { en: 'Marketing & Web Analytics', ar: 'تسويق الأداء وتحليلات الويب' },
     title: {
       en: 'Digital Marketing & E-Commerce Web Analytics Dashboard',
@@ -192,6 +191,7 @@ const CASE_STUDIES = [
   {
     id: 'cs-customer-retention',
     projectId: 'customer-retention-ltv-intelligence',
+    featured: true,
     category: { en: 'Customer Analytics', ar: 'تحليلات العملاء' },
     title: {
       en: 'Customer Retention & LTV Intelligence',
